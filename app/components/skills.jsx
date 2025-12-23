@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { SpotlightCard } from "./spotlight-card";
 import skills from "@/app/data/skills.json";
+import { getSkillIcon } from "@/app/lib/skill-icons";
 
 export default function Skills() {
   return (
@@ -37,16 +38,20 @@ export default function Skills() {
                     {skillGroup.category}
                 </h3>
                 <div className="grid grid-cols-2 gap-3">
-                    {skillGroup.items.map((skill) => (
-                    <div
-                        key={skill}
-                        className="group flex items-center justify-center p-2 bg-[#080808]/50 rounded-lg border border-white/5 hover:border-[#ffbf46]/30 transition-all duration-300"
-                    >
-                        <span className="text-xs font-medium text-zinc-300 group-hover:text-white transition-colors">
-                            {skill}
-                        </span>
-                    </div>
-                    ))}
+                    {skillGroup.items.map((skill) => {
+                      const Icon = getSkillIcon(skill);
+                      return (
+                        <div
+                            key={skill}
+                            className="group flex items-center gap-3 p-3 bg-[#080808]/50 rounded-lg border border-white/5 hover:border-[#ffbf46]/30 transition-all duration-300"
+                        >
+                            {Icon && <Icon className="text-lg text-zinc-400 group-hover:text-[#ffbf46] transition-colors" />}
+                            <span className="text-xs font-medium text-zinc-300 group-hover:text-white transition-colors">
+                                {skill}
+                            </span>
+                        </div>
+                      );
+                    })}
                 </div>
              </SpotlightCard>
             </motion.div>

@@ -17,7 +17,7 @@ export default function Experience() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl font-bold mb-4 text-white">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#ffbf46] to-[#66ced6]">Experience & Education</span>
+            <span className="bg-clip-text text-transparent bg-linear-to-r from-[#ffbf46] to-[#66ced6]">Experience & Education</span>
           </h2>
         </motion.div>
 

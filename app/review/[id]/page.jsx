@@ -80,6 +80,7 @@ export default function ReviewPage() {
       }
     } catch (error) {
       setStatus({ loading: false, error: "Something went wrong", success: false });
+      console.log(error.message);
     }
   };
 
@@ -122,7 +123,7 @@ export default function ReviewPage() {
                initial={{ width: 0 }}
                animate={{ width: "100%" }}
                transition={{ duration: 3 }}
-               className="h-full bg-gradient-to-r from-[#ffbf46] to-[#66ced6]"
+               className="h-full bg-linear-to-r from-[#ffbf46] to-[#66ced6]"
             />
         </div>
       </div>
@@ -162,7 +163,7 @@ export default function ReviewPage() {
             <span className="inline-block px-4 py-1.5 bg-[#ffbf46]/10 text-[#ffbf46] text-xs font-bold uppercase tracking-widest rounded-full mb-6 border border-[#ffbf46]/20">
               Verified Client Review
             </span>
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white to-zinc-400">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-linear-to-r from-white to-zinc-400">
               {project.title}
             </h1>
             <p className="text-zinc-400 text-lg max-w-2xl">
@@ -240,7 +241,7 @@ export default function ReviewPage() {
                 <button
                     type="submit"
                     disabled={status.loading}
-                    className="group w-full md:w-auto px-12 py-5 bg-gradient-to-r from-[#ffbf46] to-[#66ced6] text-[#080808] font-bold rounded-2xl hover:shadow-[0_0_30px_rgba(255,191,70,0.5)] transition-all hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="group w-full md:w-auto px-12 py-5 bg-linear-to-r from-[#ffbf46] to-[#66ced6] text-[#080808] font-bold rounded-2xl hover:shadow-[0_0_30px_rgba(255,191,70,0.5)] transition-all hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                     {status.loading ? (
                         <div className="w-6 h-6 border-3 border-[#080808] border-t-transparent rounded-full animate-spin" />

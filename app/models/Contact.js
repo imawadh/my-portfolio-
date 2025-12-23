@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 const ContactSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: [true, 'Please provide a name.'],
+    required: [true, 'Please Provide a name.'],
     maxlength: [60, 'Name cannot be more than 60 characters'],
   },
   email: {

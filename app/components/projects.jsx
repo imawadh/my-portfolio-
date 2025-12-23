@@ -20,7 +20,7 @@ export default function Projects() {
            className="text-center mb-16"
         >
           <h2 className="text-3xl font-bold mb-4 text-white">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#ffbf46] to-[#66ced6]">Featured Projects</span>
+            <span className="bg-clip-text text-transparent bg-linear-to-r from-[#ffbf46] to-[#66ced6]">Featured Projects</span>
           </h2>
           <p className="text-zinc-400 max-w-2xl mx-auto">
             A selection of projects I&apos;ve worked on recently.
@@ -49,9 +49,9 @@ export default function Projects() {
                   </div>
                 </div>
 
-                <div className="p-6 flex flex-col flex-grow">
+                <div className="p-6 flex flex-col grow">
                   <h3 className="text-xl font-bold mb-2 text-white group-hover:text-[#ffbf46] transition-colors">{project.title}</h3>
-                  <p className="text-zinc-400 mb-4 text-sm flex-grow">
+                  <p className="text-zinc-400 mb-4 text-sm grow">
                     {project.description}
                   </p>
                   <div className="flex flex-wrap gap-2 mb-6">

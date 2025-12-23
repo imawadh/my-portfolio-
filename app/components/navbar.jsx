@@ -35,8 +35,8 @@ export default function Navbar() {
         }`}
       >
         <div className="flex items-center justify-between h-14 sm:h-16">
-          <div className="flex-shrink-0">
-            <Link href="/" className="text-3xl sm:text-4xl tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-[#ffbf46] to-[#66ced6] pl-2 font-[family-name:var(--font-signature)]">
+          <div className="shrink-0">
+            <Link href="/" className="text-3xl sm:text-4xl tracking-tight bg-clip-text text-transparent bg-linear-to-r from-[#ffbf46] to-[#66ced6] pl-2 font-[family-name:var(--font-signature)]">
               Awadh
             </Link>
           </div>
@@ -49,7 +49,7 @@ export default function Navbar() {
                   className="text-white hover:text-[#ffbf46] transition-all duration-300 text-sm font-medium relative group"
                 >
                   {link.name}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-[#ffbf46] to-[#66ced6] transition-all duration-300 group-hover:w-full"></span>
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-linear-to-r from-[#ffbf46] to-[#66ced6] transition-all duration-300 group-hover:w-full"></span>
                 </Link>
               ))}
             </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Download } from "lucide-react";
+import { ArrowRight} from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import SocialLinks from "./social-links";
@@ -50,7 +50,7 @@ export default function Hero() {
             {welcomeText}
           </span>
           <h1 className="text-4xl sm:text-6xl font-bold tracking-tight mb-4 text-white">
-            Hi, I&apos;m <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#ffbf46] to-[#66ced6]">{name}</span>
+            Hi, I&apos;m <span className="bg-clip-text text-transparent bg-linear-to-r from-[#ffbf46] to-[#66ced6]">{name}</span>
           </h1>
           <div className="h-12 sm:h-16 flex items-center justify-center">
             <span className="text-2xl sm:text-4xl font-medium text-zinc-400">

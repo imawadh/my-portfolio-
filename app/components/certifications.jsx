@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ExternalLink, Award, CheckCircle } from "lucide-react";
+import { ExternalLink, Award } from "lucide-react";
 import Link from "next/link";
 
 import certifications from "@/app/data/certifications.json";
@@ -18,7 +18,7 @@ export default function Certifications() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl font-bold mb-4 text-white">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#ffbf46] to-[#66ced6]">Licenses & Certifications</span>
+            <span className="bg-clip-text text-transparent bg-linear-to-r from-[#ffbf46] to-[#66ced6]">Licenses & Certifications</span>
           </h2>
         </motion.div>
 

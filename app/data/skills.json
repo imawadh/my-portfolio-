@@ -6,7 +6,8 @@
             "CSS3",
             "Javascript",
             "Tailwind",
-            "Bootstrap"
+            "Bootstrap",
+            "Jinja"
         ]
     },
     {
@@ -15,7 +16,8 @@
             "Node Js",
             "Express Js",
             "Mongo DB",
-            "SQL"
+            "SQL",
+            "Flask"
         ]
     },
     {
@@ -27,12 +29,23 @@
         ]
     },
     {
-        "category": "Data Science",
+        "category": "Data Analysis",
         "items": [
             "Power BI",
             "SQL",
+            "Numpy",
+            "Matplotlib"
+        ]
+    },
+    {
+        "category": "Machine Learning",
+        "items": [
+            "Python",
+            "Scikit-learn",
+            "Statistics",
+            "Linear Algebra",
             "Pandas",
-            "Numpy"
+            "Natural Language Processing"
         ]
     }
 ]

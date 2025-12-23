@@ -1,8 +1,7 @@
 import { Geist, Geist_Mono, Alex_Brush } from "next/font/google";
 import "./globals.css";
- import { ThemeProvider } from "./components/theme-provider";
-import { FloatingOrbs } from "./components/floating-orbs";
-import { BackgroundBeams } from "./components/background-beams";
+import { ThemeProvider } from "./components/theme-provider";
+import BackgroundEffects from "./components/background-effects";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -66,8 +65,7 @@ export default function RootLayout({ children }) {
           disableTransitionOnChange
         >
           <div className="fixed inset-0 z-0 pointer-events-none">
-             <BackgroundBeams />
-             <FloatingOrbs />
+             <BackgroundEffects />
           </div>
           <main className="relative z-10">
             {children}

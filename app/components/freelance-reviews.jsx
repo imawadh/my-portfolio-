@@ -52,19 +52,19 @@ export default function FreelanceReviews() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl font-bold mb-4">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#ffbf46] to-[#66ced6]">
+            <span className="bg-clip-text text-transparent bg-linear-to-r from-[#ffbf46] to-[#66ced6]">
               Freelance Projects & Reviews
             </span>
           </h2>
           <p className="text-zinc-400 max-w-2xl mx-auto">
-            Delivering high-quality solutions for clients worldwide. Here's what they have to say.
+            Delivering high-quality solutions for clients worldwide. Here &apos; what they have to say.
           </p>
         </motion.div>
 
         <div className="space-y-12">
-          {projects.map((project) => (
+          {projects.map((project, index) => (
             <motion.div
-              key={project._id}
+              key={project._id || project.id || index}
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -72,9 +72,9 @@ export default function FreelanceReviews() {
             >
               {/* Left Side: Preview Area */}
               <div className="md:w-1/2 p-1 bg-[#080808]/50 flex flex-col">
-                <div className="flex-grow flex items-center justify-center min-h-[250px] relative group overflow-hidden bg-zinc-900/50 m-4 rounded-2xl border border-white/5">
+                <div className="grow flex items-center justify-center min-h-[250px] relative group overflow-hidden bg-zinc-900/50 m-4 rounded-2xl border border-white/5">
                    {project.image ? (
-                     <img 
+                     <img
                        src={project.image} 
                        alt={project.title} 
                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
@@ -122,11 +122,11 @@ export default function FreelanceReviews() {
                     </div>
                     
                     <blockquote className="text-xl italic text-white leading-relaxed font-medium">
-                      "{project.reviewText}"
+                      &quot;{project.reviewText}&quot;
                     </blockquote>
                     
                     <div className="flex items-center gap-4 border-t border-white/10 pt-6">
-                        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#ffbf46] to-[#66ced6] flex items-center justify-center text-[#080808] font-bold text-xl">
+                        <div className="w-12 h-12 rounded-full bg-linear-to-br from-[#ffbf46] to-[#66ced6] flex items-center justify-center text-[#080808] font-bold text-xl">
                             {project.clientName?.[0] || "C"}
                         </div>
                         <div>
@@ -146,7 +146,7 @@ export default function FreelanceReviews() {
                     </div>
                     <Link
                       href={`/review/${project._id}`}
-                      className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-[#ffbf46] to-[#66ced6] text-[#080808] font-bold rounded-full hover:shadow-[0_0_20px_rgba(255,191,70,0.4)] transition-all hover:scale-105"
+                      className="inline-flex items-center gap-2 px-8 py-4 bg-linear-to-r from-[#ffbf46] to-[#66ced6] text-[#080808] font-bold rounded-full hover:shadow-[0_0_20px_rgba(255,191,70,0.4)] transition-all hover:scale-105"
                     >
                       <Star size={20} />
                       Leave a Review

@@ -1,15 +1,20 @@
+import dynamic from 'next/dynamic';
 import Navbar from "./components/navbar";
 import Hero from "./components/hero";
 import About from "./components/about";
 import Skills from "./components/skills";
-import Certifications from "./components/certifications";
-import Experience from "./components/experience";
-import Projects from "./components/projects";
-import FreelanceReviews from "./components/freelance-reviews";
-import Contact from "./components/contact";
-import Footer from "./components/footer";
 
-export default function Home() {
+const Certifications = dynamic(() => import("./components/certifications"));
+const Experience = dynamic(() => import("./components/experience"));
+const Projects = dynamic(() => import("./components/projects"));
+const FreelanceReviews = dynamic(() => import("./components/freelance-reviews"));
+const Contact = dynamic(() => import("./components/contact"));
+const Footer = dynamic(() => import("./components/footer"));
+
+export default async function Home() {
+  // Add a minimum loading time of 1 second for a smooth transition
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+
   return (
     <main className="flex min-h-screen flex-col bg-background">
       <Navbar />

@@ -61,7 +61,7 @@ export default function Contact() {
            className="text-center mb-16"
         >
           <h2 className="text-3xl font-bold mb-4 text-[#ffbf46]">
-             <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#ffbf46] to-[#66ced6]">Get In Touch</span>
+             <span className="bg-clip-text text-transparent bg-linear-to-r from-[#ffbf46] to-[#66ced6]">Get In Touch</span>
           </h2>
           <p className="text-zinc-400 max-w-2xl mx-auto">
             Have a project in mind or just want to say hi? I&apos;d love to hear from you.
@@ -135,6 +135,7 @@ export default function Contact() {
                           id="name" 
                           value={formData.name}
                           onChange={handleChange}
+                          suppressHydrationWarning
                           className="w-full px-4 py-3 rounded-lg bg-[#080808] border border-zinc-700 text-white focus:ring-2 focus:ring-[#ffbf46] focus:outline-none transition-all placeholder:text-zinc-600" placeholder="John Doe" 
                         />
                     </div>
@@ -146,6 +147,7 @@ export default function Contact() {
                            id="email" 
                            value={formData.email}
                            onChange={handleChange}
+                           suppressHydrationWarning
                            className="w-full px-4 py-3 rounded-lg bg-[#080808] border border-zinc-700 text-white focus:ring-2 focus:ring-[#ffbf46] focus:outline-none transition-all placeholder:text-zinc-600" placeholder="john@example.com" 
                          />
                     </div>
@@ -158,6 +160,7 @@ export default function Contact() {
                       id="subject" 
                       value={formData.subject}
                       onChange={handleChange}
+                      suppressHydrationWarning
                       className="w-full px-4 py-3 rounded-lg bg-[#080808] border border-zinc-700 text-white focus:ring-2 focus:ring-[#ffbf46] focus:outline-none transition-all placeholder:text-zinc-600" placeholder="Project Inquiry" 
                     />
                 </div>
@@ -169,13 +172,15 @@ export default function Contact() {
                        rows={4} 
                        value={formData.message}
                        onChange={handleChange}
+                       suppressHydrationWarning
                        className="w-full px-4 py-3 rounded-lg bg-[#080808] border border-zinc-700 text-white focus:ring-2 focus:ring-[#ffbf46] focus:outline-none transition-all placeholder:text-zinc-600" placeholder="Tell me about your project..."></textarea>
                 </div>
                 
                 <button
                   type="submit"
                   disabled={status.loading}
-                  className={`w-full py-4 bg-gradient-to-r from-[#ffbf46] to-[#66ced6] text-[#080808] font-bold rounded-lg hover:opacity-90 transition-all transform hover:scale-[1.02] active:scale-95 shadow-lg flex items-center justify-center gap-2 ${status.loading ? 'opacity-70 cursor-not-allowed' : ''}`}
+                  suppressHydrationWarning
+                  className={`w-full py-4 bg-linear-to-r from-[#ffbf46] to-[#66ced6] text-[#080808] font-bold rounded-lg hover:opacity-90 transition-all transform hover:scale-[1.02] active:scale-95 shadow-lg flex items-center justify-center gap-2 ${status.loading ? 'opacity-70 cursor-not-allowed' : ''}`}
                 >
                   {status.loading ? "Sending..." : "Send Message"}
                 </button>

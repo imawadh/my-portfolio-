@@ -62,7 +62,7 @@ export default function ProjectDetails({ params }) {
                     <ul className="space-y-3">
                         {project.features && project.features.map((feature, index) => (
                             <li key={index} className="flex items-start gap-3 text-muted-foreground">
-                                <CheckCircle size={20} className="text-primary mt-1 flex-shrink-0" />
+                                <CheckCircle size={20} className="text-primary mt-1 shrink-0" />
                                 <span>{feature}</span>
                             </li>
                         ))}
