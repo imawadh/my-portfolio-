@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { SpotlightCard } from "./spotlight-card";
-import { projects } from "../data/projects";
+import projects from "@/app/data/projects.json";
 
 export default function Projects() {
   return (

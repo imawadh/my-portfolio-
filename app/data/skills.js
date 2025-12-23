@@ -1,7 +1,0 @@
-export const skills = [
-  { category: "Frontend", items: ["HTML5", "CSS3", "Javascript", "Tailwind", "Bootstrap"] },
-  { category: "Backend", items: ["Node Js", "Express Js", "Mongo DB", "SQL"] },
-  { category: "Tools", items: ["Git", "Vs Code", "Postman"] },
-  { category: "Data Science", items: ["Power BI", "SQL", "Pandas", "Numpy"] },
-  
-];

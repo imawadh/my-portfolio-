@@ -6,7 +6,9 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import SocialLinks from "./social-links";
 
-const texts = ["Full Stack Developer", "Problem Solver", "Tech Enthusiast"];
+import siteContent from "@/app/data/site-content.json";
+
+const { welcomeText, name, roles, description, ctaText } = siteContent.hero;
 
 export default function Hero() {
   const [textIndex, setTextIndex] = useState(0);
@@ -14,7 +16,7 @@ export default function Hero() {
   const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
-    const currentFullText = texts[textIndex];
+    const currentFullText = roles[textIndex];
     const typingSpeed = isDeleting ? 50 : 150;
 
     const timeout = setTimeout(() => {
@@ -22,7 +24,7 @@ export default function Hero() {
         setTimeout(() => setIsDeleting(true), 2000);
       } else if (isDeleting && displayText === "") {
         setIsDeleting(false);
-        setTextIndex((prev) => (prev + 1) % texts.length);
+        setTextIndex((prev) => (prev + 1) % roles.length);
       } else {
         setDisplayText(
           currentFullText.substring(
@@ -45,10 +47,10 @@ export default function Hero() {
           transition={{ duration: 0.5 }}
         >
           <span className="text-sm font-semibold tracking-wider text-[#ffbf46] uppercase mb-2 block">
-            Welcome to my portfolio
+            {welcomeText}
           </span>
           <h1 className="text-4xl sm:text-6xl font-bold tracking-tight mb-4 text-white">
-            Hi, I&apos;m <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#ffbf46] to-[#66ced6]">Awadh Kishor Singh</span>
+            Hi, I&apos;m <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#ffbf46] to-[#66ced6]">{name}</span>
           </h1>
           <div className="h-12 sm:h-16 flex items-center justify-center">
             <span className="text-2xl sm:text-4xl font-medium text-zinc-400">
@@ -58,8 +60,7 @@ export default function Hero() {
           </div>
           
           <p className="mt-6 max-w-2xl text-lg text-zinc-400 mx-auto">
-            Passionate about building scalable web applications and intuitive user interfaces.
-            Turning ideas into reality through code.
+            {description}
           </p>
         </motion.div>
 
@@ -73,7 +74,7 @@ export default function Hero() {
               href="#projects"
               className="px-8 py-3 rounded-full bg-primary text-primary-foreground font-medium hover:opacity-90 transition-opacity flex items-center gap-2 shadow-lg shadow-primary/20"
             >
-              View My Work <ArrowRight size={20} />
+              {ctaText} <ArrowRight size={20} />
             </Link>
         </motion.div>
 

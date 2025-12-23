@@ -2,7 +2,7 @@
 
 import { Github, Linkedin, Mail, Twitter, Instagram } from "lucide-react";
 import Link from "next/link";
-import { socialLinks } from "@/app/data/social";
+import socialLinks from "@/app/data/social.json";
 
 const iconMap = {
   Github,

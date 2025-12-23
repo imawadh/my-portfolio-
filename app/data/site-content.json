@@ -1,0 +1,31 @@
+{
+    "hero": {
+        "welcomeText": "Welcome to my portfolio",
+        "name": "Awadh Kishor Singh",
+        "roles": [
+            "Full Stack Developer",
+            "Problem Solver",
+            "Tech Enthusiast"
+        ],
+        "description": "Passionate about building scalable web applications and intuitive user interfaces. Turning ideas into reality through code.",
+        "ctaText": "View My Work"
+    },
+    "about": {
+        "title": "About Me",
+        "paragraphs": [
+            "Hello! I'm Awadh Kishor Singh, a passionate Full Stack Developer based in Bengaluru. I enjoy creating things that live on the internet, whether that be websites, applications, or anything in between.",
+            "My goal is to always build products that provide pixel-perfect, performant experiences. I am a quick learner and always eager to take on new challenges."
+        ],
+        "image": "/awadh-about.jpg",
+        "stats": [
+            {
+                "value": "5+",
+                "label": "Projects Completed"
+            },
+            {
+                "value": "1",
+                "label": "Freelance Project"
+            }
+        ]
+    }
+}
