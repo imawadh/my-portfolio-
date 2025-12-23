@@ -21,54 +21,36 @@
 }
 
 :root {
-  --background: #ffffff;
-  --foreground: #020617;
-  /* Slate 950 */
+  /* New 4-Color Palette */
+  /* #080808 - Almost Black - Main Background */
+  /* #ffbf46 - Golden Yellow/Orange - Primary/Text Highlight */
+  /* #2d3142 - Dark Blue/Grey - Header/Footer/Cards */
+  /* #66ced6 - Cyan/Turquoise - Experience Section */
 
-  /* Primary: Violet 600 */
-  --primary: #7c3aed;
-  --primary-foreground: #ffffff;
+  --background: #080808;
+  --foreground: #ffffff;
 
-  /* Secondary: Slate 100 */
-  --secondary: #f1f5f9;
-  --secondary-foreground: #0f172a;
+  /* Primary: Golden Yellow */
+  --primary: #ffbf46;
+  --primary-foreground: #080808;
 
-  /* Muted: Slate 100 */
-  --muted: #f1f5f9;
-  --muted-foreground: #64748b;
+  /* Secondary: Dark Blue/Grey */
+  --secondary: #2d3142;
+  --secondary-foreground: #ffffff;
 
-  /* Accent: Violet 50 */
-  --accent: #f5f3ff;
-  --accent-foreground: #1e1b4b;
+  /* Muted: Darker Grey for subtle areas */
+  --muted: #1a1e2e;
+  --muted-foreground: #9ca3af;
 
-  --border: #e2e8f0;
-  --ring: #7c3aed;
-}
+  /* Accent: Cyan */
+  --accent: #66ced6;
+  --accent-foreground: #080808;
 
-.dark {
-  --background: #020617;
-  /* Deep Navy/Slate */
-  --foreground: #f8fafc;
-  /* Slate 50 */
+  --accent-secondary: #2d3142;
+  --accent-secondary-foreground: #ffffff;
 
-  /* Primary: Violet 500 (more vibrant in dark) */
-  --primary: #8b5cf6;
-  --primary-foreground: #ffffff;
-
-  /* Secondary: Slate 800 */
-  --secondary: #1e293b;
-  --secondary-foreground: #f8fafc;
-
-  /* Muted: Slate 800 */
-  --muted: #1e293b;
-  --muted-foreground: #94a3b8;
-
-  /* Accent: Slate 800 */
-  --accent: #1e293b;
-  --accent-foreground: #f8fafc;
-
-  --border: #1e293b;
-  --ring: #8b5cf6;
+  --border: #2d3142;
+  --ring: #ffbf46;
 }
 
 body {
@@ -76,28 +58,56 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans), sans-serif;
   overflow-x: hidden;
+  selection-background-color: var(--primary);
+  selection-color: var(--primary-foreground);
 }
 
-/* Glassmorphism Utilities */
+section {
+  position: relative;
+}
+
+section::before,
+section::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: 20;
+  background: linear-gradient(90deg,
+      transparent 0%,
+      var(--primary) 20%,
+      var(--secondary) 50%,
+      var(--primary) 80%,
+      transparent 100%);
+  opacity: 0.6;
+}
+
+section::before {
+  top: 0;
+}
+
+section::after {
+  bottom: 0;
+}
+
+/* Glassmorphism Utilities - New Dark Palette */
 .glass {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.dark .glass {
-  background: rgba(2, 6, 23, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(45, 49, 66, 0.7);
+  /* #2d3142 with opacity */
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 191, 70, 0.1);
+  /* #ffbf46 border subtle */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
 }
 
 .glass-card {
-  background: rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.dark .glass-card {
-  background: rgba(30, 41, 59, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(45, 49, 66, 0.4);
+  /* #2d3142 overlay */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(102, 206, 214, 0.1);
+  /* #66ced6 border subtle */
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5);
 }

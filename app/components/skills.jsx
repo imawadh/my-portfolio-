@@ -1,18 +1,20 @@
 "use client";
 
 import { motion } from "framer-motion";
-
-const skills = [
-  { category: "Frontend", items: ["React", "Next.js", "Tailwind CSS", "HTML5", "CSS3", "JavaScript"] },
-  { category: "Backend", items: ["Node.js", "Express", "MongoDB", "SQL"] }, // Add more as appropriate
-  { category: "Tools", items: ["Git", "GitHub", "VS Code", "Postman"] },
-];
-
 import { SpotlightCard } from "./spotlight-card";
+import {skills} from "@/app/data/skills"
+
+// const skills = [
+//   { category: "Frontend", items: ["HTML5", "CSS3", "Javascript", "Tailwind", "Bootstrap"] },
+//   { category: "Backend", items: ["Node Js", "Express Js", "Mongo DB", "SQL"] },
+//   { category: "Tools", items: ["Git", "Vs Code", "Postman"] },
+//   { category: "Data Science", items: ["Power BI", "SQL", "Pandas", "Numpy"] },
+//   { category: "Chutiya", items: ["Power BI", "SQL", "Pandas", "Numpy"] },
+// ];
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-20">
+    <section id="skills" className="py-20 bg-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -21,8 +23,10 @@ export default function Skills() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl font-bold mb-4">My Skills</h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <h2 className="text-3xl font-bold mb-4 text-white">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#ffbf46] to-[#66ced6]">My Skills</span>
+          </h2>
+          <p className="text-zinc-400 max-w-2xl mx-auto">
             Here are some of the technologies and tools I work with.
           </p>
         </motion.div>
@@ -36,16 +40,20 @@ export default function Skills() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-             <SpotlightCard className="glass-card rounded-xl p-6 shadow-sm hover:shadow-lg hover:border-primary/50 transition-all duration-300 h-full">
-                <h3 className="text-xl font-semibold mb-4 text-primary">{skillGroup.category}</h3>
-                <div className="flex flex-wrap gap-2">
+             <SpotlightCard className="bg-[#2d3142]/30 border border-[#ffbf46]/10 rounded-xl p-6 shadow-sm hover:shadow-lg hover:border-[#ffbf46]/30 transition-all duration-300 h-full backdrop-blur-sm">
+                <h3 className="text-xl font-semibold mb-6 text-[#ffbf46] flex items-center gap-2">
+                    {skillGroup.category}
+                </h3>
+                <div className="grid grid-cols-2 gap-3">
                     {skillGroup.items.map((skill) => (
-                    <span
+                    <div
                         key={skill}
-                        className="px-3 py-1 bg-secondary rounded-full text-sm font-medium text-secondary-foreground"
+                        className="group flex items-center justify-center p-2 bg-[#080808]/50 rounded-lg border border-white/5 hover:border-[#ffbf46]/30 transition-all duration-300"
                     >
-                        {skill}
-                    </span>
+                        <span className="text-xs font-medium text-zinc-300 group-hover:text-white transition-colors">
+                            {skill}
+                        </span>
+                    </div>
                     ))}
                 </div>
              </SpotlightCard>

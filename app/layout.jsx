@@ -1,7 +1,8 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Alex_Brush } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "./components/theme-provider";
+ import { ThemeProvider } from "./components/theme-provider";
 import { FloatingOrbs } from "./components/floating-orbs";
+import { BackgroundBeams } from "./components/background-beams";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,27 +14,39 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const alexBrush = Alex_Brush({
+  weight: "400",
+  variable: "--font-signature",
+  subsets: ["latin"],
+});
+
 export const metadata = {
   title: "Awadh Kishor Singh | Portfolio",
   description: "Full Stack Developer Portfolio",
+  icons: {
+    icon: "/myimage.ico",
+  },
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className="scroll-smooth">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased relative`}
+        className={`${geistSans.variable} ${geistMono.variable} ${alexBrush.variable} antialiased relative bg-[#080808] text-white`}
       >
-        <div className="fixed inset-0 -z-10 h-full w-full bg-background bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] dark:bg-[radial-gradient(#1e293b_1px,transparent_1px)] opacity-50"></div>
-        <div className="fixed inset-0 -z-10 h-full w-full bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))] dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(124,58,237,0.15),rgba(255,255,255,0))]"></div>
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
-          enableSystem
+          defaultTheme="dark"
+          forcedTheme="dark"
           disableTransitionOnChange
         >
-          <FloatingOrbs />
-          {children}
+          <div className="fixed inset-0 z-0 pointer-events-none">
+             <BackgroundBeams />
+             <FloatingOrbs />
+          </div>
+          <main className="relative z-10">
+            {children}
+          </main>
         </ThemeProvider>
       </body>
     </html>

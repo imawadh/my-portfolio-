@@ -1,0 +1,27 @@
+export const socialLinks = [
+  {
+    name: "GitHub",
+    href: "https://github.com/imawadh",
+    iconName: "Github",
+  },
+  {
+    name: "LinkedIn",
+    href: "https://www.linkedin.com/in/imawadh/",
+    iconName: "Linkedin",
+  },
+  {
+    name: "Twitter",
+    href: "https://x.com/im_awadh_",
+    iconName: "Twitter",
+  },
+  {
+    name: "Instagram",
+    href: "https://www.instagram.com/im_awadh_/",
+    iconName: "Instagram",
+  },
+  {
+    name: "Email",
+    href: "mailto:awadhkishorsingh241@gmail.com",
+    iconName: "Mail",
+  },
+];

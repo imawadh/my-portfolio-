@@ -1,0 +1,302 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Github, ExternalLink, Star, MessageSquare, ShieldCheck, X } from "lucide-react";
+
+const StarRating = ({ rating, setRating, interactive = false }) => {
+  return (
+    <div className="flex gap-1">
+      {[1, 2, 3, 4, 5].map((star) => (
+        <button
+          key={star}
+          type="button"
+          disabled={!interactive}
+          onClick={() => interactive && setRating(star)}
+          className={`${star <= rating ? "text-[#ffbf46] fill-[#ffbf46]" : "text-zinc-600"} transition-colors`}
+        >
+          <Star size={interactive ? 24 : 18} />
+        </button>
+      ))}
+    </div>
+  );
+};
+
+export default function FreelanceReviews() {
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [reviewingProject, setReviewingProject] = useState(null);
+  const [formData, setFormData] = useState({ email: "", rating: 5, reviewText: "", clientName: "", clientDesignation: "" });
+  const [status, setStatus] = useState({ loading: false, error: null, success: null });
+
+  useEffect(() => {
+    fetchProjects();
+  }, []);
+
+  const fetchProjects = async () => {
+    try {
+      const res = await fetch("/api/freelance-projects", { cache: "no-store" });
+      const data = await res.json();
+      setProjects(data);
+    } catch (error) {
+      console.error("Error fetching projects:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleSubmitReview = async (e) => {
+    e.preventDefault();
+    setStatus({ loading: true, error: null, success: null });
+
+    try {
+      const res = await fetch("/api/freelance-projects", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          projectId: reviewingProject._id,
+          ...formData,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        setStatus({ loading: false, error: null, success: "Review submitted!" });
+        setReviewingProject(null);
+        setFormData({ email: "", rating: 5, reviewText: "", clientName: "", clientDesignation: "" });
+        fetchProjects(); // Refresh list
+      } else {
+        setStatus({ loading: false, error: data.message, success: null });
+      }
+    } catch (error) {
+      setStatus({ loading: false, error: "Something went wrong", success: null });
+    }
+  };
+
+  if (loading) return null; // Or a skeleton
+  if (projects.length === 0) return null;
+
+  return (
+    <section id="freelance-reviews" className="py-20 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-3xl font-bold mb-4">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#ffbf46] to-[#66ced6]">
+              Freelance Projects & Reviews
+            </span>
+          </h2>
+          <p className="text-zinc-400 max-w-2xl mx-auto">
+            Delivering high-quality solutions for clients worldwide. Here's what they have to say.
+          </p>
+        </motion.div>
+
+        <div className="space-y-12">
+          {projects.map((project) => (
+            <motion.div
+              key={project._id}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="bg-[#2d3142]/40 backdrop-blur-md rounded-3xl border border-[#ffbf46]/10 overflow-hidden flex flex-col md:flex-row shadow-2xl"
+            >
+              {/* Left Side: Preview Area */}
+              <div className="md:w-1/2 p-1 bg-[#080808]/50 flex flex-col">
+                <div className="flex-grow flex items-center justify-center min-h-[250px] relative group overflow-hidden bg-zinc-900/50 m-4 rounded-2xl border border-white/5">
+                   {/* Preview Image or Placeholder */}
+                   {project.image ? (
+                     <img 
+                       src={project.image} 
+                       alt={project.title} 
+                       className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                     />
+                   ) : (
+                     <div className="text-zinc-500 text-center p-8">
+                          <ExternalLink size={48} className="mx-auto mb-4 opacity-20" />
+                          <p className="text-sm font-medium">{project.title}</p>
+                          <p className="text-xs opacity-50">Website Preview</p>
+                     </div>
+                   )}
+                   
+                   {/* Overlay Links */}
+                   <div className="absolute inset-0 bg-[#080808]/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4">
+                        <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="p-3 bg-[#2d3142] rounded-full text-white hover:text-[#ffbf46] transition-colors border border-white/10">
+                            <Github size={24} />
+                        </a>
+                        <a href={project.websiteUrl} target="_blank" rel="noopener noreferrer" className="p-3 bg-[#ffbf46] rounded-full text-[#080808] hover:scale-110 transition-transform">
+                            <ExternalLink size={24} />
+                        </a>
+                   </div>
+                </div>
+                
+                <div className="px-8 pb-6 flex justify-between items-center mt-auto">
+                    <div className="flex items-center gap-2 text-zinc-400">
+                        <Github size={16} />
+                        <span className="text-xs font-medium">Source Available</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-[#66ced6]">
+                        <div className="w-2 h-2 rounded-full bg-[#66ced6] animate-pulse" />
+                        <span className="text-xs font-bold uppercase tracking-widest">Live Site</span>
+                    </div>
+                </div>
+              </div>
+
+              {/* Right Side: Review Area */}
+              <div className="md:w-1/2 p-8 md:p-12 flex flex-col justify-center border-l border-white/5">
+                {project.isReviewed ? (
+                  <div className="space-y-6">
+                    <div className="flex items-center justify-between">
+                         <div className="flex items-center gap-2 text-[#ffbf46]">
+                            <ShieldCheck size={20} />
+                            <span className="text-xs font-bold uppercase tracking-tighter">Verified Review</span>
+                        </div>
+                        <StarRating rating={project.rating} />
+                    </div>
+                    
+                    <blockquote className="text-xl italic text-white leading-relaxed font-medium">
+                      "{project.reviewText}"
+                    </blockquote>
+                    
+                    <div className="flex items-center gap-4 border-t border-white/10 pt-6">
+                        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#ffbf46] to-[#66ced6] flex items-center justify-center text-[#080808] font-bold text-xl">
+                            {project.clientName?.[0] || "C"}
+                        </div>
+                        <div>
+                            <p className="text-white font-bold">{project.clientName || "Client"}</p>
+                            <p className="text-zinc-500 text-sm">{project.clientDesignation || "Review from Founding Member"}</p>
+                        </div>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="text-center space-y-6">
+                    <div className="w-20 h-20 bg-[#ffbf46]/10 rounded-full flex items-center justify-center mx-auto text-[#ffbf46]">
+                        <MessageSquare size={36} />
+                    </div>
+                    <div>
+                        <h3 className="text-2xl font-bold text-white mb-2">Pending Client Review</h3>
+                        <p className="text-zinc-400">This project has been delivered. Waiting for client feedback.</p>
+                    </div>
+                    <button
+                      onClick={() => setReviewingProject(project)}
+                      className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-[#ffbf46] to-[#66ced6] text-[#080808] font-bold rounded-full hover:shadow-[0_0_20px_rgba(255,191,70,0.4)] transition-all hover:scale-105"
+                    >
+                      <Star size={20} />
+                      Leave a Review
+                    </button>
+                  </div>
+                )}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+
+      {/* Review Modal */}
+      <AnimatePresence>
+        {reviewingProject && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setReviewingProject(null)}
+              className="absolute inset-0 bg-[#080808]/95 backdrop-blur-sm"
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              className="relative w-full max-w-lg bg-[#2d3142] p-8 rounded-3xl border border-[#ffbf46]/20 shadow-2xl"
+            >
+              <button 
+                onClick={() => setReviewingProject(null)}
+                className="absolute top-4 right-4 p-2 text-zinc-400 hover:text-white transition-colors"
+              >
+                <X size={24} />
+              </button>
+
+              <div className="text-center mb-8">
+                <h3 className="text-2xl font-bold text-white mb-2">Review Project</h3>
+                <p className="text-zinc-400">Only authorized clients can review this project.</p>
+              </div>
+
+              <form onSubmit={handleSubmitReview} className="space-y-6">
+                <div>
+                  <label className="block text-sm font-medium mb-2 text-zinc-300">Client Email (Authorized Only)</label>
+                  <input
+                    required
+                    type="email"
+                    className="w-full px-4 py-3 rounded-xl bg-[#080808] border border-zinc-700 text-white focus:ring-2 focus:ring-[#ffbf46] transition-all"
+                    placeholder="client@email.com"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  />
+                </div>
+                
+                <div className="grid grid-cols-2 gap-4">
+                    <div>
+                        <label className="block text-sm font-medium mb-2 text-zinc-300">Your Name</label>
+                        <input
+                            required
+                            type="text"
+                            className="w-full px-4 py-3 rounded-xl bg-[#080808] border border-zinc-700 text-white focus:ring-2 focus:ring-[#ffbf46] transition-all"
+                            placeholder="John Doe"
+                            value={formData.clientName}
+                            onChange={(e) => setFormData({ ...formData, clientName: e.target.value })}
+                        />
+                    </div>
+                    <div>
+                        <label className="block text-sm font-medium mb-2 text-zinc-300">Rating</label>
+                        <div className="h-[52px] flex items-center justify-center bg-[#080808] rounded-xl border border-zinc-700">
+                             <StarRating rating={formData.rating} setRating={(r) => setFormData({ ...formData, rating: r })} interactive />
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium mb-2 text-zinc-300">Your Designation (e.g. Founder, CEO)</label>
+                  <input
+                    required
+                    type="text"
+                    className="w-full px-4 py-3 rounded-xl bg-[#080808] border border-zinc-700 text-white focus:ring-2 focus:ring-[#ffbf46] transition-all"
+                    placeholder="Managing Director"
+                    value={formData.clientDesignation}
+                    onChange={(e) => setFormData({ ...formData, clientDesignation: e.target.value })}
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium mb-2 text-zinc-300">Your Feedback</label>
+                  <textarea
+                    required
+                    rows={4}
+                    className="w-full px-4 py-3 rounded-xl bg-[#080808] border border-zinc-700 text-white focus:ring-2 focus:ring-[#ffbf46] transition-all"
+                    placeholder="How was your experience?"
+                    value={formData.reviewText}
+                    onChange={(e) => setFormData({ ...formData, reviewText: e.target.value })}
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={status.loading}
+                  className="w-full py-4 bg-gradient-to-r from-[#ffbf46] to-[#66ced6] text-[#080808] font-bold rounded-xl hover:opacity-90 transition-all flex items-center justify-center gap-2"
+                >
+                  {status.loading ? "Verifying..." : "Submit Review"}
+                </button>
+
+                {status.error && <p className="text-red-400 text-sm text-center">{status.error}</p>}
+                {status.success && <p className="text-green-400 text-sm text-center">{status.success}</p>}
+              </form>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+    </section>
+  );
+}

@@ -1,12 +1,57 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import SocialLinks from "./social-links";
 import { Mail, MapPin, Phone } from "lucide-react";
 
 export default function Contact() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+  const [status, setStatus] = useState({ loading: false, success: null, error: null });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus({ loading: true, success: null, error: null });
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      let data;
+      const contentType = res.headers.get("content-type");
+      if (contentType && contentType.indexOf("application/json") !== -1) {
+        data = await res.json();
+      } else {
+        const text = await res.text();
+        throw new Error(`Server returned non-JSON response: ${text.slice(0, 100)}`);
+      }
+
+      if (res.ok) {
+        setStatus({ loading: false, success: "Message sent successfully!", error: null });
+        setFormData({ name: "", email: "", subject: "", message: "" });
+      } else {
+        setStatus({ loading: false, success: null, error: data.message || "Failed to send message" });
+      }
+    } catch (err) {
+      console.error("Frontend Form Error:", err);
+      setStatus({ loading: false, success: null, error: `${err.message || "An unexpected error occurred."}` });
+    }
+  };
+
   return (
-    <section id="contact" className="py-20">
+    <section id="contact" className="py-20 bg-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
            initial={{ opacity: 0, y: 20 }}
@@ -15,8 +60,10 @@ export default function Contact() {
            transition={{ duration: 0.5 }}
            className="text-center mb-16"
         >
-          <h2 className="text-3xl font-bold mb-4">Get In Touch</h2>
-          <p className="text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
+          <h2 className="text-3xl font-bold mb-4 text-[#ffbf46]">
+             <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#ffbf46] to-[#66ced6]">Get In Touch</span>
+          </h2>
+          <p className="text-zinc-400 max-w-2xl mx-auto">
             Have a project in mind or just want to say hi? I&apos;d love to hear from you.
           </p>
         </motion.div>
@@ -28,45 +75,45 @@ export default function Contact() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h3 className="text-xl font-bold mb-6 text-foreground">Contact Information</h3>
+            <h3 className="text-xl font-bold mb-6 text-white border-b border-[#ffbf46]/20 pb-2 inline-block">Contact Information</h3>
             <div className="space-y-6">
                 <div className="flex items-start gap-4">
-                    <div className="p-3 bg-primary/10 rounded-lg text-primary">
+                    <div className="p-3 bg-[#2d3142] rounded-lg text-[#ffbf46] border border-[#ffbf46]/10">
                         <Mail size={24} />
                     </div>
                     <div>
-                        <h4 className="font-medium mb-1 text-foreground">Email</h4>
-                        <a href="mailto:contact@awadhkishor.com" className="text-muted-foreground hover:text-primary transition-colors">
-                            contact@awadhkishor.com
+                        <h4 className="font-medium mb-1 text-white">Email</h4>
+                        <a href="mailto:awadhkishorsingh241@gmail.com" className="text-zinc-400 hover:text-[#ffbf46] transition-colors">
+                            awadhkishorsingh241@gmail.com
                         </a>
                     </div>
                 </div>
                 <div className="flex items-start gap-4">
-                     <div className="p-3 bg-primary/10 rounded-lg text-primary">
+                     <div className="p-3 bg-[#2d3142] rounded-lg text-[#ffbf46] border border-[#ffbf46]/10">
                         <Phone size={24} />
                     </div>
                     <div>
-                        <h4 className="font-medium mb-1 text-foreground">Phone</h4>
-                        <a href="tel:+919876543210" className="text-muted-foreground hover:text-primary transition-colors">
-                            +91 9876543210
+                        <h4 className="font-medium mb-1 text-white">Phone</h4>
+                        <a href="tel:+917985000241" className="text-zinc-400 hover:text-[#ffbf46] transition-colors">
+                            +91 7985000241
                         </a>
                     </div>
                 </div>
                 <div className="flex items-start gap-4">
-                     <div className="p-3 bg-primary/10 rounded-lg text-primary">
+                     <div className="p-3 bg-[#2d3142] rounded-lg text-[#ffbf46] border border-[#ffbf46]/10">
                         <MapPin size={24} />
                     </div>
                     <div>
-                        <h4 className="font-medium mb-1 text-foreground">Location</h4>
-                        <p className="text-muted-foreground">
-                            [City, State, Country]
+                        <h4 className="font-medium mb-1 text-white">Location</h4>
+                        <p className="text-zinc-400">
+                            Yello Living, Extension Road, Pattandur Agrahara, Bengaluru, 560066
                         </p>
                     </div>
                 </div>
             </div>
 
              <div className="mt-8">
-                <h4 className="font-medium mb-4 text-foreground">Follow Me</h4>
+                <h4 className="font-medium mb-4 text-white">Follow Me</h4>
                 <SocialLinks />
             </div>
           </motion.div>
@@ -76,30 +123,69 @@ export default function Contact() {
              whileInView={{ opacity: 1, x: 0 }}
              viewport={{ once: true }}
              transition={{ duration: 0.5 }}
-             className="glass-card p-8 rounded-2xl shadow-lg border border-border"
+             className="bg-[#2d3142] p-8 rounded-2xl shadow-lg border border-[#ffbf46]/20"
           >
-            <form className="space-y-6">
+            <form className="space-y-6" onSubmit={handleSubmit}>
                 <div className="grid md:grid-cols-2 gap-6">
                     <div>
-                        <label htmlFor="name" className="block text-sm font-medium mb-2 text-foreground">Name</label>
-                        <input suppressHydrationWarning type="text" id="name" className="w-full px-4 py-3 rounded-lg bg-background/50 border border-input focus:ring-2 focus:ring-primary focus:outline-none transition-all placeholder:text-muted-foreground" placeholder="John Doe" />
+                        <label htmlFor="name" className="block text-sm font-medium mb-2 text-white">Name</label>
+                        <input 
+                          required
+                          type="text" 
+                          id="name" 
+                          value={formData.name}
+                          onChange={handleChange}
+                          className="w-full px-4 py-3 rounded-lg bg-[#080808] border border-zinc-700 text-white focus:ring-2 focus:ring-[#ffbf46] focus:outline-none transition-all placeholder:text-zinc-600" placeholder="John Doe" 
+                        />
                     </div>
                     <div>
-                         <label htmlFor="email" className="block text-sm font-medium mb-2 text-foreground">Email</label>
-                         <input suppressHydrationWarning type="email" id="email" className="w-full px-4 py-3 rounded-lg bg-background/50 border border-input focus:ring-2 focus:ring-primary focus:outline-none transition-all placeholder:text-muted-foreground" placeholder="john@example.com" />
+                         <label htmlFor="email" className="block text-sm font-medium mb-2 text-white">Email</label>
+                         <input 
+                           required
+                           type="email" 
+                           id="email" 
+                           value={formData.email}
+                           onChange={handleChange}
+                           className="w-full px-4 py-3 rounded-lg bg-[#080808] border border-zinc-700 text-white focus:ring-2 focus:ring-[#ffbf46] focus:outline-none transition-all placeholder:text-zinc-600" placeholder="john@example.com" 
+                         />
                     </div>
                 </div>
                 <div>
-                    <label htmlFor="subject" className="block text-sm font-medium mb-2 text-foreground">Subject</label>
-                    <input suppressHydrationWarning type="text" id="subject" className="w-full px-4 py-3 rounded-lg bg-background/50 border border-input focus:ring-2 focus:ring-primary focus:outline-none transition-all placeholder:text-muted-foreground" placeholder="Project Inquiry" />
+                    <label htmlFor="subject" className="block text-sm font-medium mb-2 text-white">Subject</label>
+                    <input 
+                      required
+                      type="text" 
+                      id="subject" 
+                      value={formData.subject}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 rounded-lg bg-[#080808] border border-zinc-700 text-white focus:ring-2 focus:ring-[#ffbf46] focus:outline-none transition-all placeholder:text-zinc-600" placeholder="Project Inquiry" 
+                    />
                 </div>
                 <div>
-                     <label htmlFor="message" className="block text-sm font-medium mb-2 text-foreground">Message</label>
-                     <textarea suppressHydrationWarning id="message" rows={4} className="w-full px-4 py-3 rounded-lg bg-background/50 border border-input focus:ring-2 focus:ring-primary focus:outline-none transition-all placeholder:text-muted-foreground" placeholder="Tell me about your project..."></textarea>
+                     <label htmlFor="message" className="block text-sm font-medium mb-2 text-white">Message</label>
+                     <textarea 
+                       required
+                       id="message" 
+                       rows={4} 
+                       value={formData.message}
+                       onChange={handleChange}
+                       className="w-full px-4 py-3 rounded-lg bg-[#080808] border border-zinc-700 text-white focus:ring-2 focus:ring-[#ffbf46] focus:outline-none transition-all placeholder:text-zinc-600" placeholder="Tell me about your project..."></textarea>
                 </div>
-                <button suppressHydrationWarning type="submit" className="w-full py-3 px-6 rounded-lg bg-primary text-primary-foreground font-medium hover:opacity-90 transition-opacity shadow-lg shadow-primary/25">
-                    Send Message
+                
+                <button
+                  type="submit"
+                  disabled={status.loading}
+                  className={`w-full py-4 bg-gradient-to-r from-[#ffbf46] to-[#66ced6] text-[#080808] font-bold rounded-lg hover:opacity-90 transition-all transform hover:scale-[1.02] active:scale-95 shadow-lg flex items-center justify-center gap-2 ${status.loading ? 'opacity-70 cursor-not-allowed' : ''}`}
+                >
+                  {status.loading ? "Sending..." : "Send Message"}
                 </button>
+
+                {status.success && (
+                  <p className="text-green-400 text-center text-sm font-medium mt-4">{status.success}</p>
+                )}
+                {status.error && (
+                  <p className="text-red-400 text-center text-sm font-medium mt-4">{status.error}</p>
+                )}
             </form>
           </motion.div>
         </div>

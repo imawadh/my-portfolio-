@@ -1,27 +1,32 @@
 "use client";
 
-import { Github, Linkedin, Mail, Twitter } from "lucide-react";
+import { Github, Linkedin, Mail, Twitter, Instagram } from "lucide-react";
 import Link from "next/link";
 
 const socialLinks = [
   {
     name: "GitHub",
-    href: "https://github.com/awadhkishor", // Placeholder, update if known
+    href: "https://github.com/imawadh",
     icon: Github,
   },
   {
     name: "LinkedIn",
-    href: "https://linkedin.com/in/awadhkishor", // Placeholder
+    href: "https://www.linkedin.com/in/imawadh/",
     icon: Linkedin,
   },
   {
     name: "Twitter",
-    href: "https://twitter.com/awadhkishor", // Placeholder
+    href: "https://x.com/im_awadh_",
     icon: Twitter,
   },
   {
+    name: "Instagram",
+    href: "https://www.instagram.com/im_awadh_/",
+    icon: Instagram,
+  },
+  {
     name: "Email",
-    href: "mailto:contact@awadhkishor.com", // Placeholder
+    href: "mailto:awadhkishorsingh241@gmail.com",
     icon: Mail,
   },
 ];

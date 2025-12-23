@@ -5,7 +5,6 @@ import { ArrowRight, Download } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import SocialLinks from "./social-links";
-import { BackgroundBeams } from "./background-beams";
 
 const texts = ["Full Stack Developer", "Problem Solver", "Tech Enthusiast"];
 
@@ -38,28 +37,27 @@ export default function Hero() {
   }, [displayText, isDeleting, textIndex]);
 
   return (
-    <section className="h-screen flex items-center justify-center pt-16 overflow-hidden relative">
-      <BackgroundBeams />
+    <section className="h-screen flex items-center justify-center pt-16 overflow-hidden relative bg-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <span className="text-sm font-semibold tracking-wider text-primary uppercase mb-2 block">
+          <span className="text-sm font-semibold tracking-wider text-[#ffbf46] uppercase mb-2 block">
             Welcome to my portfolio
           </span>
-          <h1 className="text-4xl sm:text-6xl font-bold tracking-tight mb-4 text-foreground">
-            Hi, I&apos;m <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-400 dark:to-blue-400">Awadh Kishor Singh</span>
+          <h1 className="text-4xl sm:text-6xl font-bold tracking-tight mb-4 text-white">
+            Hi, I&apos;m <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#ffbf46] to-[#66ced6]">Awadh Kishor Singh</span>
           </h1>
           <div className="h-12 sm:h-16 flex items-center justify-center">
-            <span className="text-2xl sm:text-4xl font-medium text-muted-foreground">
+            <span className="text-2xl sm:text-4xl font-medium text-zinc-400">
               I am a {displayText}
-              <span className="animate-pulse text-primary">|</span>
+              <span className="animate-pulse text-[#ffbf46]">|</span>
             </span>
           </div>
           
-          <p className="mt-6 max-w-2xl text-lg text-muted-foreground mx-auto">
+          <p className="mt-6 max-w-2xl text-lg text-zinc-400 mx-auto">
             Passionate about building scalable web applications and intuitive user interfaces.
             Turning ideas into reality through code.
           </p>
@@ -77,14 +75,6 @@ export default function Hero() {
             >
               View My Work <ArrowRight size={20} />
             </Link>
-            <a
-              href="/resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-8 py-3 rounded-full glass border border-input hover:bg-accent hover:text-accent-foreground transition-colors font-medium flex items-center gap-2"
-            >
-              Download CV <Download size={20} />
-            </a>
         </motion.div>
 
         <motion.div
