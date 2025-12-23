@@ -2,40 +2,21 @@
 
 import { Github, Linkedin, Mail, Twitter, Instagram } from "lucide-react";
 import Link from "next/link";
+import { socialLinks } from "@/app/data/social";
 
-const socialLinks = [
-  {
-    name: "GitHub",
-    href: "https://github.com/imawadh",
-    icon: Github,
-  },
-  {
-    name: "LinkedIn",
-    href: "https://www.linkedin.com/in/imawadh/",
-    icon: Linkedin,
-  },
-  {
-    name: "Twitter",
-    href: "https://x.com/im_awadh_",
-    icon: Twitter,
-  },
-  {
-    name: "Instagram",
-    href: "https://www.instagram.com/im_awadh_/",
-    icon: Instagram,
-  },
-  {
-    name: "Email",
-    href: "mailto:awadhkishorsingh241@gmail.com",
-    icon: Mail,
-  },
-];
+const iconMap = {
+  Github,
+  Linkedin,
+  Twitter,
+  Instagram,
+  Mail
+};
 
 export default function SocialLinks({ className = "", iconSize = 24 }) {
   return (
     <div className={`flex gap-4 ${className}`}>
       {socialLinks.map((link) => {
-        const Icon = link.icon;
+        const Icon = iconMap[link.iconName] || iconMap[link.name] || Mail;
         return (
           <Link
             key={link.name}

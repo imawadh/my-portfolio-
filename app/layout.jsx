@@ -22,7 +22,31 @@ const alexBrush = Alex_Brush({
 
 export const metadata = {
   title: "Awadh Kishor Singh | Portfolio",
-  description: "Full Stack Developer Portfolio",
+  description: "Full Stack Developer specializing in modern web applications. Expert in Next.js, React, and MongoDB.",
+  keywords: ["Awadh Kishor Singh", "Portfolio", "Full Stack Developer", "Next.js", "React", "Bangalore Developer"],
+  authors: [{ name: "Awadh Kishor Singh" }],
+  openGraph: {
+    title: "Awadh Kishor Singh | Portfolio",
+    description: "Full Stack Developer specializing in modern web applications.",
+    url: "https://your-portfolio-url.com", // Replace with actual production URL
+    siteName: "Awadh Kishor Singh Portfolio",
+    images: [
+      {
+        url: "/og-image.png", // Ensure this image exists in public folder
+        width: 1200,
+        height: 630,
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Awadh Kishor Singh | Portfolio",
+    description: "Full Stack Developer specializing in modern web applications.",
+    creator: "@im_awadh_",
+    images: ["/og-image.png"],
+  },
   icons: {
     icon: "/myimage.ico",
   },

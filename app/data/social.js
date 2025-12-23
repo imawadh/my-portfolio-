@@ -21,7 +21,7 @@ export const socialLinks = [
   },
   {
     name: "Email",
-    href: "mailto:awadhkishorsingh241@gmail.com",
+    href: "mailto:srsclasses56@gmail.com",
     iconName: "Mail",
   },
 ];
