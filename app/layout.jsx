@@ -2,6 +2,7 @@ import { Geist, Geist_Mono, Alex_Brush } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./components/theme-provider";
 import BackgroundEffects from "./components/background-effects";
+import { SmoothScroll } from "./components/smooth-scroll";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -58,7 +59,8 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${alexBrush.variable} antialiased relative bg-[#080808] text-white`}
       >
-        <ThemeProvider
+        <SmoothScroll>
+          <ThemeProvider
           attribute="class"
           defaultTheme="dark"
           forcedTheme="dark"
@@ -70,7 +72,8 @@ export default function RootLayout({ children }) {
           <main className="relative z-10">
             {children}
           </main>
-        </ThemeProvider>
+          </ThemeProvider>
+        </SmoothScroll>
       </body>
     </html>
   );

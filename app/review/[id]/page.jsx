@@ -80,7 +80,7 @@ export default function ReviewPage() {
       }
     } catch (error) {
       setStatus({ loading: false, error: "Something went wrong", success: false });
-      console.log(error.message);
+
     }
   };
 
