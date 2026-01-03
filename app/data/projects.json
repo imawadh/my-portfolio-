@@ -19,5 +19,29 @@
             "Review System",
             "SEO Optimized"
         ]
-    }
+    },
+    {
+  "slug": "cryptofolio",
+  "title": "CryptoFolio",
+  "description": "A cryptocurrency portfolio tracking application.",
+  "longDescription": "CryptoFolio is a full-stack web application that allows users to track cryptocurrencies, view real-time prices, and manage their crypto portfolio efficiently. The app focuses on performance, clean UI, and scalable backend architecture.",
+  "tech": [
+    "React.js",
+    "Tailwind CSS",
+    "Node.js",
+    "Express.js",
+    "MongoDB"
+  ],
+  "github": "https://github.com/imawadh/task-cryptopolio-main",
+  "live": "https://task-cryptopolio-main-two.vercel.app/",
+  "image": "/cryptofolio-preview.png",
+  "features": [
+    "Real-time Cryptocurrency Prices",
+    "Portfolio Management",
+    "REST API Integration",
+    "Responsive UI",
+    "Scalable Backend Architecture"
+  ]
+}
+
 ]
