@@ -1,14 +1,14 @@
 [
     {
         "type": "education",
-        "title": "BS in Data Science and Applications",
+        "title": "Bachelors in Data Science and Applications",
         "organization": "IIT Madras",
         "period": "May,2024 - March,2028",
         "description": "Specialized in Data Science and Applications."
     },
     {
         "type": "work",
-        "title": "Full Stack Free Lance",
+        "title": "Full Stack FreeLance",
         "organization": "SRS Classes",
         "period": "Nov,2024 - Present",
         "description": "Developing full stack web applications for clients."
