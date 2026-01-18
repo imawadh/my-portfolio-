@@ -1,5 +1,14 @@
 [
     {
+        "title": "The Complete FullStack Web Developemnt Bootcamp",
+        "instructor": "Dr. Angela Yu",
+        "date": "Jan, 2026",
+        "description": "70 hours of Web Development",
+        "link": "https://www.udemy.com/certificate/UC-16b07d74-aa19-45d3-924c-41b9e7fae772/",
+        "color": "bg-[#2d3142]",
+        "textColor": "text-white"
+    },
+    {
         "title": "Python Intellipaat Certification",
         "instructor": "Intellipaat",
         "date": "April, 2025",

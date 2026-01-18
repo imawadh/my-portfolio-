@@ -180,7 +180,7 @@ export default function Contact() {
                   type="submit"
                   disabled={status.loading}
                   suppressHydrationWarning
-                  className={`w-full py-4 bg-linear-to-r from-[#ffbf46] to-[#66ced6] text-[#080808] font-bold rounded-lg hover:opacity-90 transition-all transform hover:scale-[1.02] active:scale-95 shadow-lg flex items-center justify-center gap-2 ${status.loading ? 'opacity-70 cursor-not-allowed' : ''}`}
+                  className={`w-full py-4 bg-linear-to-r from-[#ffbf46] to-[#66ced6] text-[#080808] font-bold rounded-lg hover:opacity-90 transition-all transform hover:scale-[1.02] active:scale-95 shadow-lg flex items-center justify-center gap-2 hover:cursor-pointer ${status.loading ? 'opacity-70 cursor-not-allowed' : ''}`}
                 >
                   {status.loading ? "Sending..." : "Send Message"}
                 </button>

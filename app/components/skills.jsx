@@ -17,7 +17,7 @@ export default function Skills() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl font-bold mb-4 text-white">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#ffbf46] to-[#66ced6]">My Skills</span>
+            <span className="bg-clip-text text-transparent bg-linear-to-r from-[#ffbf46] to-[#66ced6]">My Skills</span>
           </h2>
           <p className="text-zinc-400 max-w-2xl mx-auto">
             Here are some of the technologies and tools I work with.
