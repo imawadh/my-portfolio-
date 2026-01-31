@@ -7,7 +7,7 @@ export const BackgroundBeams = ({ className = "" }) => {
       className={`absolute inset-0 overflow-hidden [mask-image:radial-gradient(ellipse_at_center,white,transparent)] ${className}`}
     >
       <div className="absolute inset-0 bg-background/50 blur-[100px] opacity-30" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/20 blur-[120px] rounded-full mix-blend-screen animate-pulse" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/20 blur-[120px] rounded-full mix-blend-screen animate-pulse will-change-auto" />
        
        {/* Animated Beams */}
       <motion.div
@@ -19,7 +19,7 @@ export const BackgroundBeams = ({ className = "" }) => {
             repeat: Infinity, 
             ease: "linear" 
         }}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] opacity-20 pointer-events-none"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] opacity-20 pointer-events-none will-change-transform"
       >
         <div className="absolute top-0 left-1/2 w-1 h-full bg-gradient-to-b from-transparent via-primary to-transparent blur-sm transform -translate-x-1/2" />
         <div className="absolute top-1/2 left-0 w-full h-1 bg-gradient-to-r from-transparent via-purple-500 to-transparent blur-sm transform -translate-y-1/2" />

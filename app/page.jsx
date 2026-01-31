@@ -12,8 +12,7 @@ const Contact = dynamic(() => import("./components/contact"));
 const Footer = dynamic(() => import("./components/footer"));
 
 export default async function Home() {
-  // Add a minimum loading time of 1 second for a smooth transition
-  await new Promise((resolve) => setTimeout(resolve, 1000));
+
 
   return (
     <main className="flex min-h-screen flex-col bg-background">

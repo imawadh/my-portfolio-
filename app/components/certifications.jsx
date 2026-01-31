@@ -70,7 +70,7 @@ export default function Certifications() {
                  <div className="bg-black/20 backdrop-blur-md px-6 py-3 flex justify-between items-center">
                     <span className="font-medium">Verified Credential</span>
                     <span className="flex items-center gap-1.5 font-bold">
-                        <div className="w-2.5 h-2.5 rounded-full bg-green-400 animate-pulse"></div>
+                        <div className="w-2.5 h-2.5 rounded-full bg-green-400 animate-pulse will-change-opacity"></div>
                         Valid
                     </span>
                  </div>

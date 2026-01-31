@@ -5,7 +5,7 @@ import { ArrowRight} from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import SocialLinks from "./social-links";
-import { BackgroundBeams } from "./background-beams";
+
 
 import siteContent from "@/app/data/site-content.json";
 
@@ -41,7 +41,7 @@ export default function Hero() {
 
   return (
     <section className="h-screen flex items-center justify-center pt-16 overflow-hidden relative bg-transparent">
-      <BackgroundBeams />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

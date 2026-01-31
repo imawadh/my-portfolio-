@@ -4,16 +4,19 @@ import { useRef, useState } from "react";
 
 export function SpotlightCard({ children, className = "", spotlightColor = "rgba(120, 119, 198, 0.3)" }) {
   const divRef = useRef(null);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const spotlightRef = useRef(null);
   const [opacity, setOpacity] = useState(0);
 
   const handleMouseMove = (e) => {
-    if (!divRef.current) return;
+    if (!divRef.current || !spotlightRef.current) return;
 
     const div = divRef.current;
     const rect = div.getBoundingClientRect();
 
-    setPosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    spotlightRef.current.style.background = `radial-gradient(600px circle at ${x}px ${y}px, ${spotlightColor}, transparent 40%)`;
   };
 
   const handleFocus = () => {
@@ -43,10 +46,12 @@ export function SpotlightCard({ children, className = "", spotlightColor = "rgba
       className={`relative overflow-hidden rounded-xl border border-border bg-background/50 text-card-foreground shadow-sm ${className}`}
     >
       <div
-        className="pointer-events-none absolute -inset-px opacity-0 transition duration-300"
+        ref={spotlightRef}
+        className="pointer-events-none absolute -inset-px transition duration-300"
         style={{
           opacity,
-          background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, ${spotlightColor}, transparent 40%)`,
+          // Initial background to avoid flash or empty style
+          background: `radial-gradient(600px circle at 0px 0px, ${spotlightColor}, transparent 40%)`,
         }}
       />
       <div className="relative h-full">{children}</div>
