@@ -1,0 +1,26 @@
+{
+    "name": "Awadh Portfolio",
+    "short_name": "Awadh",
+    "description": "Portfolio of Awadh Kishor Singh, a Full Stack Developer",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#080808",
+    "theme_color": "#080808",
+    "icons": [
+        {
+            "src": "/myimage.ico",
+            "sizes": "any",
+            "type": "image/x-icon"
+        },
+        {
+            "src": "/awadh-about.jpg",
+            "sizes": "192x192",
+            "type": "image/jpeg"
+        },
+        {
+            "src": "/awadh-about.jpg",
+            "sizes": "512x512",
+            "type": "image/jpeg"
+        }
+    ]
+}

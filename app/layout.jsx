@@ -3,6 +3,7 @@ import "./globals.css";
 import { ThemeProvider } from "./components/theme-provider";
 import BackgroundEffects from "./components/background-effects";
 import { SmoothScroll } from "./components/smooth-scroll";
+import PwaRegister from "./components/pwa-register";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -51,6 +52,7 @@ export const metadata = {
   icons: {
     icon: "/myimage.ico",
   },
+  manifest: "/manifest.json",
 };
 
 export default function RootLayout({ children }) {
@@ -59,6 +61,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${alexBrush.variable} antialiased relative bg-[#080808] text-white`}
       >
+        <PwaRegister />
         <SmoothScroll>
           <ThemeProvider
           attribute="class"
