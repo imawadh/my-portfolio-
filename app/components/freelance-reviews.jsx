@@ -57,7 +57,7 @@ export default function FreelanceReviews() {
             </span>
           </h2>
           <p className="text-zinc-400 max-w-2xl mx-auto">
-            Delivering high-quality solutions for clients worldwide. Here &apos; what they have to say.
+            Delivering high-quality solutions for clients worldwide. Here&apos;s what they have to say.
           </p>
         </motion.div>
 
