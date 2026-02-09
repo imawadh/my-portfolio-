@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight} from "lucide-react";
+import { ArrowRight, FileText } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import SocialLinks from "./social-links";
@@ -78,6 +78,14 @@ export default function Hero() {
             >
               {ctaText} <ArrowRight size={20} />
             </Link>
+            <a
+              href="/Awadh Full Stack Developer Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-8 py-3 rounded-full bg-transparent border-2 border-[#ffbf46] text-[#ffbf46] font-medium hover:bg-[#ffbf46] hover:text-[#080808] transition-all flex items-center gap-2"
+            >
+              Open My CV <FileText size={20} />
+            </a>
         </motion.div>
 
         <motion.div
