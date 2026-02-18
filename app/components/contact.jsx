@@ -60,10 +60,10 @@ export default function Contact() {
            transition={{ duration: 0.5 }}
            className="text-center mb-16"
         >
-          <h2 className="text-3xl font-bold mb-4 text-[#ffbf46]">
-             <span className="bg-clip-text text-transparent bg-linear-to-r from-[#ffbf46] to-[#66ced6]">Get In Touch</span>
+          <h2 className="text-3xl font-bold mb-4 text-primary">
+             <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">Get In Touch</span>
           </h2>
-          <p className="text-zinc-400 max-w-2xl mx-auto">
+          <p className="text-muted-foreground max-w-2xl mx-auto">
             Have a project in mind or just want to say hi? I&apos;d love to hear from you.
           </p>
         </motion.div>
@@ -75,37 +75,37 @@ export default function Contact() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h3 className="text-xl font-bold mb-6 text-white border-b border-[#ffbf46]/20 pb-2 inline-block">Contact Information</h3>
+            <h3 className="text-xl font-bold mb-6 text-foreground border-b border-primary/20 pb-2 inline-block">Contact Information</h3>
             <div className="space-y-6">
                 <div className="flex items-start gap-4">
-                    <div className="p-3 bg-[#2d3142] rounded-lg text-[#ffbf46] border border-[#ffbf46]/10">
+                    <div className="p-3 bg-secondary rounded-lg text-primary border border-primary/10">
                         <Mail size={24} />
                     </div>
                     <div>
-                        <h4 className="font-medium mb-1 text-white">Email</h4>
-                        <a href="mailto:srsclasses56@gmail.com" className="text-zinc-400 hover:text-[#ffbf46] transition-colors">
+                        <h4 className="font-medium mb-1 text-foreground">Email</h4>
+                        <a href="mailto:srsclasses56@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
                             awadhkishorsingh241@gmail.com
                         </a>
                     </div>
                 </div>
                 <div className="flex items-start gap-4">
-                     <div className="p-3 bg-[#2d3142] rounded-lg text-[#ffbf46] border border-[#ffbf46]/10">
+                     <div className="p-3 bg-secondary rounded-lg text-primary border border-primary/10">
                         <Phone size={24} />
                     </div>
                     <div>
-                        <h4 className="font-medium mb-1 text-white">Phone</h4>
-                        <a href="tel:+917985000241" className="text-zinc-400 hover:text-[#ffbf46] transition-colors">
+                        <h4 className="font-medium mb-1 text-foreground">Phone</h4>
+                        <a href="tel:+917985000241" className="text-muted-foreground hover:text-primary transition-colors">
                             +91 7985000241
                         </a>
                     </div>
                 </div>
                 <div className="flex items-start gap-4">
-                     <div className="p-3 bg-[#2d3142] rounded-lg text-[#ffbf46] border border-[#ffbf46]/10">
+                     <div className="p-3 bg-secondary rounded-lg text-primary border border-primary/10">
                         <MapPin size={24} />
                     </div>
                     <div>
-                        <h4 className="font-medium mb-1 text-white">Location</h4>
-                        <p className="text-zinc-400">
+                        <h4 className="font-medium mb-1 text-foreground">Location</h4>
+                        <p className="text-muted-foreground">
                             Yello Living, Extension Road, Pattandur Agrahara, Bengaluru, 560066
                         </p>
                     </div>
@@ -113,7 +113,7 @@ export default function Contact() {
             </div>
 
              <div className="mt-8">
-                <h4 className="font-medium mb-4 text-white">Follow Me</h4>
+                <h4 className="font-medium mb-4 text-foreground">Follow Me</h4>
                 <SocialLinks />
             </div>
           </motion.div>
@@ -123,12 +123,12 @@ export default function Contact() {
              whileInView={{ opacity: 1, x: 0 }}
              viewport={{ once: true }}
              transition={{ duration: 0.5 }}
-             className="bg-[#2d3142] p-8 rounded-2xl shadow-lg border border-[#ffbf46]/20"
+             className="glass-card p-8 rounded-2xl shadow-lg border border-primary/20"
           >
             <form className="space-y-6" onSubmit={handleSubmit}>
                 <div className="grid md:grid-cols-2 gap-6">
                     <div>
-                        <label htmlFor="name" className="block text-sm font-medium mb-2 text-white">Name</label>
+                        <label htmlFor="name" className="block text-sm font-medium mb-2 text-foreground">Name</label>
                         <input 
                           required
                           type="text" 
@@ -136,11 +136,11 @@ export default function Contact() {
                           value={formData.name}
                           onChange={handleChange}
                           suppressHydrationWarning
-                          className="w-full px-4 py-3 rounded-lg bg-[#080808] border border-zinc-700 text-white focus:ring-2 focus:ring-[#ffbf46] focus:outline-none transition-all placeholder:text-zinc-600" placeholder="John Doe" 
+                          className="w-full px-4 py-3 rounded-lg bg-background border border-border text-foreground focus:ring-2 focus:ring-primary focus:outline-none transition-all placeholder:text-muted-foreground" placeholder="John Doe" 
                         />
                     </div>
                     <div>
-                         <label htmlFor="email" className="block text-sm font-medium mb-2 text-white">Email</label>
+                         <label htmlFor="email" className="block text-sm font-medium mb-2 text-foreground">Email</label>
                          <input 
                            required
                            type="email" 
@@ -148,12 +148,12 @@ export default function Contact() {
                            value={formData.email}
                            onChange={handleChange}
                            suppressHydrationWarning
-                           className="w-full px-4 py-3 rounded-lg bg-[#080808] border border-zinc-700 text-white focus:ring-2 focus:ring-[#ffbf46] focus:outline-none transition-all placeholder:text-zinc-600" placeholder="john@example.com" 
+                           className="w-full px-4 py-3 rounded-lg bg-background border border-border text-foreground focus:ring-2 focus:ring-primary focus:outline-none transition-all placeholder:text-muted-foreground" placeholder="john@example.com" 
                          />
                     </div>
                 </div>
                 <div>
-                    <label htmlFor="subject" className="block text-sm font-medium mb-2 text-white">Subject</label>
+                    <label htmlFor="subject" className="block text-sm font-medium mb-2 text-foreground">Subject</label>
                     <input 
                       required
                       type="text" 
@@ -161,11 +161,11 @@ export default function Contact() {
                       value={formData.subject}
                       onChange={handleChange}
                       suppressHydrationWarning
-                      className="w-full px-4 py-3 rounded-lg bg-[#080808] border border-zinc-700 text-white focus:ring-2 focus:ring-[#ffbf46] focus:outline-none transition-all placeholder:text-zinc-600" placeholder="Project Inquiry" 
+                      className="w-full px-4 py-3 rounded-lg bg-background border border-border text-foreground focus:ring-2 focus:ring-primary focus:outline-none transition-all placeholder:text-muted-foreground" placeholder="Project Inquiry" 
                     />
                 </div>
                 <div>
-                     <label htmlFor="message" className="block text-sm font-medium mb-2 text-white">Message</label>
+                     <label htmlFor="message" className="block text-sm font-medium mb-2 text-foreground">Message</label>
                      <textarea 
                        required
                        id="message" 
@@ -173,23 +173,23 @@ export default function Contact() {
                        value={formData.message}
                        onChange={handleChange}
                        suppressHydrationWarning
-                       className="w-full px-4 py-3 rounded-lg bg-[#080808] border border-zinc-700 text-white focus:ring-2 focus:ring-[#ffbf46] focus:outline-none transition-all placeholder:text-zinc-600" placeholder="Tell me about your project..."></textarea>
+                       className="w-full px-4 py-3 rounded-lg bg-background border border-border text-foreground focus:ring-2 focus:ring-primary focus:outline-none transition-all placeholder:text-muted-foreground" placeholder="Tell me about your project..."></textarea>
                 </div>
                 
                 <button
                   type="submit"
                   disabled={status.loading}
                   suppressHydrationWarning
-                  className={`w-full py-4 bg-linear-to-r from-[#ffbf46] to-[#66ced6] text-[#080808] font-bold rounded-lg hover:opacity-90 transition-all transform hover:scale-[1.02] active:scale-95 shadow-lg flex items-center justify-center gap-2 hover:cursor-pointer ${status.loading ? 'opacity-70 cursor-not-allowed' : ''}`}
+                  className={`w-full py-4 bg-gradient-to-r from-primary to-accent text-primary-foreground font-bold rounded-lg hover:opacity-90 transition-all transform hover:scale-[1.02] active:scale-95 shadow-lg flex items-center justify-center gap-2 hover:cursor-pointer ${status.loading ? 'opacity-70 cursor-not-allowed' : ''}`}
                 >
                   {status.loading ? "Sending..." : "Send Message"}
                 </button>
 
                 {status.success && (
-                  <p className="text-green-400 text-center text-sm font-medium mt-4">{status.success}</p>
+                  <p className="text-green-600 text-center text-sm font-medium mt-4">{status.success}</p>
                 )}
                 {status.error && (
-                  <p className="text-red-400 text-center text-sm font-medium mt-4">{status.error}</p>
+                  <p className="text-red-600 text-center text-sm font-medium mt-4">{status.error}</p>
                 )}
             </form>
           </motion.div>

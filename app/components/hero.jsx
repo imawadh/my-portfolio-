@@ -48,20 +48,20 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <span className="text-sm font-semibold tracking-wider text-[#ffbf46] uppercase mb-2 block">
+          <span className="text-sm font-semibold tracking-wider text-primary uppercase mb-2 block">
             {welcomeText}
           </span>
-          <h1 className="text-4xl sm:text-6xl font-bold tracking-tight mb-4 text-white">
-            Hi, I&apos;m <span className="bg-clip-text text-transparent bg-linear-to-r from-[#ffbf46] to-[#66ced6]">{name}</span>
+          <h1 className="text-4xl sm:text-6xl font-bold tracking-tight mb-4 text-foreground">
+            Hi, I&apos;m <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">{name}</span>
           </h1>
           <div className="h-12 sm:h-16 flex items-center justify-center">
-            <span className="text-2xl sm:text-4xl font-medium text-zinc-400">
+            <span className="text-2xl sm:text-4xl font-medium text-muted-foreground">
               I am a {displayText}
-              <span className="animate-pulse text-[#ffbf46]">|</span>
+              <span className="animate-pulse text-primary">|</span>
             </span>
           </div>
           
-          <p className="mt-6 max-w-2xl text-lg text-zinc-400 mx-auto">
+          <p className="mt-6 max-w-2xl text-lg text-muted-foreground mx-auto">
             {description}
           </p>
         </motion.div>
@@ -82,7 +82,7 @@ export default function Hero() {
               href="/Awadh Full Stack Developer Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-8 py-3 rounded-full bg-transparent border-2 border-[#ffbf46] text-[#ffbf46] font-medium hover:bg-[#ffbf46] hover:text-[#080808] transition-all flex items-center gap-2"
+              className="px-8 py-3 rounded-full bg-transparent border-2 border-primary text-primary font-medium hover:bg-primary hover:text-primary-foreground transition-all flex items-center gap-2"
             >
               Open My CV <FileText size={20} />
             </a>

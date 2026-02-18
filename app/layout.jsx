@@ -59,14 +59,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${alexBrush.variable} antialiased relative bg-[#080808] text-white`}
+        className={`${geistSans.variable} ${geistMono.variable} ${alexBrush.variable} antialiased relative bg-background text-foreground`}
       >
         <PwaRegister />
         <SmoothScroll>
           <ThemeProvider
           attribute="class"
-          defaultTheme="dark"
-          forcedTheme="dark"
+          defaultTheme="light"
+          enableSystem
           disableTransitionOnChange
         >
           <div className="fixed inset-0 z-0 pointer-events-none">

@@ -19,10 +19,10 @@ export default function Projects() {
            transition={{ duration: 0.5 }}
            className="text-center mb-16"
         >
-          <h2 className="text-3xl font-bold mb-4 text-white">
-            <span className="bg-clip-text text-transparent bg-linear-to-r from-[#ffbf46] to-[#66ced6]">Featured Projects</span>
+          <h2 className="text-3xl font-bold mb-4 text-foreground">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">Featured Projects</span>
           </h2>
-          <p className="text-zinc-400 max-w-2xl mx-auto">
+          <p className="text-muted-foreground max-w-2xl mx-auto">
             A selection of projects I&apos;ve worked on recently.
           </p>
         </motion.div>
@@ -36,7 +36,7 @@ export default function Projects() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <SpotlightCard className="group bg-[#2d3142] border border-[#ffbf46]/20 rounded-xl overflow-hidden hover:shadow-xl hover:border-[#ffbf46] transition-all duration-300 flex flex-col h-full">
+              <SpotlightCard className="group glass-card bg-white/40 border border-primary/20 rounded-xl overflow-hidden hover:shadow-xl hover:border-primary transition-all duration-300 flex flex-col h-full">
                 <div className="relative h-48 overflow-hidden bg-black/50">
                   {/* Image Placeholder */}
                   <div className="absolute inset-0 flex items-center justify-center text-zinc-500 group">
@@ -51,13 +51,13 @@ export default function Projects() {
                 </div>
 
                 <div className="p-6 flex flex-col grow">
-                  <h3 className="text-xl font-bold mb-2 text-white group-hover:text-[#ffbf46] transition-colors">{project.title}</h3>
-                  <p className="text-zinc-400 mb-4 text-sm grow">
+                  <h3 className="text-xl font-bold mb-2 text-foreground group-hover:text-primary transition-colors">{project.title}</h3>
+                  <p className="text-muted-foreground mb-4 text-sm grow">
                     {project.description}
                   </p>
                   <div className="flex flex-wrap gap-2 mb-6">
                     {project.tech.map((t) => (
-                      <span key={t} className="flex items-center gap-1 text-[10px] px-2 py-1 bg-[#080808]/50 border border-[#ffbf46]/10 rounded-md text-zinc-300 hover:border-[#ffbf46]/30 transition-colors">
+                      <span key={t} className="flex items-center gap-1 text-[10px] px-2 py-1 bg-secondary/50 border border-border rounded-md text-muted-foreground hover:border-primary/30 transition-colors">
                         {t}
                       </span>
                     ))}
@@ -67,7 +67,7 @@ export default function Projects() {
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-sm font-medium text-[#ffbf46] hover:opacity-80 transition-opacity"
+                      className="flex items-center gap-2 text-sm font-medium text-primary hover:opacity-80 transition-opacity"
                     >
                       <Github size={16} /> Code
                     </Link>
@@ -75,13 +75,13 @@ export default function Projects() {
                       href={project.live}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-sm font-medium text-[#ffbf46] hover:opacity-80 transition-opacity"
+                      className="flex items-center gap-2 text-sm font-medium text-primary hover:opacity-80 transition-opacity"
                     >
                       <ExternalLink size={16} /> Live Demo
                     </Link>
                      <Link
                         href={`/projects/${project.slug}`}
-                        className="ml-auto text-sm font-medium text-[#ffbf46] hover:underline"
+                        className="ml-auto text-sm font-medium text-primary hover:underline"
                     >
                         View Case Study &rarr;
                     </Link>

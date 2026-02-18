@@ -11,14 +11,14 @@ export default function Certifications() {
     <section id="certifications" className="py-20 bg-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+           initial={{ opacity: 0, y: 20 }}
+           whileInView={{ opacity: 1, y: 0 }}
+           viewport={{ once: true }}
+           transition={{ duration: 0.5 }}
+           className="text-center mb-16"
         >
-          <h2 className="text-3xl font-bold mb-4 text-white">
-            <span className="bg-clip-text text-transparent bg-linear-to-r from-[#ffbf46] to-[#66ced6]">Licenses & Certifications</span>
+          <h2 className="text-3xl font-bold mb-4 text-foreground">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">Licenses & Certifications</span>
           </h2>
         </motion.div>
 
@@ -31,49 +31,43 @@ export default function Certifications() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <div className={`relative rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 ${cert.color} ${cert.textColor} h-full border border-[#ffbf46]/20 hover:border-[#ffbf46]`}>
-                 <div className="p-6 h-full flex flex-col">
-                    <div className="flex justify-between items-start mb-4">
-                        <div className="p-1 px-2 bg-[#ffbf46]/10 rounded border border-[#ffbf46]/20">
-                            <Award size={18} className="text-[#ffbf46]" />
+              <div className="group relative rounded-2xl overflow-hidden glass-card hover:shadow-2xl transition-all duration-300 border border-primary/10 hover:border-primary/40 h-full flex flex-col bg-white/40">
+                 <div className="p-8 h-full flex flex-col relative z-10">
+                    <div className="flex justify-between items-start mb-6">
+                        <div className="p-2 bg-primary/10 rounded-xl border border-primary/20">
+                            <Award size={24} className="text-primary" />
                         </div>
                     </div>
                     
-                    <h3 className="text-2xl text-[#ffbf46] font-bold mb-2 leading-tight">{cert.title}</h3>
+                    <h3 className="text-2xl text-foreground font-bold mb-3 leading-tight group-hover:text-primary transition-colors">{cert.title}</h3>
                     
-                    <div className="flex flex-wrap gap-2 mb-4 text-sm font-medium opacity-90">
-                        <span className="px-3 py-1 bg-black/10 rounded-full backdrop-blur-md">
+                    <div className="flex flex-wrap gap-2 mb-6 text-sm font-medium">
+                        <span className="px-3 py-1 bg-secondary text-primary rounded-full border border-primary/10">
                             {cert.instructor}
                         </span>
-                        <span className="px-3 py-1 bg-black/10 rounded-full backdrop-blur-md">
+                        <span className="px-3 py-1 bg-secondary text-muted-foreground rounded-full border border-border">
                             {cert.date}
                         </span>
                     </div>
 
-                    <p className="mb-6 opacity-90 font-medium">
+                    <p className="mb-8 text-muted-foreground leading-relaxed grow">
                         {cert.description}
                     </p>
 
-                    <div className="mt-auto">
+                    <div className="mt-auto pt-6 border-t border-border">
                         <Link 
                             href={cert.link}
                             target="_blank" 
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 font-bold hover:underline"
+                            className="inline-flex items-center gap-2 font-semibold text-primary hover:text-accent transition-colors group/link"
                         >
-                            View Certificate <ExternalLink size={18} />
+                            View Certificate <ExternalLink size={16} className="group-hover/link:translate-x-1 transition-transform" />
                         </Link>
                     </div>
                  </div>
-
-                 {/* Verified Footer */}
-                 <div className="bg-black/20 backdrop-blur-md px-6 py-3 flex justify-between items-center">
-                    <span className="font-medium">Verified Credential</span>
-                    <span className="flex items-center gap-1.5 font-bold">
-                        <div className="w-2.5 h-2.5 rounded-full bg-green-400 animate-pulse will-change-opacity"></div>
-                        Valid
-                    </span>
-                 </div>
+                 
+                 {/* Decorative background gradient */}
+                 <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-bl-full -z-0 transition-all duration-500 group-hover:scale-150 group-hover:bg-primary/10" />
               </div>
             </motion.div>
           ))}

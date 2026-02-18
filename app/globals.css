@@ -21,36 +21,40 @@
 }
 
 :root {
-  /* New 4-Color Palette */
-  /* #080808 - Almost Black - Main Background */
-  /* #ffbf46 - Golden Yellow/Orange - Primary/Text Highlight */
-  /* #2d3142 - Dark Blue/Grey - Header/Footer/Cards */
-  /* #66ced6 - Cyan/Turquoise - Experience Section */
+  /* New Refined Slate Palette (Softer, reduced glare) */
+  /* #f1f5f9 - Slate-100 - Main Background (Soft Grey) */
+  /* #e2e8f0 - Slate-200 - Secondary/Card Backgrounds */
+  /* #4f46e5 - Indigo-600 - Primary/Text Highlight */
+  /* #0891b2 - Cyan-600 - Accent */
 
-  --background: #080808;
-  --foreground: #ffffff;
+  --background: #f1f5f9;
+  --foreground: #1e293b;
+  /* Slate-800 - softer than black */
 
-  /* Primary: Golden Yellow */
-  --primary: #ffbf46;
-  --primary-foreground: #080808;
+  /* Primary: Vibrant Indigo */
+  --primary: #4f46e5;
+  --primary-foreground: #ffffff;
 
-  /* Secondary: Dark Blue/Grey */
-  --secondary: #2d3142;
-  --secondary-foreground: #ffffff;
+  /* Secondary: Light Slate */
+  --secondary: #e2e8f0;
+  --secondary-foreground: #0f172a;
 
-  /* Muted: Darker Grey for subtle areas */
-  --muted: #1a1e2e;
-  --muted-foreground: #9ca3af;
+  /* Muted: Mid-light Grey for subtle areas */
+  --muted: #cbd5e1;
+  /* Slate-300 */
+  --muted-foreground: #64748b;
+  /* Slate-500 */
 
   /* Accent: Cyan */
-  --accent: #66ced6;
-  --accent-foreground: #080808;
+  --accent: #0891b2;
+  --accent-foreground: #ffffff;
 
-  --accent-secondary: #2d3142;
-  --accent-secondary-foreground: #ffffff;
+  --accent-secondary: #f8fafc;
+  --accent-secondary-foreground: #0f172a;
 
-  --border: #2d3142;
-  --ring: #ffbf46;
+  --border: #cbd5e1;
+  /* Slate-300 */
+  --ring: #4f46e5;
 }
 
 body {
@@ -58,8 +62,11 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans), sans-serif;
   overflow-x: hidden;
-  selection-background-color: var(--primary);
-  selection-color: var(--primary-foreground);
+}
+
+::selection {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
 }
 
 section {
@@ -76,11 +83,11 @@ section::after {
   z-index: 20;
   background: linear-gradient(90deg,
       transparent 0%,
-      var(--primary) 20%,
-      var(--secondary) 50%,
-      var(--primary) 80%,
+      var(--muted) 20%,
+      var(--primary) 50%,
+      var(--muted) 80%,
       transparent 100%);
-  opacity: 0.6;
+  opacity: 0.3;
 }
 
 section::before {
@@ -91,23 +98,21 @@ section::after {
   bottom: 0;
 }
 
-/* Glassmorphism Utilities - New Dark Palette */
+/* Glassmorphism Utilities - New Light Palette */
 .glass {
-  background: rgba(45, 49, 66, 0.7);
-  /* #2d3142 with opacity */
+  background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 191, 70, 0.1);
-  /* #ffbf46 border subtle */
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  /* Indigo hint */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
 .glass-card {
-  background: rgba(45, 49, 66, 0.4);
-  /* #2d3142 overlay */
+  background: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(102, 206, 214, 0.1);
-  /* #66ced6 border subtle */
-  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(6, 182, 212, 0.2);
+  /* Cyan hint */
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.1);
 }

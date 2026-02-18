@@ -16,14 +16,14 @@ export default function Experience() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl font-bold mb-4 text-white">
-            <span className="bg-clip-text text-transparent bg-linear-to-r from-[#ffbf46] to-[#66ced6]">Experience & Education</span>
+          <h2 className="text-3xl font-bold mb-4 text-foreground">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">Experience & Education</span>
           </h2>
         </motion.div>
 
         <div className="relative max-w-3xl mx-auto">
              {/* Vertical line */}
-          <div className="absolute left-9 top-0 bottom-0 w-0.5 bg-[#ffbf46]/20 md:left-1/2 md:-ml-0.5"></div>
+          <div className="absolute left-9 top-0 bottom-0 w-0.5 bg-primary/20 md:left-1/2 md:-ml-0.5"></div>
 
           <div className="space-y-12">
             {experienceData.map((item, index) => (
@@ -39,20 +39,20 @@ export default function Experience() {
               >
                  {/* Icon */}
                 <div className="absolute left-0 md:static md:w-1/2 flex justify-center">
-                    <div className="z-10 w-18 h-18 rounded-full bg-[#2d3142] border-4 border-[#ffbf46] shadow-sm flex items-center justify-center p-3">
-                         {item.type === 'work' ? <Briefcase className="text-[#ffbf46] w-6 h-6" /> : <GraduationCap className="text-[#ffbf46] w-6 h-6" />}
+                    <div className="z-10 w-18 h-18 rounded-full bg-background border-4 border-primary shadow-sm flex items-center justify-center p-3">
+                         {item.type === 'work' ? <Briefcase className="text-primary w-6 h-6" /> : <GraduationCap className="text-primary w-6 h-6" />}
                     </div>
                 </div>
 
                 {/* Content */}
                 <div className="ml-16 md:ml-0 md:w-1/2 md:px-8 group">
-                      <div className={`relative p-6 bg-[#2d3142]/40 backdrop-blur-sm border border-[#ffbf46]/10 rounded-xl hover:shadow-lg transition-all duration-300 ${index % 2 === 0 ? 'md:text-left' : 'md:text-right'} group-hover:border-[#ffbf46]/30`}>
-                         <span className="inline-block px-3 py-1 mb-2 text-xs font-semibold tracking-wide uppercase rounded-full bg-[#ffbf46] text-[#2d3142]">
+                      <div className={`relative p-6 glass-card bg-white/40 border border-primary/10 rounded-xl hover:shadow-lg transition-all duration-300 ${index % 2 === 0 ? 'md:text-left' : 'md:text-right'} group-hover:border-primary/30`}>
+                         <span className="inline-block px-3 py-1 mb-2 text-xs font-semibold tracking-wide uppercase rounded-full bg-primary text-primary-foreground">
                              {item.period}
                          </span>
-                         <h3 className="text-xl font-bold text-white mb-1">{item.title}</h3>
-                         <p className="text-zinc-300 font-medium mb-2">{item.organization}</p>
-                         <p className="text-zinc-400 text-sm">
+                         <h3 className="text-xl font-bold text-foreground mb-1">{item.title}</h3>
+                         <p className="text-muted-foreground font-medium mb-2">{item.organization}</p>
+                         <p className="text-muted-foreground text-sm">
                              {item.description}
                          </p>
                       </div>

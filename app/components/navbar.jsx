@@ -30,13 +30,13 @@ export default function Navbar() {
   return (
     <div className="fixed top-4 left-0 right-0 z-50 flex justify-center px-4">
       <nav
-        className={`w-full max-w-5xl transition-all duration-300 bg-[#080808]/80 backdrop-blur-xl shadow-2xl border border-[#ffbf46]/20 rounded-full px-6 ${
-          scrolled ? "border-[#ffbf46]/40 bg-[#080808]/90" : ""
+        className={`w-full max-w-5xl transition-all duration-300 bg-background/80 backdrop-blur-xl shadow-2xl border border-primary/20 rounded-full px-6 ${
+          scrolled ? "border-primary/40 bg-background/90" : ""
         }`}
       >
         <div className="flex items-center justify-between h-14 sm:h-16">
           <div className="shrink-0">
-            <Link href="/" className="text-3xl sm:text-4xl tracking-tight bg-clip-text text-transparent bg-linear-to-r from-[#ffbf46] to-[#66ced6] pl-2 font-[family-name:var(--font-signature)]">
+            <Link href="/" className="text-3xl sm:text-4xl tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent pl-2 font-[family-name:var(--font-signature)]">
               Awadh
             </Link>
           </div>
@@ -46,10 +46,10 @@ export default function Navbar() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className="text-white hover:text-[#ffbf46] transition-all duration-300 text-sm font-medium relative group"
+                  className="text-foreground hover:text-primary transition-all duration-300 text-sm font-medium relative group"
                 >
                   {link.name}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-linear-to-r from-[#ffbf46] to-[#66ced6] transition-all duration-300 group-hover:w-full"></span>
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent transition-all duration-300 group-hover:w-full"></span>
                 </Link>
               ))}
             </div>
@@ -57,7 +57,7 @@ export default function Navbar() {
           <div className="-mr-2 flex md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-full text-white hover:bg-white/10 focus:outline-none transition-colors"
+              className="inline-flex items-center justify-center p-2 rounded-full text-foreground hover:bg-muted focus:outline-none transition-colors"
             >
               <span className="sr-only">Open main menu</span>
               {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -74,13 +74,13 @@ export default function Navbar() {
               transition={{ duration: 0.2 }}
               className="md:hidden absolute top-full left-0 right-0 mt-2 p-2"
             >
-              <div className="bg-[#080808]/95 backdrop-blur-2xl border border-[#ffbf46]/20 rounded-2xl shadow-2xl overflow-hidden">
+              <div className="bg-background/95 backdrop-blur-2xl border border-primary/20 rounded-2xl shadow-2xl overflow-hidden">
                   <div className="px-2 pt-2 pb-3 space-y-1 flex flex-col items-center">
                     {navLinks.map((link) => (
                       <Link
                         key={link.name}
                         href={link.href}
-                        className="block w-full text-center px-4 py-3 rounded-xl text-base font-medium text-white hover:bg-[#ffbf46]/10 hover:text-[#ffbf46] transition-all duration-300"
+                        className="block w-full text-center px-4 py-3 rounded-xl text-base font-medium text-foreground hover:bg-primary/10 hover:text-primary transition-all duration-300"
                         onClick={() => setIsOpen(false)}
                       >
                         {link.name}
