@@ -12,7 +12,8 @@ const Contact = dynamic(() => import("./components/contact"));
 const Footer = dynamic(() => import("./components/footer"));
 
 export default async function Home() {
-
+  // Intentional bug for BugBot test: reference undefined variable
+  const triggerBug = notDefinedVariable;
 
   return (
     <main className="flex min-h-screen flex-col bg-background">
@@ -26,6 +27,7 @@ export default async function Home() {
       <FreelanceReviews />
       <Contact />
       <Footer />
+      <p className="sr-only">BugBot test branch with intentional error.</p>
     </main>
   );
 }
