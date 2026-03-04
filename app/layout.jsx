@@ -4,6 +4,7 @@ import { ThemeProvider } from "./components/theme-provider";
 import BackgroundEffects from "./components/background-effects";
 import { SmoothScroll } from "./components/smooth-scroll";
 import PwaRegister from "./components/pwa-register";
+import MixpanelTracker from "./components/mix-panel";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -62,6 +63,7 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} ${alexBrush.variable} antialiased relative bg-background text-foreground`}
       >
         <PwaRegister />
+        <MixpanelTracker />
         <SmoothScroll>
           <ThemeProvider
           attribute="class"
