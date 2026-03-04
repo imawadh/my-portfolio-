@@ -3,6 +3,7 @@ import Navbar from "./components/navbar";
 import Hero from "./components/hero";
 import About from "./components/about";
 import Skills from "./components/skills";
+import HomeTracker from "./components/home-tracker";
 
 const Certifications = dynamic(() => import("./components/certifications"));
 const Experience = dynamic(() => import("./components/experience"));
@@ -12,10 +13,9 @@ const Contact = dynamic(() => import("./components/contact"));
 const Footer = dynamic(() => import("./components/footer"));
 
 export default async function Home() {
-
-
   return (
     <main className="flex min-h-screen flex-col bg-background">
+      <HomeTracker />
       <Navbar />
       <Hero />
       <About />
