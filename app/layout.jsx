@@ -1,18 +1,20 @@
-import { Geist, Geist_Mono, Alex_Brush } from "next/font/google";
+import { Ovo, Outfit, Alex_Brush } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./components/theme-provider";
 import BackgroundEffects from "./components/background-effects";
 import { SmoothScroll } from "./components/smooth-scroll";
 import PwaRegister from "./components/pwa-register";
 import MixpanelTracker from "./components/mix-panel";
+import ScrollProgress from "./components/scroll-progress";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const ovo = Ovo({
+  weight: "400",
+  variable: "--font-ovo",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const outfit = Outfit({
+  variable: "--font-outfit",
   subsets: ["latin"],
 });
 
@@ -60,8 +62,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${alexBrush.variable} antialiased relative bg-background text-foreground`}
+        className={`${ovo.variable} ${outfit.variable} ${alexBrush.variable} font-sans antialiased relative bg-background text-foreground transition-colors duration-500`}
+        suppressHydrationWarning
       >
+        <ScrollProgress />
         <PwaRegister />
         <MixpanelTracker />
         <SmoothScroll>

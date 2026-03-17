@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { ThemeToggle } from "./theme-toggle";
 
 const navLinks = [
   { name: "About", href: "#about" },
@@ -36,8 +37,9 @@ export default function Navbar() {
       >
         <div className="flex items-center justify-between h-14 sm:h-16">
           <div className="shrink-0">
-            <Link href="/" className="text-3xl sm:text-4xl tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent pl-2 font-[family-name:var(--font-signature)]">
+            <Link href="/" className="text-2xl sm:text-3xl tracking-tight font-heading font-bold flex items-center group">
               Awadh
+              <span className="w-2 h-2 rounded-full bg-primary ml-1 mt-2 group-hover:scale-150 transition-transform"></span>
             </Link>
           </div>
           <div className="hidden md:block">
@@ -46,22 +48,25 @@ export default function Navbar() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className="text-foreground hover:text-primary transition-all duration-300 text-sm font-medium relative group"
+                  className="text-foreground/80 hover:text-foreground transition-all duration-300 text-sm font-medium relative group"
                 >
                   {link.name}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent transition-all duration-300 group-hover:w-full"></span>
+                  <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-primary transition-all duration-300 group-hover:w-full"></span>
                 </Link>
               ))}
             </div>
           </div>
-          <div className="-mr-2 flex md:hidden">
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-full text-foreground hover:bg-muted focus:outline-none transition-colors"
-            >
-              <span className="sr-only">Open main menu</span>
-              {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-            </button>
+          <div className="flex items-center gap-2">
+            <ThemeToggle />
+            <div className="-mr-2 flex md:hidden">
+              <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="inline-flex items-center justify-center p-2 rounded-full text-foreground hover:bg-muted focus:outline-none transition-colors"
+              >
+                <span className="sr-only">Open main menu</span>
+                {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              </button>
+            </div>
           </div>
         </div>
 

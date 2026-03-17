@@ -9,52 +9,56 @@
   --color-secondary-foreground: var(--secondary-foreground);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
   --color-border: var(--border);
   --color-ring: var(--ring);
+  --color-accent-purple: var(--accent-purple);
+  --color-accent-orange: var(--accent-orange);
+  --radius-xl: 1rem;
   --radius-lg: 0.5rem;
   --radius-md: 0.375rem;
   --radius-sm: 0.25rem;
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-outfit);
+  --font-heading: var(--font-ovo);
 }
 
 :root {
-  /* New Refined Slate Palette (Softer, reduced glare) */
-  /* #f1f5f9 - Slate-100 - Main Background (Soft Grey) */
-  /* #e2e8f0 - Slate-200 - Secondary/Card Backgrounds */
-  /* #4f46e5 - Indigo-600 - Primary/Text Highlight */
-  /* #0891b2 - Cyan-600 - Accent */
+  /* Clean White Light Mode */
+  --background: #ffffff;
+  --foreground: #111827;
 
-  --background: #f1f5f9;
-  --foreground: #1e293b;
-  /* Slate-800 - softer than black */
-
-  /* Primary: Vibrant Indigo */
-  --primary: #4f46e5;
+  /* Primary Purple to Orange Gradient Colors */
+  --primary: #b820e6;
   --primary-foreground: #ffffff;
 
-  /* Secondary: Light Slate */
-  --secondary: #e2e8f0;
-  --secondary-foreground: #0f172a;
+  --secondary: #f3f4f6;
+  --secondary-foreground: #1f2937;
 
-  /* Muted: Mid-light Grey for subtle areas */
-  --muted: #cbd5e1;
-  /* Slate-300 */
-  --muted-foreground: #64748b;
-  /* Slate-500 */
+  --muted: #f9fafb;
+  --muted-foreground: #6b7280;
 
-  /* Accent: Cyan */
-  --accent: #0891b2;
-  --accent-foreground: #ffffff;
+  --border: #e5e7eb;
+  --ring: #b820e6;
 
-  --accent-secondary: #f8fafc;
-  --accent-secondary-foreground: #0f172a;
+  --accent-purple: #b820e6;
+  --accent-orange: #da7d20;
+}
 
-  --border: #cbd5e1;
-  /* Slate-300 */
-  --ring: #4f46e5;
+.dark {
+  /* Deep Navy/Black Dark Mode */
+  --background: #0b011d;
+  --foreground: #ffffff;
+
+  --primary: #b820e6;
+  --primary-foreground: #ffffff;
+
+  --secondary: #1a1030;
+  --secondary-foreground: #f3f4f6;
+
+  --muted: #140828;
+  --muted-foreground: #9ca3af;
+
+  --border: #2a1f42;
+  --ring: #b820e6;
 }
 
 body {
@@ -73,46 +77,172 @@ section {
   position: relative;
 }
 
-section::before,
-section::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 2px;
-  z-index: 20;
-  background: linear-gradient(90deg,
-      transparent 0%,
-      var(--muted) 20%,
-      var(--primary) 50%,
-      var(--muted) 80%,
-      transparent 100%);
-  opacity: 0.3;
+/* ─── Gradient text utility ─── */
+.text-gradient {
+  background: linear-gradient(90deg, var(--accent-purple), var(--accent-orange));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
 }
 
-section::before {
-  top: 0;
+/* ─── Primary Gradient Button ─── */
+.btn-primary {
+  background: linear-gradient(90deg, var(--accent-purple), var(--accent-orange));
+  color: #fff;
+  transition: all 0.3s ease;
+  background-size: 200% auto;
 }
 
-section::after {
-  bottom: 0;
+.btn-primary:hover {
+  background-position: right center;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px -10px var(--accent-purple);
 }
 
-/* Glassmorphism Utilities - New Light Palette */
+/* ─── Glassmorphism ─── */
 .glass {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(99, 102, 241, 0.2);
-  /* Indigo hint */
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-}
-
-.glass-card {
   background: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(6, 182, 212, 0.2);
-  /* Cyan hint */
-  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+}
+
+.dark .glass {
+  background: rgba(20, 8, 40, 0.4);
+  border-color: var(--border);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+}
+
+.glass-card {
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px -12px rgba(184, 32, 230, 0.15);
+  border-color: var(--accent-purple);
+}
+
+.dark .glass-card:hover {
+  box-shadow: 0 12px 40px -12px rgba(184, 32, 230, 0.4);
+}
+
+/* ─── Animated Background Blobs ─── */
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+
+  33% {
+    transform: translate(40px, -30px) scale(1.08);
+  }
+
+  66% {
+    transform: translate(-20px, 20px) scale(0.95);
+  }
+
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+.animate-blob {
+  animation: blob 12s ease-in-out infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-3000 {
+  animation-delay: 3s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+/* ─── Scrolling Marquee ─── */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* ─── Scroll Progress Bar ─── */
+.scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-purple), var(--accent-orange));
+  z-index: 9999;
+  transform-origin: left;
+  transition: width 0.1s ease;
+}
+
+/* ─── Scroll Indicator bounce ─── */
+@keyframes bounce-slow {
+
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  50% {
+    transform: translateY(8px);
+    opacity: 0.5;
+  }
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 2s ease-in-out infinite;
+}
+
+/* ─── Section fade-in transitions ─── */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ─── Timeline connector line ─── */
+.timeline-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(to bottom,
+      transparent,
+      var(--border) 10%,
+      var(--border) 90%,
+      transparent);
 }

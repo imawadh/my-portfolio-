@@ -51,10 +51,9 @@ export default function FreelanceReviews() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl font-bold mb-4">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
-              Freelance Projects & Reviews
-            </span>
+          <p className="text-muted-foreground text-sm font-semibold uppercase tracking-widest mb-3">Client Work</p>
+          <h2 className="text-4xl md:text-5xl font-heading text-foreground">
+            Freelance Projects <span className="text-gradient">&amp; Reviews</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Delivering high-quality solutions for clients worldwide. Here&apos;s what they have to say.
@@ -126,7 +125,7 @@ export default function FreelanceReviews() {
                     </blockquote>
                     
                     <div className="flex items-center gap-4 border-t border-border pt-6">
-                        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-primary-foreground font-bold text-xl">
+                        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-accent-purple to-accent-orange flex items-center justify-center text-primary-foreground font-bold text-xl">
                             {project.clientName?.[0] || "C"}
                         </div>
                         <div>

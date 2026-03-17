@@ -51,19 +51,18 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-20 bg-transparent">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="py-24 bg-transparent">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
            initial={{ opacity: 0, y: 20 }}
            whileInView={{ opacity: 1, y: 0 }}
            viewport={{ once: true }}
-           transition={{ duration: 0.5 }}
+           transition={{ duration: 0.6 }}
            className="text-center mb-16"
         >
-          <h2 className="text-3xl font-bold mb-4 text-primary">
-             <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">Get In Touch</span>
-          </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-muted-foreground text-sm font-semibold uppercase tracking-widest mb-3">Let&apos;s connect</p>
+          <h2 className="text-4xl md:text-5xl font-heading text-foreground">Get In Touch</h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto mt-4">
             Have a project in mind or just want to say hi? I&apos;d love to hear from you.
           </p>
         </motion.div>
@@ -123,7 +122,7 @@ export default function Contact() {
              whileInView={{ opacity: 1, x: 0 }}
              viewport={{ once: true }}
              transition={{ duration: 0.5 }}
-             className="glass-card p-8 rounded-2xl shadow-lg border border-primary/20"
+             className="border border-border bg-background p-8 rounded-2xl shadow-lg"
           >
             <form className="space-y-6" onSubmit={handleSubmit}>
                 <div className="grid md:grid-cols-2 gap-6">
@@ -180,7 +179,7 @@ export default function Contact() {
                   type="submit"
                   disabled={status.loading}
                   suppressHydrationWarning
-                  className={`w-full py-4 bg-gradient-to-r from-primary to-accent text-primary-foreground font-bold rounded-lg hover:opacity-90 transition-all transform hover:scale-[1.02] active:scale-95 shadow-lg flex items-center justify-center gap-2 hover:cursor-pointer ${status.loading ? 'opacity-70 cursor-not-allowed' : ''}`}
+                  className={`w-full py-4 btn-primary font-bold rounded-full transition-all flex items-center justify-center gap-2 cursor-pointer ${status.loading ? 'opacity-70 cursor-not-allowed' : ''}`}
                 >
                   {status.loading ? "Sending..." : "Send Message"}
                 </button>

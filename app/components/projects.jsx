@@ -1,33 +1,27 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Github, ExternalLink } from "lucide-react";
+import { Github, ExternalLink, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-
-import { SpotlightCard } from "./spotlight-card";
 import projects from "@/app/data/projects.json";
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-20 bg-transparent">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="projects" className="py-24 bg-transparent">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-           initial={{ opacity: 0, y: 20 }}
-           whileInView={{ opacity: 1, y: 0 }}
-           viewport={{ once: true }}
-           transition={{ duration: 0.5 }}
-           className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
         >
-          <h2 className="text-3xl font-bold mb-4 text-foreground">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">Featured Projects</span>
-          </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            A selection of projects I&apos;ve worked on recently.
-          </p>
+          <p className="text-muted-foreground text-sm font-semibold uppercase tracking-widest mb-3">What I've built</p>
+          <h2 className="text-4xl md:text-5xl font-heading text-foreground">Featured Projects</h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, index) => (
             <motion.div
               key={index}
@@ -35,62 +29,77 @@ export default function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="group border border-border rounded-2xl overflow-hidden bg-background hover:border-primary/30 hover:shadow-2xl transition-all duration-300 flex flex-col"
             >
-              <SpotlightCard className="group glass-card bg-white/40 border border-primary/20 rounded-xl overflow-hidden hover:shadow-xl hover:border-primary transition-all duration-300 flex flex-col h-full">
-                <div className="relative h-48 overflow-hidden bg-black/50">
-                  {/* Image Placeholder */}
-                  <div className="absolute inset-0 flex items-center justify-center text-zinc-500 group">
-                      <Image
-                        src={project.image || "/placeholder-project.jpg"}
-                        alt={project.title}
-                        fill
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
-                  </div>
+              {/* Image with hover overlay */}
+              <div className="relative h-52 overflow-hidden bg-secondary">
+                <Image
+                  src={project.image || "/placeholder-project.jpg"}
+                  alt={project.title}
+                  fill
+                  sizes="(max-width:768px) 100vw,(max-width:1200px) 50vw,33vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                {/* Slide-up hover overlay */}
+                <div className="absolute inset-x-0 bottom-0 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out bg-background/95 backdrop-blur-sm p-4 flex items-center gap-3 border-t border-border">
+                  <Link
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1.5 text-xs font-semibold text-foreground hover:text-primary transition-colors"
+                  >
+                    <Github size={14} /> Code
+                  </Link>
+                  <Link
+                    href={project.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1.5 text-xs font-semibold text-foreground hover:text-primary transition-colors"
+                  >
+                    <ExternalLink size={14} /> Live Demo
+                  </Link>
+                  <Link
+                    href={`/projects/${project.slug}`}
+                    className="ml-auto text-xs font-semibold text-primary hover:underline"
+                  >
+                    Case Study →
+                  </Link>
                 </div>
+              </div>
 
-                <div className="p-6 flex flex-col grow">
-                  <h3 className="text-xl font-bold mb-2 text-foreground group-hover:text-primary transition-colors">{project.title}</h3>
-                  <p className="text-muted-foreground mb-4 text-sm grow">
-                    {project.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.tech.map((t) => (
-                      <span key={t} className="flex items-center gap-1 text-[10px] px-2 py-1 bg-secondary/50 border border-border rounded-md text-muted-foreground hover:border-primary/30 transition-colors">
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="flex items-center gap-4 mt-auto">
-                    <Link
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-sm font-medium text-primary hover:opacity-80 transition-opacity"
+              <div className="p-5 flex flex-col grow">
+                <h3 className="text-base font-semibold mb-2 text-foreground group-hover:text-primary transition-colors">{project.title}</h3>
+                <p className="text-sm text-muted-foreground mb-4 grow leading-relaxed">{project.description}</p>
+                <div className="flex flex-wrap gap-1.5">
+                  {project.tech.map((t) => (
+                    <span
+                      key={t}
+                      className="text-[10px] px-2 py-1 bg-secondary rounded-full text-muted-foreground border border-border"
                     >
-                      <Github size={16} /> Code
-                    </Link>
-                    <Link
-                      href={project.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-sm font-medium text-primary hover:opacity-80 transition-opacity"
-                    >
-                      <ExternalLink size={16} /> Live Demo
-                    </Link>
-                     <Link
-                        href={`/projects/${project.slug}`}
-                        className="ml-auto text-sm font-medium text-primary hover:underline"
-                    >
-                        View Case Study &rarr;
-                    </Link>
-                  </div>
+                      {t}
+                    </span>
+                  ))}
                 </div>
-              </SpotlightCard>
+              </div>
             </motion.div>
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="mt-16 flex justify-center"
+        >
+          <Link
+            href="/projects"
+            className="group flex items-center gap-2 px-6 py-3 rounded-full bg-secondary hover:bg-muted text-foreground font-semibold border border-border transition-all"
+          >
+            View All Projects
+            <ArrowRight size={18} className="text-primary group-hover:translate-x-1 transition-transform" />
+          </Link>
+        </motion.div>
       </div>
     </section>
   );

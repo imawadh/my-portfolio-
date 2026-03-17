@@ -2,64 +2,57 @@
 
 import { motion } from "framer-motion";
 import { Briefcase, GraduationCap } from "lucide-react";
-
 import experienceData from "@/app/data/experience.json";
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-20 bg-transparent">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-         <motion.div
+    <section id="experience" className="py-24 bg-transparent">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl font-bold mb-4 text-foreground">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">Experience & Education</span>
-          </h2>
+          <p className="text-muted-foreground text-sm font-semibold uppercase tracking-widest mb-3">My Journey</p>
+          <h2 className="text-4xl md:text-5xl font-heading text-foreground">Experience & Education</h2>
         </motion.div>
 
-        <div className="relative max-w-3xl mx-auto">
-             {/* Vertical line */}
-          <div className="absolute left-9 top-0 bottom-0 w-0.5 bg-primary/20 md:left-1/2 md:-ml-0.5"></div>
+        <div className="relative grid md:grid-cols-2 gap-6">
+          {/* Timeline central line for desktop */}
+          <div className="hidden md:block timeline-line" />
 
-          <div className="space-y-12">
-            {experienceData.map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-                className={`relative flex items-start md:items-center ${
-                    index % 2 === 0 ? "md:flex-row-reverse" : "md:flex-row"
-                }`}
-              >
-                 {/* Icon */}
-                <div className="absolute left-0 md:static md:w-1/2 flex justify-center">
-                    <div className="z-10 w-18 h-18 rounded-full bg-background border-4 border-primary shadow-sm flex items-center justify-center p-3">
-                         {item.type === 'work' ? <Briefcase className="text-primary w-6 h-6" /> : <GraduationCap className="text-primary w-6 h-6" />}
-                    </div>
+          {experienceData.map((item, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="group border border-border rounded-2xl p-6 hover:border-primary/40 hover:shadow-xl bg-background transition-all duration-300"
+            >
+              <div className="flex items-start gap-4">
+                <div className="p-3 rounded-xl border border-border group-hover:border-primary/40 group-hover:bg-primary/5 transition-all duration-300 shrink-0">
+                  {item.type === "work" ? (
+                    <Briefcase className="text-primary w-5 h-5" />
+                  ) : (
+                    <GraduationCap className="text-primary w-5 h-5" />
+                  )}
                 </div>
-
-                {/* Content */}
-                <div className="ml-16 md:ml-0 md:w-1/2 md:px-8 group">
-                      <div className={`relative p-6 glass-card bg-white/40 border border-primary/10 rounded-xl hover:shadow-lg transition-all duration-300 ${index % 2 === 0 ? 'md:text-left' : 'md:text-right'} group-hover:border-primary/30`}>
-                         <span className="inline-block px-3 py-1 mb-2 text-xs font-semibold tracking-wide uppercase rounded-full bg-primary text-primary-foreground">
-                             {item.period}
-                         </span>
-                         <h3 className="text-xl font-bold text-foreground mb-1">{item.title}</h3>
-                         <p className="text-muted-foreground font-medium mb-2">{item.organization}</p>
-                         <p className="text-muted-foreground text-sm">
-                             {item.description}
-                         </p>
-                      </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center justify-between gap-2 mb-1 flex-wrap">
+                    <h3 className="text-base font-semibold text-foreground">{item.title}</h3>
+                    <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-secondary text-muted-foreground border border-border whitespace-nowrap">
+                      {item.period}
+                    </span>
+                  </div>
+                  <p className="text-sm font-medium text-primary mb-3">{item.organization}</p>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
                 </div>
-              </motion.div>
-            ))}
-          </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
