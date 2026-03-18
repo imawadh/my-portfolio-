@@ -65,6 +65,7 @@ export default function Hero() {
             <span className="animate-pulse text-primary font-sans font-light delay-75">|</span><br />
             based in Bengaluru.
           </h1>
+          <span className="sr-only">Also known online as imawadh, im_awadh, im_awadh_</span>
           
           <p className="mt-6 max-w-2xl text-lg sm:text-xl text-muted-foreground mx-auto font-light leading-relaxed">
             {description}

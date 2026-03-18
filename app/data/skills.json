@@ -47,5 +47,13 @@
             "Pandas",
             "Natural Language Processing"
         ]
+    },
+    {
+        "category": "Other Technologies",
+        "items": [
+            "Mixpanel",
+            "Google Analytics",
+            "Sentry"
+        ]
     }
 ]

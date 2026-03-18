@@ -11,6 +11,44 @@ export function generateStaticParams() {
   }));
 }
 
+export async function generateMetadata({ params }) {
+  const project = projects.find((p) => p.slug === params.slug);
+
+  if (!project) {
+    return { title: 'Project Not Found' };
+  }
+
+  const title = `${project.title} | Awadh Kishor Singh`;
+  const description = project.description;
+  const url = `https://awadh.tech/projects/${project.slug}`;
+  // Use dynamically generated OG image OR fallback to the provided image. Absolute DB URL needed.
+  const ogImage = `https://awadh.tech/api/og?title=${encodeURIComponent(project.title)}&description=${encodeURIComponent(description)}`;
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      url,
+      images: [
+        {
+          url: project.image || ogImage,
+          width: 1200,
+          height: 630,
+          alt: project.title,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [project.image || ogImage],
+    },
+  };
+}
+
 export default function ProjectDetails({ params }) {
   const project = projects.find((p) => p.slug === params.slug);
 
@@ -25,6 +63,7 @@ export default function ProjectDetails({ params }) {
       <article className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
         <Link
           href="/projects"
+          aria-label="Back to projects list"
           className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors mb-8"
         >
           <ArrowLeft size={20} /> Back to Projects
@@ -89,6 +128,7 @@ export default function ProjectDetails({ params }) {
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
+                        aria-label="View source code on GitHub"
                         className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
                      >
                         <Github size={20} /> Source Code
@@ -97,6 +137,7 @@ export default function ProjectDetails({ params }) {
                         href={project.live}
                         target="_blank"
                         rel="noopener noreferrer"
+                        aria-label="View live demo"
                         className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
                      >
                         <ExternalLink size={20} /> Live Demo

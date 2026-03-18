@@ -46,6 +46,7 @@ export default function Projects() {
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label="View project source code"
                     className="flex items-center gap-1.5 text-xs font-semibold text-foreground hover:text-primary transition-colors"
                   >
                     <Github size={14} /> Code
@@ -54,6 +55,7 @@ export default function Projects() {
                     href={project.live}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label="View project live demo"
                     className="flex items-center gap-1.5 text-xs font-semibold text-foreground hover:text-primary transition-colors"
                   >
                     <ExternalLink size={14} /> Live Demo

@@ -82,7 +82,7 @@ export default function Contact() {
                     </div>
                     <div>
                         <h4 className="font-medium mb-1 text-foreground">Email</h4>
-                        <a href="mailto:srsclasses56@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
+                        <a href="mailto:srsclasses56@gmail.com" aria-label="Send email to awadhkishorsingh241@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
                             awadhkishorsingh241@gmail.com
                         </a>
                     </div>
@@ -93,7 +93,7 @@ export default function Contact() {
                     </div>
                     <div>
                         <h4 className="font-medium mb-1 text-foreground">Phone</h4>
-                        <a href="tel:+917985000241" className="text-muted-foreground hover:text-primary transition-colors">
+                        <a href="tel:+917985000241" aria-label="Call +91 7985000241" className="text-muted-foreground hover:text-primary transition-colors">
                             +91 7985000241
                         </a>
                     </div>
@@ -178,6 +178,7 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={status.loading}
+                  aria-label="Send Contact Message"
                   suppressHydrationWarning
                   className={`w-full py-4 btn-primary font-bold rounded-full transition-all flex items-center justify-center gap-2 cursor-pointer ${status.loading ? 'opacity-70 cursor-not-allowed' : ''}`}
                 >

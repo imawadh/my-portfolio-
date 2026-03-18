@@ -141,6 +141,7 @@ export default function ReviewPage() {
       <div className="max-w-4xl mx-auto relative z-10">
         <Link 
           href="/" 
+          aria-label="Back to portfolio"
           className="inline-flex items-center gap-2 text-zinc-400 hover:text-[#ffbf46] transition-colors mb-12 group"
         >
           <div className="p-2 bg-zinc-900 rounded-full group-hover:bg-[#ffbf46]/10 transition-colors">
@@ -241,6 +242,7 @@ export default function ReviewPage() {
                 <button
                     type="submit"
                     disabled={status.loading}
+                    aria-label="Submit review"
                     className="group w-full md:w-auto px-12 py-5 bg-linear-to-r from-[#ffbf46] to-[#66ced6] text-[#080808] font-bold rounded-2xl hover:shadow-[0_0_30px_rgba(255,191,70,0.5)] transition-all hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                     {status.loading ? (

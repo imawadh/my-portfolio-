@@ -1,7 +1,14 @@
 [
     {
+        "type": "work",
+        "title": "Full Stack Developer Intern",
+        "organization": "IAverse",
+        "period": "Feb,2026 - Present",
+        "description": "Working on building a GEO and tracking system for a client."
+    },
+    {
         "type": "education",
-        "title": "Bachelors in Data Science and Applications",
+        "title": "BS in Data Science and Applications",
         "organization": "IIT Madras",
         "period": "May,2024 - March,2028",
         "description": "Specialized in Data Science and Applications."

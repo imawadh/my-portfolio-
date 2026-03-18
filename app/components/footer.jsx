@@ -19,7 +19,7 @@ export default function Footer() {
           Currently open for new opportunities and freelance projects. Whether you have a question or just want to say hi, I'll try my best to get back to you!
         </p>
         <Link
-          href="mailto:im.awadh@gmail.com"
+          href="mailto:awadhkishorsingh241@gmail.com"
           className="inline-flex items-center gap-2 px-8 py-4 rounded-full btn-primary text-lg font-medium shadow-xl"
         >
           Say Hello <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
@@ -27,7 +27,7 @@ export default function Footer() {
       </div>
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6 pt-10 border-t border-border/50 relative z-10">
-        <Link href="/" className="text-xl tracking-tight font-heading font-bold flex items-center group">
+        <Link href="/" aria-label="Navigate to Home" className="text-xl tracking-tight font-heading font-bold flex items-center group">
           Awadh
           <span className="w-2 h-2 rounded-full bg-primary ml-1 mt-1 group-hover:scale-150 transition-transform"></span>
         </Link>

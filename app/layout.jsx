@@ -1,7 +1,6 @@
 import { Ovo, Outfit, Alex_Brush } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./components/theme-provider";
-import BackgroundEffects from "./components/background-effects";
 import { SmoothScroll } from "./components/smooth-scroll";
 import PwaRegister from "./components/pwa-register";
 import MixpanelTracker from "./components/mix-panel";
@@ -27,8 +26,8 @@ const alexBrush = Alex_Brush({
 export const metadata = {
   title: "Awadh Kishor Singh | Full Stack Developer",
   description: "Portfolio of Awadh Kishor Singh, a Full Stack Developer specializing in modern web applications with Next.js, React, and MongoDB.",
-  keywords: ["Awadh Kishor Singh", "Full Stack Developer", "Next.js Portfolio", "React Developer", "MongoDB", "Bengaluru Developer"],
-  authors: [{ name: "Awadh Kishor Singh" }],
+  keywords: ["Awadh Kishor Singh", "imawadh", "im_awadh", "im_awadh_", "Full Stack Developer", "Next.js Portfolio", "React Developer", "MongoDB", "Bengaluru Developer"],
+  authors: [{ name: "Awadh Kishor Singh", url: "https://awadh.tech" }],
   metadataBase: new URL("https://awadh.tech"), // You should replace this with your actual domain
   openGraph: {
     title: "Awadh Kishor Singh | Portfolio",
@@ -76,7 +75,6 @@ export default function RootLayout({ children }) {
           disableTransitionOnChange
         >
           <div className="fixed inset-0 z-0 pointer-events-none">
-             <BackgroundEffects />
           </div>
           <main className="relative z-10">
             {children}

@@ -7,13 +7,14 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ThemeToggle } from "./theme-toggle";
 
 const navLinks = [
-  { name: "About", href: "#about" },
-  { name: "Skills", href: "#skills" },
-  { name: "Certifications", href: "#certifications" },
-  { name: "Experience", href: "#experience" },
-  { name: "Projects", href: "#projects" },
-  { name: "Reviews", href: "#freelance-reviews" },
-  { name: "Contact", href: "#contact" },
+  { name: "About", href: "/#about" },
+  { name: "Skills", href: "/#skills" },
+  { name: "Certifications", href: "/#certifications" },
+  { name: "Experience", href: "/#experience" },
+  { name: "Projects", href: "/projects" },
+  { name: "Blog", href: "/blog" },
+  { name: "Reviews", href: "/#freelance-reviews" },
+  { name: "Contact", href: "/#contact" },
 ];
 
 export default function Navbar() {
@@ -37,7 +38,7 @@ export default function Navbar() {
       >
         <div className="flex items-center justify-between h-14 sm:h-16">
           <div className="shrink-0">
-            <Link href="/" className="text-2xl sm:text-3xl tracking-tight font-heading font-bold flex items-center group">
+            <Link href="/" aria-label="Navigate to Home" className="text-2xl sm:text-3xl tracking-tight font-heading font-bold flex items-center group">
               Awadh
               <span className="w-2 h-2 rounded-full bg-primary ml-1 mt-2 group-hover:scale-150 transition-transform"></span>
             </Link>
@@ -61,6 +62,7 @@ export default function Navbar() {
             <div className="-mr-2 flex md:hidden">
               <button
                 onClick={() => setIsOpen(!isOpen)}
+                aria-label={isOpen ? "Close menu" : "Open menu"}
                 className="inline-flex items-center justify-center p-2 rounded-full text-foreground hover:bg-muted focus:outline-none transition-colors"
               >
                 <span className="sr-only">Open main menu</span>

@@ -87,10 +87,10 @@ export default function FreelanceReviews() {
                    )}
                    
                    <div className="absolute inset-0 bg-background/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4">
-                        <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="p-3 bg-secondary rounded-full text-foreground hover:text-primary transition-colors border border-border">
+                        <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" aria-label="View freelance project on GitHub" className="p-3 bg-secondary rounded-full text-foreground hover:text-primary transition-colors border border-border">
                             <Github size={24} />
                         </a>
-                        <a href={project.websiteUrl} target="_blank" rel="noopener noreferrer" className="p-3 bg-primary rounded-full text-primary-foreground hover:scale-110 transition-transform">
+                        <a href={project.websiteUrl} target="_blank" rel="noopener noreferrer" aria-label="Visit freelance project website" className="p-3 bg-primary rounded-full text-primary-foreground hover:scale-110 transition-transform">
                             <ExternalLink size={24} />
                         </a>
                    </div>

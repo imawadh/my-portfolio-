@@ -7,7 +7,7 @@ if (typeof window !== "undefined") {
   
   if (token) {
     mixpanel.init(token, {
-      autocapture: true,
+      autocapture: false,
       debug: process.env.NODE_ENV !== "production", // Useful for testing tracking in dev
       record_sessions_percent: 100,
     });
