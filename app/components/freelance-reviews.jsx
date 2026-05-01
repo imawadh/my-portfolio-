@@ -49,29 +49,30 @@ export default function FreelanceReviews() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="mb-20"
         >
-          <p className="text-muted-foreground text-sm font-semibold uppercase tracking-widest mb-3">Client Work</p>
-          <h2 className="text-4xl md:text-5xl font-heading text-foreground">
+          <p className="text-accent font-semibold tracking-widest uppercase text-sm mb-3">Client Work</p>
+          <h2 className="text-5xl md:text-6xl font-heading text-foreground font-bold">
             Freelance Projects <span className="text-gradient">&amp; Reviews</span>
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mt-4 leading-relaxed">
             Delivering high-quality solutions for clients worldwide. Here&apos;s what they have to say.
           </p>
         </motion.div>
 
-        <div className="space-y-12">
+        <div className="space-y-10">
           {projects.map((project, index) => (
             <motion.div
               key={project._id || project.id || index}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="glass-card bg-white/40 rounded-3xl border border-primary/10 overflow-hidden flex flex-col md:flex-row shadow-2xl"
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className="rounded-2xl border border-accent/10 bg-secondary/40 hover:bg-secondary/60 hover:border-accent/30 overflow-hidden flex flex-col md:flex-row shadow-lg transition-all duration-300"
             >
               {/* Left Side: Preview Area */}
-              <div className="md:w-1/2 p-1 bg-secondary/30 flex flex-col">
-                <div className="grow flex items-center justify-center min-h-[250px] relative group overflow-hidden bg-background/50 m-4 rounded-2xl border border-border">
+              <div className="md:w-1/2 p-6 flex flex-col">
+                <div className="flex-1 flex items-center justify-center min-h-64 relative group overflow-hidden bg-muted rounded-xl border border-accent/10">
                    {project.image ? (
                      <img
                        src={project.image} 
@@ -86,58 +87,47 @@ export default function FreelanceReviews() {
                      </div>
                    )}
                    
-                   <div className="absolute inset-0 bg-background/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4">
-                        <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" aria-label="View freelance project on GitHub" className="p-3 bg-secondary rounded-full text-foreground hover:text-primary transition-colors border border-border">
+                   <div className="absolute inset-0 bg-background/70 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4">
+                        <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" aria-label="View freelance project on GitHub" className="p-3 bg-accent/20 hover:bg-accent/40 rounded-lg text-accent border border-accent/30 transition-all">
                             <Github size={24} />
                         </a>
-                        <a href={project.websiteUrl} target="_blank" rel="noopener noreferrer" aria-label="Visit freelance project website" className="p-3 bg-primary rounded-full text-primary-foreground hover:scale-110 transition-transform">
+                        <a href={project.websiteUrl} target="_blank" rel="noopener noreferrer" aria-label="Visit freelance project website" className="p-3 bg-accent hover:bg-blue-600 rounded-lg text-white transition-all">
                             <ExternalLink size={24} />
                         </a>
                    </div>
                 </div>
-                
-                <div className="px-8 pb-6 flex justify-between items-center mt-auto">
-                    <div className="flex items-center gap-2 text-muted-foreground">
-                        <Github size={16} />
-                        <span className="text-xs font-medium">Source Available</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-accent">
-                        <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-                        <span className="text-xs font-bold uppercase tracking-widest">Live Site</span>
-                    </div>
-                </div>
               </div>
 
               {/* Right Side: Review Area */}
-              <div className="md:w-1/2 p-8 md:p-12 flex flex-col justify-center border-l border-border">
+              <div className="md:w-1/2 p-8 md:p-10 flex flex-col justify-center border-l border-accent/10">
                 {project.isReviewed ? (
                   <div className="space-y-6">
                     <div className="flex items-center justify-between">
-                         <div className="flex items-center gap-2 text-primary">
+                         <div className="flex items-center gap-2 text-accent">
                             <ShieldCheck size={20} />
-                            <span className="text-xs font-bold uppercase tracking-tighter">Verified Review</span>
+                            <span className="text-xs font-bold uppercase tracking-tight">Verified Review</span>
                         </div>
                         <StarRating rating={project.rating} />
                     </div>
                     
-                    <blockquote className="text-xl italic text-foreground leading-relaxed font-medium">
+                    <blockquote className="text-lg italic text-foreground leading-relaxed font-medium">
                       &quot;{project.reviewText}&quot;
                     </blockquote>
                     
-                    <div className="flex items-center gap-4 border-t border-border pt-6">
-                        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-accent-purple to-accent-orange flex items-center justify-center text-primary-foreground font-bold text-xl">
+                    <div className="flex items-center gap-4 border-t border-accent/10 pt-6">
+                        <div className="w-14 h-14 rounded-full bg-gradient-to-br from-accent to-blue-500 flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
                             {project.clientName?.[0] || "C"}
                         </div>
                         <div>
                             <p className="text-foreground font-bold">{project.clientName || "Client"}</p>
-                            <p className="text-muted-foreground text-sm">{project.clientDesignation || "Review from Founding Member"}</p>
+                            <p className="text-muted-foreground text-sm">{project.clientDesignation || "Review from Client"}</p>
                         </div>
                     </div>
                   </div>
                 ) : (
                   <div className="text-center space-y-6">
-                    <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto text-primary">
-                        <MessageSquare size={36} />
+                    <div className="w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center mx-auto text-accent">
+                        <MessageSquare size={40} />
                     </div>
                     <div>
                         <h3 className="text-2xl font-bold text-foreground mb-2">Pending Client Review</h3>
@@ -145,7 +135,7 @@ export default function FreelanceReviews() {
                     </div>
                     <Link
                       href={`/review/${project._id}`}
-                      className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-primary to-accent text-primary-foreground font-bold rounded-full hover:shadow-lg transition-all hover:scale-105"
+                      className="inline-flex items-center gap-2 px-8 py-3 bg-accent hover:bg-blue-600 text-white font-semibold rounded-lg transition-all hover:scale-105 justify-center"
                     >
                       <Star size={20} />
                       Leave a Review
