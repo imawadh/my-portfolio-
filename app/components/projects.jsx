@@ -23,7 +23,7 @@ export default function Projects() {
         </motion.div>
 
         {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-8 lg:gap-10">
           {projects.map((project, index) => (
             <motion.div
               key={index}
@@ -31,10 +31,10 @@ export default function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="group relative overflow-hidden rounded-2xl border border-accent/20 bg-secondary/30 hover:border-accent/50 hover:bg-secondary/50 transition-all duration-300 flex flex-col"
+              className="group relative overflow-hidden rounded-2xl border border-accent/10 bg-secondary/40 hover:border-accent/30 hover:bg-secondary/60 transition-all duration-300 flex flex-col h-full"
             >
               {/* Image Container */}
-              <div className="relative h-64 md:h-72 overflow-hidden bg-muted">
+              <div className="relative h-56 md:h-64 overflow-hidden bg-muted">
                 <Image
                   src={project.image || "/placeholder-project.jpg"}
                   alt={project.title}
@@ -44,42 +44,42 @@ export default function Projects() {
                   loading="lazy"
                   quality={80}
                   placeholder="blur"
-                  blurDataURL="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%231e293b' width='400' height='300'/%3E%3C/svg%3E"
+                  blurDataURL="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%231a1f3a' width='400' height='300'/%3E%3C/svg%3E"
                 />
                 {/* Overlay on hover */}
-                <div className="absolute inset-0 bg-background/80 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
+                <div className="absolute inset-0 bg-background/60 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
                   <Link
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="View project source code"
-                    className="p-2.5 rounded-lg bg-accent hover:bg-accent/80 text-primary-foreground transition-colors"
+                    className="p-3 rounded-lg bg-accent hover:bg-blue-600 text-white transition-colors"
                   >
-                    <Github size={20} />
+                    <Github size={24} />
                   </Link>
                   <Link
                     href={project.live}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="View project live demo"
-                    className="p-2.5 rounded-lg bg-accent hover:bg-accent/80 text-primary-foreground transition-colors"
+                    className="p-3 rounded-lg bg-accent hover:bg-blue-600 text-white transition-colors"
                   >
-                    <ExternalLink size={20} />
+                    <ExternalLink size={24} />
                   </Link>
                 </div>
               </div>
 
               {/* Content */}
-              <div className="p-6 flex flex-col grow">
-                <h3 className="text-lg font-semibold mb-2 text-foreground group-hover:text-accent transition-colors">{project.title}</h3>
-                <p className="text-sm text-muted-foreground mb-5 grow leading-relaxed">{project.description}</p>
+              <div className="p-6 md:p-7 flex flex-col grow">
+                <h3 className="text-xl font-semibold mb-3 text-foreground group-hover:text-accent transition-colors">{project.title}</h3>
+                <p className="text-sm text-muted-foreground mb-6 grow leading-relaxed">{project.description}</p>
                 
                 {/* Tech Tags */}
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 mb-6">
                   {project.tech.map((t) => (
                     <span
                       key={t}
-                      className="text-xs px-3 py-1 rounded-full bg-accent/10 text-accent border border-accent/30"
+                      className="text-xs px-3 py-1.5 rounded-full bg-accent/10 text-accent border border-accent/30 hover:bg-accent/20 transition-colors"
                     >
                       {t}
                     </span>
@@ -89,9 +89,9 @@ export default function Projects() {
                 {/* Case Study Link */}
                 <Link
                   href={`/projects/${project.slug}`}
-                  className="mt-6 inline-flex items-center gap-2 text-accent hover:text-accent/80 transition-colors font-semibold text-sm"
+                  className="inline-flex items-center gap-2 text-accent hover:text-blue-400 transition-colors font-semibold text-sm group/link"
                 >
-                  View Case Study <ArrowRight size={16} />
+                  View Details <ArrowRight size={16} className="group-hover/link:translate-x-1 transition-transform" />
                 </Link>
               </div>
             </motion.div>

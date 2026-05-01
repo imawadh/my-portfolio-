@@ -41,87 +41,102 @@ export default function Hero() {
   }, [displayText, isDeleting, textIndex]);
 
   return (
-    <section className="min-h-screen flex items-center justify-center pt-32 pb-12 overflow-hidden relative">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          className="flex flex-col items-center text-center"
-        >
-          {/* Profile Image */}
+    <section className="min-h-screen flex items-center justify-center pt-40 pb-20 overflow-hidden relative">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-10">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left Content */}
           <motion.div
-             initial={{ opacity: 0, scale: 0.9 }}
-             animate={{ opacity: 1, scale: 1 }}
-             transition={{ duration: 0.6, delay: 0.1 }}
-             className="mb-12 relative w-40 h-40 md:w-48 md:h-48 rounded-2xl overflow-hidden border border-accent/30 shadow-2xl"
+            initial={{ opacity: 0, x: -40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7 }}
+            className="flex flex-col justify-center"
           >
-            <Image 
-              src="/awadh-about.jpg" 
-              alt="Awadh Kishor Singh - Full Stack Developer Profile Picture" 
-              fill 
-              className="object-cover" 
-              priority
-              sizes="(max-width: 768px) 160px, 192px"
-              quality={90}
-              placeholder="blur"
-              blurDataURL="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect fill='%231e293b' width='400' height='400'/%3E%3C/svg%3E"
-            />
-          </motion.div>
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="text-accent font-semibold tracking-widest uppercase text-xs mb-6"
+            >
+              👋 Welcome, I&apos;m {name}
+            </motion.p>
 
-          {/* Main Content */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="w-full"
-          >
-            <p className="text-accent font-semibold tracking-widest uppercase text-sm mb-4">
-              Welcome, I&apos;m {name}
-            </p>
-            <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight mb-6 text-foreground font-heading leading-tight">
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="text-6xl sm:text-7xl font-bold tracking-tight mb-8 text-foreground leading-tight"
+            >
               <span className="text-gradient">{displayText}</span>
-              <span className="animate-pulse text-accent font-light">|</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground mb-8 font-light max-w-3xl mx-auto leading-relaxed">
+              <span className="animate-pulse text-accent ml-2">_</span>
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="text-lg text-muted-foreground mb-10 max-w-xl leading-relaxed"
+            >
               {description}
-            </p>
-            <span className="sr-only">Also known online as imawadh, im_awadh, im_awadh_</span>
+            </motion.p>
+
+            {/* CTA Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="flex flex-col sm:flex-row gap-4"
+            >
+              <Link
+                href="#projects"
+                className="px-8 py-3.5 rounded-lg btn-primary font-semibold flex items-center justify-center gap-2 transition-all hover:scale-105"
+              >
+                {ctaText} <ArrowRight size={20} />
+              </Link>
+              <a
+                href="/Awadh Full Stack Developer Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-8 py-3.5 rounded-lg bg-secondary text-foreground font-semibold hover:bg-secondary/80 transition-all flex items-center justify-center gap-2 border border-accent/20 hover:border-accent/40"
+              >
+                View CV <FileText size={20} />
+              </a>
+            </motion.div>
+
+            {/* Social Links */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.6, duration: 0.6 }}
+              className="mt-12"
+            >
+              <SocialLinks iconSize={24} />
+            </motion.div>
           </motion.div>
 
-        {/* CTA Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-12 flex flex-col sm:flex-row gap-4 justify-center items-center"
-        >
-          <Link
-            href="#projects"
-            className="px-8 py-3.5 rounded-lg btn-primary font-semibold flex items-center gap-2 transition-all hover:scale-105"
+          {/* Right Image */}
+          <motion.div
+            initial={{ opacity: 0, x: 40, scale: 0.95 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="relative hidden lg:flex justify-center items-center"
           >
-            {ctaText} <ArrowRight size={20} />
-          </Link>
-          <a
-            href="/Awadh Full Stack Developer Resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-8 py-3.5 rounded-lg bg-secondary/50 text-foreground font-semibold hover:bg-secondary transition-all flex items-center gap-2 border border-accent/20"
-          >
-            View CV <FileText size={20} />
-          </a>
-        </motion.div>
-
-        {/* Social Links */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.6, duration: 0.6 }}
-          className="mt-16"
-        >
-          <SocialLinks iconSize={24} />
-        </motion.div>
-      </motion.div>
+            <div className="relative w-80 h-96 rounded-2xl overflow-hidden border-2 border-accent/20 shadow-2xl">
+              <div className="absolute -inset-2 bg-gradient-to-r from-accent to-blue-500 rounded-2xl blur-xl opacity-30"></div>
+              <Image 
+                src="/awadh-about.jpg" 
+                alt="Awadh Kishor Singh - Full Stack Developer Profile Picture" 
+                fill 
+                className="object-cover relative z-10" 
+                priority
+                sizes="(max-width: 768px) 320px, 320px"
+                quality={90}
+                placeholder="blur"
+                blurDataURL="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 480'%3E%3Crect fill='%230a0e27' width='400' height='480'/%3E%3C/svg%3E"
+              />
+            </div>
+          </motion.div>
+        </div>
+      </div>
 
       {/* Scroll Indicator */}
       <motion.div
@@ -130,7 +145,7 @@ export default function Hero() {
         transition={{ delay: 1.2, duration: 0.8 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-muted-foreground animate-bounce-slow"
       >
-        <span className="text-xs uppercase tracking-widest font-semibold font-sans">Scroll</span>
+        <span className="text-xs uppercase tracking-widest font-semibold">Scroll to explore</span>
         <Mouse size={20} className="text-accent" />
       </motion.div>
     </section>
