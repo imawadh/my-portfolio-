@@ -39,6 +39,10 @@ export default function Projects() {
                   fill
                   sizes="(max-width:768px) 100vw,(max-width:1200px) 50vw,33vw"
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                  quality={80}
+                  placeholder="blur"
+                  blurDataURL="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23f3f4f6' width='400' height='300'/%3E%3C/svg%3E"
                 />
                 {/* Slide-up hover overlay */}
                 <div className="absolute inset-x-0 bottom-0 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out bg-background/95 backdrop-blur-sm p-4 flex items-center gap-3 border-t border-border">

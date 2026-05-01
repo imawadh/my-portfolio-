@@ -28,7 +28,7 @@ export const metadata = {
   description: "Portfolio of Awadh Kishor Singh, a Full Stack Developer specializing in modern web applications with Next.js, React, and MongoDB.",
   keywords: ["Awadh Kishor Singh", "imawadh", "im_awadh", "im_awadh_", "Full Stack Developer", "Next.js Portfolio", "React Developer", "MongoDB", "Bengaluru Developer"],
   authors: [{ name: "Awadh Kishor Singh", url: "https://awadh.tech" }],
-  metadataBase: new URL("https://awadh.tech"), // You should replace this with your actual domain
+  metadataBase: new URL("https://awadh.tech"),
   openGraph: {
     title: "Awadh Kishor Singh | Portfolio",
     description: "Full Stack Developer specializing in building scalable web applications.",
@@ -36,7 +36,7 @@ export const metadata = {
     siteName: "Awadh Kishor Singh Portfolio",
     images: [
       {
-        url: "/awadh-about.jpg", // Using existing profile image as fallback if og-image.png is missing
+        url: "/awadh-about.jpg",
         width: 1200,
         height: 630,
       },
@@ -57,9 +57,25 @@ export const metadata = {
   manifest: "/manifest.json",
 };
 
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  viewportFit: 'cover',
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        {/* Performance & Caching Headers */}
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* Preload critical assets */}
+        <link rel="preload" as="image" href="/awadh-about.jpg" />
+      </head>
       <body
         className={`${ovo.variable} ${outfit.variable} ${alexBrush.variable} font-sans antialiased relative bg-background text-foreground transition-colors duration-500`}
         suppressHydrationWarning

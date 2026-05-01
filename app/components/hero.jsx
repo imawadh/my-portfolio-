@@ -49,7 +49,17 @@ export default function Hero() {
            transition={{ duration: 0.5 }}
            className="mb-8 relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-background shadow-2xl ring-4 ring-primary/20 bg-primary/10"
         >
-          <Image src="/awadh-about.jpg" alt="Awadh Profile" fill className="object-cover" />
+          <Image 
+            src="/awadh-about.jpg" 
+            alt="Awadh Kishor Singh - Full Stack Developer Profile Picture" 
+            fill 
+            className="object-cover" 
+            priority
+            sizes="(max-width: 768px) 128px, 160px"
+            quality={90}
+            placeholder="blur"
+            blurDataURL="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect fill='%23f3f4f6' width='400' height='400'/%3E%3C/svg%3E"
+          />
         </motion.div>
 
         <motion.div

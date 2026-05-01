@@ -34,9 +34,13 @@ export default function About() {
               <div className="absolute inset-0 rounded-3xl overflow-hidden border border-border shadow-2xl">
                 <Image
                   src={image}
-                  alt="Profile Image"
+                  alt="Awadh Kishor Singh - Full Stack Developer"
                   fill
                   className="object-cover"
+                  sizes="(max-width: 768px) 288px, 320px"
+                  quality={85}
+                  placeholder="blur"
+                  blurDataURL="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect fill='%23f3f4f6' width='400' height='400'/%3E%3C/svg%3E"
                 />
               </div>
               {/* Decorative badge */}
