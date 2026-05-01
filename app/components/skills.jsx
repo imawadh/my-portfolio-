@@ -6,17 +6,18 @@ import { getSkillIcon } from "@/app/lib/skill-icons";
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-24 bg-transparent">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="skills" className="py-32 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="mb-20"
         >
-          <p className="text-muted-foreground text-sm font-semibold uppercase tracking-widest mb-3">My Toolkit</p>
-          <h2 className="text-4xl md:text-5xl font-heading text-foreground mb-8">Skills & Technologies</h2>
+          <p className="text-accent font-semibold tracking-widest uppercase text-sm mb-3">Expertise</p>
+          <h2 className="text-5xl md:text-6xl font-heading text-foreground font-bold mb-8">Skills & Technologies</h2>
         </motion.div>
 
         {/* Marquee Banner */}
@@ -42,11 +43,11 @@ export default function Skills() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="border border-border rounded-2xl p-6 bg-background hover:border-primary/40 hover:shadow-xl transition-all duration-300 group"
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className="rounded-xl p-6 border border-accent/20 bg-secondary/30 hover:bg-secondary/50 hover:border-accent/40 transition-all duration-300 group"
             >
-              <h3 className="text-base font-semibold mb-5 text-foreground flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-primary inline-block group-hover:scale-150 transition-transform"></span>
+              <h3 className="text-lg font-semibold mb-5 text-foreground flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-accent inline-block group-hover:scale-150 transition-transform"></span>
                 {skillGroup.category}
               </h3>
               <div className="flex flex-wrap gap-2">
@@ -55,9 +56,9 @@ export default function Skills() {
                   return (
                     <div
                       key={skill}
-                      className="flex items-center gap-1.5 px-3 py-1.5 border border-border rounded-full text-xs font-medium text-muted-foreground hover:border-primary/50 hover:text-foreground hover:bg-secondary transition-all duration-200"
+                      className="flex items-center gap-1.5 px-3 py-2 border border-accent/20 rounded-lg text-xs font-medium text-muted-foreground hover:border-accent/60 hover:text-accent hover:bg-accent/5 transition-all duration-200"
                     >
-                      {Icon && <Icon className="text-sm text-muted-foreground" />}
+                      {Icon && <Icon className="text-sm text-muted-foreground group-hover:text-accent" />}
                       {skill}
                     </div>
                   );

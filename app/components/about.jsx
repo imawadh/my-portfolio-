@@ -8,75 +8,87 @@ export default function About() {
   const { title, paragraphs, image, stats } = siteContent.about;
 
   return (
-    <section id="about" className="py-24 bg-transparent">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="about" className="py-32 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="mb-20"
         >
-          <p className="text-muted-foreground text-sm font-semibold uppercase tracking-widest mb-3">Get to know me</p>
-          <h2 className="text-4xl md:text-5xl font-heading text-foreground">{title}</h2>
+          <p className="text-accent font-semibold tracking-widest uppercase text-sm mb-3">About</p>
+          <h2 className="text-5xl md:text-6xl font-heading text-foreground font-bold">{title}</h2>
         </motion.div>
 
-        <div className="flex flex-col lg:flex-row items-center gap-16">
+        <div className="grid lg:grid-cols-12 gap-12 items-start">
           {/* Image Side */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="lg:w-5/12 relative flex justify-center"
+            transition={{ duration: 0.7 }}
+            className="lg:col-span-5"
           >
-            <div className="relative w-72 h-80 md:w-80 md:h-96">
-              <div className="absolute inset-0 rounded-3xl overflow-hidden border border-border shadow-2xl">
+            <div className="relative">
+              <div className="relative h-96 md:h-[480px] rounded-2xl overflow-hidden border border-accent/20 shadow-2xl">
                 <Image
                   src={image}
                   alt="Awadh Kishor Singh - Full Stack Developer"
                   fill
                   className="object-cover"
-                  sizes="(max-width: 768px) 288px, 320px"
+                  sizes="(max-width: 768px) 100vw, 40vw"
                   quality={85}
                   placeholder="blur"
-                  blurDataURL="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect fill='%23f3f4f6' width='400' height='400'/%3E%3C/svg%3E"
+                  blurDataURL="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect fill='%231e293b' width='400' height='400'/%3E%3C/svg%3E"
                 />
               </div>
               {/* Decorative badge */}
-              <div className="absolute -bottom-5 -right-5 bg-background border border-border rounded-2xl shadow-xl p-4 flex items-center gap-3">
-                <span className="text-2xl font-heading font-bold text-gradient">{stats[0]?.value}</span>
-                <span className="text-xs text-muted-foreground leading-tight max-w-[80px]">{stats[0]?.label}</span>
-              </div>
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="absolute -bottom-6 -right-6 bg-background border border-accent/30 rounded-xl shadow-xl p-6 flex items-center gap-4"
+              >
+                <div>
+                  <p className="text-3xl font-heading font-bold text-gradient">{stats[0]?.value}</p>
+                  <p className="text-xs text-muted-foreground mt-1">{stats[0]?.label}</p>
+                </div>
+              </motion.div>
             </div>
           </motion.div>
 
           {/* Text Side */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="lg:w-7/12"
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="lg:col-span-7"
           >
-            {paragraphs.map((p, i) => (
-              <p key={i} className="text-lg text-muted-foreground mb-5 leading-relaxed">
-                {p}
-              </p>
-            ))}
+            <div className="space-y-6">
+              {paragraphs.map((p, i) => (
+                <p key={i} className="text-lg text-muted-foreground leading-relaxed">
+                  {p}
+                </p>
+              ))}
+            </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-8">
+            {/* Stats Grid */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-12">
               {stats.map((stat, i) => (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, y: 10 }}
+                  initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 + 0.3 }}
-                  className="p-5 rounded-2xl border border-border bg-secondary hover:border-primary/40 transition-all duration-300 text-center group"
+                  transition={{ delay: i * 0.1 + 0.4 }}
+                  className="p-5 rounded-xl border border-accent/20 bg-secondary/30 hover:bg-secondary/50 hover:border-accent/40 transition-all duration-300 text-center group"
                 >
-                  <h3 className="font-heading text-2xl font-bold text-gradient mb-1">{stat.value}</h3>
-                  <span className="text-muted-foreground text-xs">{stat.label}</span>
+                  <p className="font-heading text-2xl md:text-3xl font-bold text-accent mb-2">{stat.value}</p>
+                  <span className="text-xs text-muted-foreground">{stat.label}</span>
                 </motion.div>
               ))}
             </div>

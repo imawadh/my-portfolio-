@@ -51,146 +51,191 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 bg-transparent">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="py-32 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
         <motion.div
            initial={{ opacity: 0, y: 20 }}
            whileInView={{ opacity: 1, y: 0 }}
            viewport={{ once: true }}
            transition={{ duration: 0.6 }}
-           className="text-center mb-16"
+           className="mb-20"
         >
-          <p className="text-muted-foreground text-sm font-semibold uppercase tracking-widest mb-3">Let&apos;s connect</p>
-          <h2 className="text-4xl md:text-5xl font-heading text-foreground">Get In Touch</h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto mt-4">
+          <p className="text-accent font-semibold tracking-widest uppercase text-sm mb-3">Let&apos;s Connect</p>
+          <h2 className="text-5xl md:text-6xl font-heading text-foreground font-bold">Get In Touch</h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mt-4 leading-relaxed">
             Have a project in mind or just want to say hi? I&apos;d love to hear from you.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-2 gap-12">
+          {/* Contact Info */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.6 }}
           >
-            <h3 className="text-xl font-bold mb-6 text-foreground border-b border-primary/20 pb-2 inline-block">Contact Information</h3>
+            <h3 className="text-2xl font-bold mb-8 text-foreground">Contact Information</h3>
             <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                    <div className="p-3 bg-secondary rounded-lg text-primary border border-primary/10">
-                        <Mail size={24} />
-                    </div>
-                    <div>
-                        <h4 className="font-medium mb-1 text-foreground">Email</h4>
-                        <a href="mailto:srsclasses56@gmail.com" aria-label="Send email to awadhkishorsingh241@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
-                            awadhkishorsingh241@gmail.com
-                        </a>
-                    </div>
+              {/* Email */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1 }}
+                className="flex items-start gap-4"
+              >
+                <div className="p-3 bg-accent/10 rounded-lg text-accent border border-accent/30">
+                  <Mail size={24} />
                 </div>
-                <div className="flex items-start gap-4">
-                     <div className="p-3 bg-secondary rounded-lg text-primary border border-primary/10">
-                        <Phone size={24} />
-                    </div>
-                    <div>
-                        <h4 className="font-medium mb-1 text-foreground">Phone</h4>
-                        <a href="tel:+917985000241" aria-label="Call +91 7985000241" className="text-muted-foreground hover:text-primary transition-colors">
-                            +91 7985000241
-                        </a>
-                    </div>
+                <div>
+                  <h4 className="font-semibold mb-1 text-foreground">Email</h4>
+                  <a href="mailto:awadhkishorsingh241@gmail.com" aria-label="Send email" className="text-muted-foreground hover:text-accent transition-colors">
+                    awadhkishorsingh241@gmail.com
+                  </a>
                 </div>
-                <div className="flex items-start gap-4">
-                     <div className="p-3 bg-secondary rounded-lg text-primary border border-primary/10">
-                        <MapPin size={24} />
-                    </div>
-                    <div>
-                        <h4 className="font-medium mb-1 text-foreground">Location</h4>
-                        <p className="text-muted-foreground">
-                            Yello Living, Extension Road, Pattandur Agrahara, Bengaluru, 560066
-                        </p>
-                    </div>
+              </motion.div>
+
+              {/* Phone */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.15 }}
+                className="flex items-start gap-4"
+              >
+                <div className="p-3 bg-accent/10 rounded-lg text-accent border border-accent/30">
+                  <Phone size={24} />
                 </div>
+                <div>
+                  <h4 className="font-semibold mb-1 text-foreground">Phone</h4>
+                  <a href="tel:+917985000241" aria-label="Call" className="text-muted-foreground hover:text-accent transition-colors">
+                    +91 7985000241
+                  </a>
+                </div>
+              </motion.div>
+
+              {/* Location */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+                className="flex items-start gap-4"
+              >
+                <div className="p-3 bg-accent/10 rounded-lg text-accent border border-accent/30">
+                  <MapPin size={24} />
+                </div>
+                <div>
+                  <h4 className="font-semibold mb-1 text-foreground">Location</h4>
+                  <p className="text-muted-foreground">
+                    Bengaluru, India
+                  </p>
+                </div>
+              </motion.div>
             </div>
 
-             <div className="mt-8">
-                <h4 className="font-medium mb-4 text-foreground">Follow Me</h4>
-                <SocialLinks />
-            </div>
+            {/* Social Links */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.25 }}
+              className="mt-12"
+            >
+              <h4 className="font-semibold mb-4 text-foreground">Follow Me</h4>
+              <SocialLinks />
+            </motion.div>
           </motion.div>
 
+          {/* Contact Form */}
           <motion.div
              initial={{ opacity: 0, x: 20 }}
              whileInView={{ opacity: 1, x: 0 }}
              viewport={{ once: true }}
-             transition={{ duration: 0.5 }}
-             className="border border-border bg-background p-8 rounded-2xl shadow-lg"
+             transition={{ duration: 0.6 }}
+             className="border border-accent/20 bg-secondary/30 p-8 rounded-2xl"
           >
             <form className="space-y-6" onSubmit={handleSubmit}>
-                <div className="grid md:grid-cols-2 gap-6">
-                    <div>
-                        <label htmlFor="name" className="block text-sm font-medium mb-2 text-foreground">Name</label>
-                        <input 
-                          required
-                          type="text" 
-                          id="name" 
-                          value={formData.name}
-                          onChange={handleChange}
-                          suppressHydrationWarning
-                          className="w-full px-4 py-3 rounded-lg bg-background border border-border text-foreground focus:ring-2 focus:ring-primary focus:outline-none transition-all placeholder:text-muted-foreground" placeholder="John Doe" 
-                        />
-                    </div>
-                    <div>
-                         <label htmlFor="email" className="block text-sm font-medium mb-2 text-foreground">Email</label>
-                         <input 
-                           required
-                           type="email" 
-                           id="email" 
-                           value={formData.email}
-                           onChange={handleChange}
-                           suppressHydrationWarning
-                           className="w-full px-4 py-3 rounded-lg bg-background border border-border text-foreground focus:ring-2 focus:ring-primary focus:outline-none transition-all placeholder:text-muted-foreground" placeholder="john@example.com" 
-                         />
-                    </div>
+              {/* Name & Email */}
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-semibold mb-2 text-foreground">Name</label>
+                  <input 
+                    required
+                    type="text" 
+                    id="name" 
+                    value={formData.name}
+                    onChange={handleChange}
+                    suppressHydrationWarning
+                    className="w-full px-4 py-3 rounded-lg bg-secondary/30 border border-accent/20 text-foreground focus:ring-2 focus:ring-accent focus:border-accent focus:outline-none transition-all placeholder:text-muted-foreground" 
+                    placeholder="John Doe" 
+                  />
                 </div>
                 <div>
-                    <label htmlFor="subject" className="block text-sm font-medium mb-2 text-foreground">Subject</label>
-                    <input 
-                      required
-                      type="text" 
-                      id="subject" 
-                      value={formData.subject}
-                      onChange={handleChange}
-                      suppressHydrationWarning
-                      className="w-full px-4 py-3 rounded-lg bg-background border border-border text-foreground focus:ring-2 focus:ring-primary focus:outline-none transition-all placeholder:text-muted-foreground" placeholder="Project Inquiry" 
-                    />
+                  <label htmlFor="email" className="block text-sm font-semibold mb-2 text-foreground">Email</label>
+                  <input 
+                    required
+                    type="email" 
+                    id="email" 
+                    value={formData.email}
+                    onChange={handleChange}
+                    suppressHydrationWarning
+                    className="w-full px-4 py-3 rounded-lg bg-secondary/30 border border-accent/20 text-foreground focus:ring-2 focus:ring-accent focus:border-accent focus:outline-none transition-all placeholder:text-muted-foreground" 
+                    placeholder="john@example.com" 
+                  />
                 </div>
-                <div>
-                     <label htmlFor="message" className="block text-sm font-medium mb-2 text-foreground">Message</label>
-                     <textarea 
-                       required
-                       id="message" 
-                       rows={4} 
-                       value={formData.message}
-                       onChange={handleChange}
-                       suppressHydrationWarning
-                       className="w-full px-4 py-3 rounded-lg bg-background border border-border text-foreground focus:ring-2 focus:ring-primary focus:outline-none transition-all placeholder:text-muted-foreground" placeholder="Tell me about your project..."></textarea>
-                </div>
-                
-                <button
-                  type="submit"
-                  disabled={status.loading}
-                  aria-label="Send Contact Message"
-                  suppressHydrationWarning
-                  className={`w-full py-4 btn-primary font-bold rounded-full transition-all flex items-center justify-center gap-2 cursor-pointer ${status.loading ? 'opacity-70 cursor-not-allowed' : ''}`}
-                >
-                  {status.loading ? "Sending..." : "Send Message"}
-                </button>
+              </div>
 
-                {status.success && (
-                  <p className="text-green-600 text-center text-sm font-medium mt-4">{status.success}</p>
-                )}
-                {status.error && (
-                  <p className="text-red-600 text-center text-sm font-medium mt-4">{status.error}</p>
-                )}
+              {/* Subject */}
+              <div>
+                <label htmlFor="subject" className="block text-sm font-semibold mb-2 text-foreground">Subject</label>
+                <input 
+                  required
+                  type="text" 
+                  id="subject" 
+                  value={formData.subject}
+                  onChange={handleChange}
+                  suppressHydrationWarning
+                  className="w-full px-4 py-3 rounded-lg bg-secondary/30 border border-accent/20 text-foreground focus:ring-2 focus:ring-accent focus:border-accent focus:outline-none transition-all placeholder:text-muted-foreground" 
+                  placeholder="Project Inquiry" 
+                />
+              </div>
+
+              {/* Message */}
+              <div>
+                <label htmlFor="message" className="block text-sm font-semibold mb-2 text-foreground">Message</label>
+                <textarea 
+                  required
+                  id="message" 
+                  rows={4} 
+                  value={formData.message}
+                  onChange={handleChange}
+                  suppressHydrationWarning
+                  className="w-full px-4 py-3 rounded-lg bg-secondary/30 border border-accent/20 text-foreground focus:ring-2 focus:ring-accent focus:border-accent focus:outline-none transition-all placeholder:text-muted-foreground resize-none" 
+                  placeholder="Tell me about your project..."
+                />
+              </div>
+              
+              {/* Submit Button */}
+              <button
+                type="submit"
+                disabled={status.loading}
+                aria-label="Send Contact Message"
+                suppressHydrationWarning
+                className={`w-full py-3.5 btn-primary font-semibold rounded-lg transition-all flex items-center justify-center gap-2 ${status.loading ? 'opacity-70 cursor-not-allowed' : 'cursor-pointer hover:scale-105'}`}
+              >
+                {status.loading ? "Sending..." : "Send Message"}
+              </button>
+
+              {/* Status Messages */}
+              {status.success && (
+                <p className="text-green-400 text-center text-sm font-medium mt-4">{status.success}</p>
+              )}
+              {status.error && (
+                <p className="text-red-400 text-center text-sm font-medium mt-4">{status.error}</p>
+              )}
             </form>
           </motion.div>
         </div>
