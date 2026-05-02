@@ -31,7 +31,20 @@ export default function FreelanceReviews() {
     try {
       const res = await fetch("/api/freelance-projects", { cache: "no-store" });
       const data = await res.json();
-      setProjects(data);
+      
+      // Deduplicate projects by ID
+      const uniqueProjects = Array.isArray(data) ? data : [];
+      const seenIds = new Set();
+      const deduplicatedProjects = uniqueProjects.filter((project) => {
+        const id = project._id || project.id;
+        if (seenIds.has(id)) {
+          return false;
+        }
+        seenIds.add(id);
+        return true;
+      });
+      
+      setProjects(deduplicatedProjects);
     } catch (error) {
       console.error("Error fetching projects:", error);
     } finally {
