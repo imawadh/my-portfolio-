@@ -1,0 +1,145 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+
+const techStack = ['Next.js', 'Tailwind CSS', 'MongoDB', 'Node.js', 'Express.js'];
+
+const features = [
+  'User authentication and profile management',
+  'Structured course content with lessons',
+  'Interactive mock tests with instant feedback',
+  'Progress tracking and performance analytics',
+  'Responsive design for mobile and desktop',
+];
+
+const meta = [
+  { label: 'Role', value: 'Full Stack Developer' },
+  { label: 'Status', value: 'Live in production' },
+  { label: 'Stack', value: 'Next.js · MongoDB · Node' },
+];
+---
+
+<PageLayout
+  title="The SRS Classes — Awadh Kishor Singh"
+  description="Case study of The SRS Classes, an educational platform for competitive exams."
+  ogImage="https://picsum.photos/1200/630?random=4"
+>
+  <article class="container mx-auto px-6 py-16 md:px-8 md:py-24">
+    <a
+      href="/projects"
+      class="mb-8 inline-flex items-center gap-1.5 font-mono text-xs text-[var(--muted)] transition-colors duration-300 hover:text-[var(--accent)]"
+    >
+      ← Back to projects
+    </a>
+
+    <span class="eyebrow">Case study</span>
+    <h1 class="mb-4 text-4xl font-semibold tracking-tight text-[var(--fg)] md:text-5xl">
+      The SRS Classes
+    </h1>
+    <p class="mb-10 max-w-[680px] text-base text-[var(--muted)] md:text-lg">
+      An ed-tech platform helping aspirants prepare for BPSC and other competitive exams — courses,
+      mock tests, and progress tracking in one polished interface.
+    </p>
+
+    <div class="mb-10 overflow-hidden rounded-2xl border border-[var(--border)] bg-[rgba(253,246,238,0.55)] backdrop-blur-[20px] dark:bg-[rgba(4,8,15,0.55)]">
+      <img
+        src="https://picsum.photos/800/400?random=4"
+        alt="The SRS Classes"
+        class="h-72 w-full object-cover md:h-96"
+      />
+    </div>
+
+    <div class="mb-12 grid gap-3 md:grid-cols-3">
+      {meta.map((m) => (
+        <div class="rounded-2xl border border-[var(--border)] bg-[rgba(253,246,238,0.55)] p-5 backdrop-blur-[20px] dark:bg-[rgba(4,8,15,0.55)]">
+          <span class="font-mono text-[0.7rem] uppercase tracking-[0.14em] text-[var(--muted)]">{m.label}</span>
+          <p class="mt-1.5 mb-0 text-sm font-medium text-[var(--fg)]">{m.value}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="flex flex-col gap-10">
+      <section>
+        <h2 class="mb-3 mt-0 text-2xl font-semibold text-[var(--fg)]">Overview</h2>
+        <p class="m-0 leading-relaxed text-[var(--fg)]">
+          The SRS Classes is a comprehensive online learning platform that consolidates structured
+          courses, study materials, and mock tests for competitive exam preparation. Built with a
+          modern stack to keep the learning experience seamless across devices.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="mb-3 mt-0 text-2xl font-semibold text-[var(--fg)]">Problem</h2>
+        <p class="m-0 leading-relaxed text-[var(--fg)]">
+          Competitive exam aspirants were stitching together fragmented tools — separate places for
+          notes, tests, and progress. Existing platforms felt clunky, and none of them put a
+          coherent learning loop in one place.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="mb-3 mt-0 text-2xl font-semibold text-[var(--fg)]">Solution</h2>
+        <p class="m-0 leading-relaxed text-[var(--fg)]">
+          A full-stack web app that brings courses, materials, mock tests, and analytics under one
+          roof. Authentication, course management, and detailed performance tracking are all built
+          to feel like a single product, not a stack of features.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="mb-4 mt-0 text-2xl font-semibold text-[var(--fg)]">Tech stack</h2>
+        <div class="flex flex-wrap gap-2">
+          {techStack.map((t) => (
+            <span class="rounded-md border border-[var(--border)] bg-[var(--surface)]/60 px-3 py-1.5 font-mono text-xs text-[var(--fg)]">
+              {t}
+            </span>
+          ))}
+        </div>
+      </section>
+
+      <section>
+        <h2 class="mb-4 mt-0 text-2xl font-semibold text-[var(--fg)]">Key features</h2>
+        <ul class="m-0 grid list-none gap-2 p-0 md:grid-cols-2">
+          {features.map((f) => (
+            <li class="m-0 flex items-start gap-3 rounded-2xl border border-[var(--border)] bg-[rgba(253,246,238,0.55)] p-4 text-sm text-[var(--fg)] backdrop-blur-[20px] dark:bg-[rgba(4,8,15,0.55)]">
+              <span class="mt-1.5 inline-block h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[var(--accent)]"></span>
+              <span>{f}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="mb-3 mt-0 text-2xl font-semibold text-[var(--fg)]">Outcome</h2>
+        <p class="m-0 leading-relaxed text-[var(--fg)]">
+          The platform has launched and is now used by hundreds of aspirants in their exam
+          preparation journey. It continues to be maintained and improved based on user feedback.
+        </p>
+      </section>
+    </div>
+
+    <div class="mt-12 flex flex-wrap gap-3 border-t border-[var(--border)] pt-8">
+      <a
+        href="https://thesrsclasses.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 rounded-xl border border-[var(--accent)] bg-[var(--accent)] px-5 py-2.5 text-sm font-medium text-[var(--bg)] transition-all duration-300 hover:bg-[var(--accent-light)] hover:border-[var(--accent-light)]"
+      >
+        Visit live site →
+      </a>
+      <a
+        href="https://github.com/imawadh/srs-website"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 rounded-xl border border-[var(--border)] bg-transparent px-5 py-2.5 text-sm font-medium text-[var(--fg)] transition-colors duration-300 hover:border-[var(--accent)] hover:text-[var(--accent)]"
+      >
+        View code
+      </a>
+      <a
+        href="/projects"
+        class="inline-flex items-center gap-2 rounded-xl border border-[var(--border)] bg-transparent px-5 py-2.5 text-sm font-medium text-[var(--fg)] transition-colors duration-300 hover:border-[var(--accent)] hover:text-[var(--accent)]"
+      >
+        ← All projects
+      </a>
+    </div>
+  </article>
+</PageLayout>

@@ -1,0 +1,63 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import CertCard from '../components/CertCard.astro';
+
+const certifications = [
+  {
+    date: 'Jan 2026',
+    title: 'The Complete FullStack Web Development Bootcamp',
+    issuer: 'Dr. Angela Yu · Udemy',
+    details: '70 hours of full-stack web development',
+    url: 'https://www.udemy.com/certificate/UC-16b07d74-aa19-45d3-924c-41b9e7fae772/',
+  },
+  {
+    date: 'April 2025',
+    title: 'Python Intellipaat Certification',
+    issuer: 'Intellipaat',
+    details: 'Professional Python certification',
+    url: 'https://intellipaat.com/academy/certificate-link/?Yz0xNTQzJnU9MTY2Njk4JmV4dD0x',
+  },
+  {
+    date: 'March 2025',
+    title: 'Mathematics for Data Science & ML Bootcamp',
+    issuer: 'Krish Naik · Udemy',
+    details: 'Mathematical foundations for machine learning',
+    url: 'https://www.udemy.com/certificate/UC-d4ef6961-95f9-4912-be28-c2c0cf02974a/',
+  },
+  {
+    date: 'Jan 2025',
+    title: 'Complete Data Analysis Bootcamp',
+    issuer: 'Krish Naik · Udemy',
+    details: 'Comprehensive data analysis training',
+    url: 'https://www.udemy.com/certificate/UC-1590fb55-374f-406a-8285-014f7a1b1088/',
+  },
+];
+---
+
+<PageLayout
+  title="Certifications — Awadh Kishor Singh"
+  description="Verified learning and certifications earned by Awadh Kishor Singh in full stack development, Python, and data science."
+>
+  <section class="container mx-auto px-6 py-16 md:px-8 md:py-24">
+    <span class="eyebrow">Verified learning</span>
+    <h1 class="mb-3 text-4xl font-semibold tracking-tight text-[var(--fg)] md:text-5xl">
+      Licenses & certifications
+    </h1>
+    <p class="mb-12 max-w-[640px] text-base text-[var(--muted)] md:text-lg">
+      Professional certifications collected through continuous learning across full-stack, Python,
+      and data science.
+    </p>
+
+    <div class="flex flex-col gap-3">
+      {certifications.map((cert) => (
+        <CertCard
+          date={cert.date}
+          title={cert.title}
+          issuer={cert.issuer}
+          details={cert.details}
+          url={cert.url}
+        />
+      ))}
+    </div>
+  </section>
+</PageLayout>

@@ -1,0 +1,93 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import SkillCard from '../components/SkillCard.astro';
+
+const skillsData = [
+  {
+    category: 'Frontend',
+    skills: ['HTML5', 'CSS3', 'JavaScript', 'Tailwind', 'Bootstrap', 'Jinja'],
+  },
+  {
+    category: 'Backend',
+    skills: ['Node.js', 'Express.js', 'MongoDB', 'SQL', 'Flask'],
+  },
+  {
+    category: 'Tools',
+    skills: ['Git', 'VS Code', 'Postman'],
+  },
+  {
+    category: 'Data Analysis',
+    skills: ['Power BI', 'SQL', 'NumPy', 'Matplotlib'],
+  },
+  {
+    category: 'Machine Learning',
+    skills: ['Python', 'Scikit-learn', 'Statistics', 'Linear Algebra', 'Pandas', 'NLP'],
+  },
+  {
+    category: 'AI & Agents',
+    skills: ['Gen AI', 'Claude', 'MCP', 'OpenAI', 'Prompt Engineering', 'Agentic Workflows'],
+  },
+  {
+    category: 'Other',
+    skills: ['Mixpanel', 'Google Analytics', 'Sentry'],
+  },
+];
+
+const allSkills = skillsData.flatMap((cat) => cat.skills);
+---
+
+<PageLayout
+  title="Skills & Technologies — Awadh Kishor Singh"
+  description="Awadh's full tech stack: React, Node.js, MongoDB, Python, Machine Learning, and more."
+>
+  <section class="container mx-auto px-6 py-16 md:px-8 md:py-24">
+    <span class="eyebrow">What I work with</span>
+    <h1 class="mb-3 text-4xl font-semibold tracking-tight text-[var(--fg)] md:text-5xl">
+      Skills & technologies
+    </h1>
+    <p class="mb-12 max-w-[640px] text-base text-[var(--muted)] md:text-lg">
+      A snapshot of the languages, frameworks, and tools I reach for across full-stack work,
+      data analysis, and machine learning.
+    </p>
+
+    <div class="grid gap-4 md:grid-cols-2">
+      {skillsData.map((categoryGroup) => (
+        <SkillCard category={categoryGroup.category} skills={categoryGroup.skills} />
+      ))}
+    </div>
+
+    <div class="mt-16">
+      <span class="eyebrow">Everything in one line</span>
+      <div class="mt-3 overflow-hidden rounded-2xl border border-[var(--border)] bg-[rgba(253,246,238,0.55)] p-4 backdrop-blur-[20px] dark:bg-[rgba(4,8,15,0.55)]">
+        <div class="marquee-track flex gap-3">
+          {allSkills.map((skill) => (
+            <span class="flex-shrink-0 whitespace-nowrap rounded-md border border-[var(--border)] bg-[var(--surface)]/60 px-3 py-1.5 font-mono text-xs text-[var(--fg)]">
+              {skill}
+            </span>
+          ))}
+          {allSkills.map((skill) => (
+            <span class="flex-shrink-0 whitespace-nowrap rounded-md border border-[var(--border)] bg-[var(--surface)]/60 px-3 py-1.5 font-mono text-xs text-[var(--fg)]">
+              {skill}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+  .marquee-track {
+    animation: marquee 30s linear infinite;
+    width: max-content;
+  }
+
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-50% - 0.375rem)); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track { animation: none; }
+  }
+</style>

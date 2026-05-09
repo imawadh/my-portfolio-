@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://awadh.tech/sitemap-index.xml

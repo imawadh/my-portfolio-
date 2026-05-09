@@ -1,0 +1,59 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+
+const freelanceProjects = [
+  {
+    name: 'CryptoFolio',
+    description: 'A cryptocurrency portfolio tracker delivered as freelance work — real-time prices, performance analytics, and a clean dashboard.',
+    tags: ['React.js', 'Tailwind CSS', 'Node.js', 'Express.js', 'MongoDB'],
+    live: 'https://task-cryptopolio-main-two.vercel.app/',
+    code: 'https://github.com/imawadh/task-cryptopolio-main',
+    caseStudy: '/projects/cryptofolio',
+    image: 'https://picsum.photos/800/400?random=5',
+  },
+];
+---
+
+<PageLayout
+  title="Freelance Projects — Awadh Kishor Singh"
+  description="Freelance web application work by Awadh Kishor Singh including client projects like CryptoFolio."
+>
+  <section class="container mx-auto px-6 py-16 md:px-8 md:py-24">
+    <span class="eyebrow">Independent client work</span>
+    <h1 class="mb-3 text-4xl font-semibold tracking-tight text-[var(--fg)] md:text-5xl">
+      Freelance projects
+    </h1>
+    <p class="mb-12 max-w-[640px] text-base text-[var(--muted)] md:text-lg">
+      Independent contract work focused on full-stack applications, UI polish, and dependable delivery.
+    </p>
+
+    <div class="grid gap-6 md:grid-cols-1 lg:grid-cols-2">
+      {freelanceProjects.map((project) => (
+        <ProjectCard
+          name={project.name}
+          description={project.description}
+          tags={project.tags}
+          live={project.live}
+          code={project.code}
+          caseStudy={project.caseStudy}
+          image={project.image}
+        />
+      ))}
+    </div>
+
+    <div class="mt-12 rounded-2xl border border-[var(--border)] bg-[rgba(253,246,238,0.55)] p-8 backdrop-blur-[20px] transition-colors duration-300 hover:border-[var(--accent)] dark:bg-[rgba(4,8,15,0.55)] md:p-10">
+      <span class="eyebrow">Open for work</span>
+      <h2 class="mb-3 mt-0 text-2xl font-semibold text-[var(--fg)] md:text-3xl">Have a project in mind?</h2>
+      <p class="mb-6 max-w-[560px] text-sm text-[var(--muted)] md:text-base">
+        I'm currently taking on a small number of new freelance and contract engagements.
+      </p>
+      <a
+        href="/contact"
+        class="inline-flex items-center gap-2 rounded-xl border border-[var(--accent)] bg-[var(--accent)] px-5 py-2.5 text-sm font-medium text-[var(--bg)] transition-all duration-300 hover:bg-[var(--accent-light)] hover:border-[var(--accent-light)]"
+      >
+        Get in touch →
+      </a>
+    </div>
+  </section>
+</PageLayout>

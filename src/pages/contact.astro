@@ -1,0 +1,135 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import { socials } from '../utils/socials';
+
+const contactDetails = [
+  { label: 'Email', value: 'awadhkishorsingh241@gmail.com', href: 'mailto:awadhkishorsingh241@gmail.com' },
+  { label: 'Phone', value: '+91 7985000241', href: 'tel:+917985000241' },
+  { label: 'Location', value: 'Pattandur Agrahara, Bengaluru 560066', href: null },
+];
+---
+
+<PageLayout
+  title="Contact — Awadh Kishor Singh"
+  description="Get in touch with Awadh Kishor Singh for freelance projects, collaborations, or just to say hi."
+>
+  <section class="container mx-auto px-6 py-16 md:px-8 md:py-24">
+    <span class="eyebrow">Let's talk</span>
+    <h1 class="mb-3 text-4xl font-semibold tracking-tight text-[var(--fg)] md:text-5xl">
+      Get in touch
+    </h1>
+    <p class="mb-12 max-w-[640px] text-base text-[var(--muted)] md:text-lg">
+      Have a project in mind, want to collaborate, or just want to say hi? I'd love to hear from you.
+    </p>
+
+    <div class="grid gap-6 md:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)]">
+      <div class="flex flex-col gap-3">
+        {contactDetails.map((c) => (
+          <div class="rounded-2xl border border-[var(--border)] bg-[rgba(253,246,238,0.55)] p-5 backdrop-blur-[20px] transition-colors duration-300 hover:border-[var(--accent)] dark:bg-[rgba(4,8,15,0.55)]">
+            <span class="font-mono text-[0.7rem] uppercase tracking-[0.14em] text-[var(--muted)]">{c.label}</span>
+            {c.href ? (
+              <a
+                href={c.href}
+                class="mt-1.5 block break-all text-sm font-medium text-[var(--fg)] no-underline transition-colors duration-300 hover:text-[var(--accent)]"
+                style="border: none;"
+              >
+                {c.value}
+              </a>
+            ) : (
+              <p class="mt-1.5 mb-0 text-sm font-medium text-[var(--fg)]">{c.value}</p>
+            )}
+          </div>
+        ))}
+
+        <div class="rounded-2xl border border-[var(--border)] bg-[rgba(253,246,238,0.55)] p-5 backdrop-blur-[20px] dark:bg-[rgba(4,8,15,0.55)]">
+          <span class="font-mono text-[0.7rem] uppercase tracking-[0.14em] text-[var(--muted)]">Follow</span>
+          <div class="mt-3 flex flex-wrap gap-2">
+            {socials.map((social) => (
+              <a
+                href={social.url}
+                title={social.label}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="rounded-xl border border-[var(--border)] bg-[var(--surface)]/40 px-3 py-1.5 text-xs font-medium text-[var(--muted)] no-underline transition-colors duration-300 hover:border-[var(--accent)] hover:text-[var(--accent)]"
+                style="border-color: var(--border);"
+              >
+                {social.label}
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div class="rounded-2xl border border-[var(--border)] bg-[rgba(253,246,238,0.55)] p-6 backdrop-blur-[20px] dark:bg-[rgba(4,8,15,0.55)] md:p-8">
+        <form
+          name="contact"
+          method="POST"
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
+          class="flex flex-col gap-5"
+        >
+          <input type="hidden" name="form-name" value="contact" />
+
+          <div class="flex flex-col gap-2">
+            <label for="name" class="text-sm font-medium text-[var(--fg)]">Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Your name"
+              required
+              class="rounded-xl border border-[var(--border)] bg-transparent px-4 py-2.5 text-sm text-[var(--fg)] outline-none transition-colors duration-300 focus:border-[var(--accent)]"
+            />
+          </div>
+
+          <div class="flex flex-col gap-2">
+            <label for="email" class="text-sm font-medium text-[var(--fg)]">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="your@email.com"
+              required
+              class="rounded-xl border border-[var(--border)] bg-transparent px-4 py-2.5 text-sm text-[var(--fg)] outline-none transition-colors duration-300 focus:border-[var(--accent)]"
+            />
+          </div>
+
+          <div class="flex flex-col gap-2">
+            <label for="subject" class="text-sm font-medium text-[var(--fg)]">Subject</label>
+            <input
+              type="text"
+              id="subject"
+              name="subject"
+              placeholder="What's this about?"
+              required
+              class="rounded-xl border border-[var(--border)] bg-transparent px-4 py-2.5 text-sm text-[var(--fg)] outline-none transition-colors duration-300 focus:border-[var(--accent)]"
+            />
+          </div>
+
+          <div class="flex flex-col gap-2">
+            <label for="message" class="text-sm font-medium text-[var(--fg)]">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Your message..."
+              rows={5}
+              required
+              class="resize-y rounded-xl border border-[var(--border)] bg-transparent px-4 py-2.5 text-sm text-[var(--fg)] outline-none transition-colors duration-300 focus:border-[var(--accent)]"
+            ></textarea>
+          </div>
+
+          <button
+            type="submit"
+            class="self-start rounded-xl border border-[var(--accent)] bg-[var(--accent)] px-5 py-2.5 text-sm font-medium text-[var(--bg)] transition-all duration-300 hover:bg-[var(--accent-light)] hover:border-[var(--accent-light)]"
+          >
+            Send message →
+          </button>
+
+          <p class="m-0 mt-2 border-t border-[var(--border)] pt-4 text-xs text-[var(--muted)]">
+            Currently open for new opportunities and freelance projects.
+          </p>
+        </form>
+      </div>
+    </div>
+  </section>
+</PageLayout>

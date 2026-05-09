@@ -1,0 +1,90 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+
+const stats = [
+  { value: '5', label: 'Projects shipped' },
+  { value: '3', label: 'Freelance clients' },
+  { value: '2+', label: 'Years coding' },
+];
+
+const quickNav = [
+  { label: 'Skills', href: '/skills' },
+  { label: 'Experience', href: '/experience' },
+  { label: 'Projects', href: '/projects' },
+  { label: 'Contact', href: '/contact' },
+];
+
+const facts = [
+  { label: 'Stack', value: 'Next.js · React · Node · MongoDB · Python' },
+  { label: 'Now building', value: 'GEO + tracking system at IAverse' },
+  { label: 'Building with AI', value: 'Claude · MCP · OpenAI · agentic workflows' },
+  { label: 'Studying', value: 'BS Data Science, IIT Madras (2024–2028)' },
+];
+---
+
+<PageLayout
+  title="About — Awadh Kishor Singh"
+  description="Learn about Awadh Kishor Singh — Full Stack Developer from Bengaluru, passionate about scalable web apps and clean UI."
+  ogImage="https://picsum.photos/1200/630?random=3"
+>
+  <section class="container mx-auto px-6 py-16 md:px-8 md:py-24">
+    <span class="eyebrow">About</span>
+    <h1 class="mb-10 text-4xl font-semibold tracking-tight text-[var(--fg)] md:text-5xl">
+      Hi, I'm Awadh.
+    </h1>
+
+    <div class="grid gap-10 md:grid-cols-[280px_1fr] md:items-start md:gap-12">
+      <div class="rounded-2xl border border-[var(--border)] bg-[rgba(253,246,238,0.55)] p-3 backdrop-blur-[20px] transition-colors duration-300 hover:border-[var(--accent)] dark:bg-[rgba(4,8,15,0.55)]">
+        <img
+          src="https://picsum.photos/300/300?random=3"
+          alt="Awadh Kishor Singh"
+          class="aspect-square w-full rounded-xl object-cover"
+        />
+      </div>
+
+      <div class="flex flex-col gap-6">
+        <p class="m-0 text-base leading-relaxed text-[var(--fg)] md:text-lg">
+          I'm a Full Stack Developer based in Bengaluru, currently interning at <span class="font-medium text-[var(--accent)]">IAverse</span>
+          while pursuing a BS in Data Science at IIT Madras. I gravitate toward products that feel
+          fast, look intentional, and solve a real problem end-to-end.
+        </p>
+        <p class="m-0 text-base leading-relaxed text-[var(--muted)] md:text-lg">
+          Most of my recent work has been Next.js and Node-driven full-stack apps — a live ed-tech
+          platform, a cryptocurrency portfolio tracker, and an internal GEO + tracking system. I'm
+          also deep in Gen AI right now: building agentic workflows with Claude, MCP-powered tools,
+          and OpenAI APIs to ship more ambitious, AI-augmented applications. On the side I sharpen my
+          data-science chops with Python, ML, and analytics tooling.
+        </p>
+
+        <div class="grid gap-3 sm:grid-cols-2">
+          {facts.map((f) => (
+            <div class="rounded-2xl border border-[var(--border)] bg-[rgba(253,246,238,0.55)] p-5 backdrop-blur-[20px] transition-colors duration-300 hover:border-[var(--accent)] dark:bg-[rgba(4,8,15,0.55)]">
+              <span class="font-mono text-[0.7rem] uppercase tracking-[0.14em] text-[var(--muted)]">{f.label}</span>
+              <p class="mt-1.5 mb-0 text-sm font-medium text-[var(--fg)]">{f.value}</p>
+            </div>
+          ))}
+        </div>
+
+        <div class="grid grid-cols-3 gap-3">
+          {stats.map((s) => (
+            <div class="rounded-2xl border border-[var(--border)] bg-[rgba(253,246,238,0.55)] p-5 text-center backdrop-blur-[20px] transition-colors duration-300 hover:border-[var(--accent)] dark:bg-[rgba(4,8,15,0.55)]">
+              <span class="block text-2xl font-semibold leading-none text-[var(--fg)] md:text-3xl">{s.value}</span>
+              <span class="mt-2 block font-mono text-[0.7rem] uppercase tracking-[0.14em] text-[var(--muted)]">{s.label}</span>
+            </div>
+          ))}
+        </div>
+
+        <div class="flex flex-wrap gap-2 pt-2">
+          {quickNav.map((n) => (
+            <a
+              href={n.href}
+              class="rounded-xl border border-[var(--border)] bg-transparent px-4 py-2 text-xs font-medium text-[var(--fg)] transition-colors duration-300 hover:border-[var(--accent)] hover:text-[var(--accent)]"
+            >
+              {n.label} →
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+</PageLayout>

@@ -1,0 +1,119 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  canonical?: string;
+}
+
+const {
+  title = 'Awadh Kishor Singh | Full Stack & Gen AI Developer',
+  description = 'Portfolio of Awadh Kishor Singh — Full Stack & Gen AI developer in Bengaluru, building production web apps with Next.js, Node, MongoDB, Claude, and MCP.',
+  ogImage = '/og-default.png',
+  canonical = Astro.url.href,
+} = Astro.props;
+
+const siteUrl = 'https://awadh.tech';
+const absoluteOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Awadh Kishor Singh',
+  alternateName: ['imawadh', 'im_awadh', 'im_awadh_'],
+  url: siteUrl,
+  jobTitle: 'Full Stack & Gen AI Developer',
+  description,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Bengaluru',
+    addressRegion: 'Karnataka',
+    addressCountry: 'IN',
+  },
+  alumniOf: {
+    '@type': 'EducationalOrganization',
+    name: 'IIT Madras',
+  },
+  knowsAbout: [
+    'Full Stack Development',
+    'Next.js',
+    'React',
+    'Node.js',
+    'MongoDB',
+    'Generative AI',
+    'Claude',
+    'Model Context Protocol',
+    'Agentic Workflows',
+  ],
+  sameAs: [
+    'https://github.com/imawadh',
+    'https://in.linkedin.com/in/imawadh',
+    'https://x.com/im_awadh_',
+    'https://www.instagram.com/im_awadh_/',
+  ],
+};
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Awadh Kishor Singh — Portfolio',
+  url: siteUrl,
+  author: { '@type': 'Person', name: 'Awadh Kishor Singh' },
+  inLanguage: 'en',
+};
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#fdf6ee" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#04080f" media="(prefers-color-scheme: dark)" />
+    <meta name="color-scheme" content="light dark" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content="Awadh Kishor Singh" />
+    <meta name="keywords" content="Awadh Kishor Singh, imawadh, Full Stack Developer, Gen AI Developer, Claude, MCP, Next.js, React, MongoDB, Bengaluru Developer, IIT Madras" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+
+    <link rel="canonical" href={canonical} />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={absoluteOgImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={title} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Awadh Kishor Singh — Portfolio" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@im_awadh_" />
+    <meta name="twitter:creator" content="@im_awadh_" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={absoluteOgImage} />
+    <meta name="twitter:image:alt" content={title} />
+
+    <!-- Favicon / icons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+
+    <!-- Structured data -->
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

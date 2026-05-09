@@ -1,0 +1,212 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+import { socials } from '../utils/socials';
+
+interface NavItem {
+  label: string;
+  href: string;
+  hint: string;
+}
+
+const navItems: NavItem[] = [
+  { label: 'About', href: '/about', hint: 'The story so far' },
+  { label: 'Skills', href: '/skills', hint: 'Tools of the trade' },
+  { label: 'Experience', href: '/experience', hint: 'Work & education' },
+  { label: 'Projects', href: '/projects', hint: 'Selected work' },
+  { label: 'Freelance', href: '/freelance', hint: 'Independent client work' },
+  { label: 'Certifications', href: '/certifications', hint: 'Verified learning' },
+  { label: 'Contact', href: '/contact', hint: "Let's talk" },
+];
+
+const currentPath = Astro.url.pathname;
+const currentItem = navItems.find((item) =>
+  item.href === '/' ? currentPath === '/' : currentPath.startsWith(item.href)
+);
+---
+
+<nav
+  id="siteNav"
+  class="sticky top-0 z-50 border-b border-[var(--border)] bg-[rgba(253,246,238,0.82)] backdrop-blur-[24px] transition-all duration-300 dark:bg-[rgba(4,8,15,0.72)] dark:backdrop-blur-[20px]"
+>
+  <div class="container mx-auto flex items-center justify-between gap-3 px-7 py-5 md:px-10 md:py-6">
+    <a href="/" class="group inline-flex items-center gap-3" aria-label="Awadh — home">
+      <svg
+        class="h-5 w-5 text-[var(--accent)] transition-transform duration-700 group-hover:rotate-180"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        aria-hidden="true"
+      >
+        <line x1="12" y1="3" x2="12" y2="21"></line>
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="5.6" y1="5.6" x2="18.4" y2="18.4"></line>
+        <line x1="18.4" y1="5.6" x2="5.6" y2="18.4"></line>
+      </svg>
+      <span class="hidden flex-col leading-tight sm:flex">
+        <span class="text-sm font-semibold tracking-tight text-[var(--fg)]">Awadh Kishor Singh</span>
+        <span class="font-mono text-[0.62rem] uppercase tracking-[0.2em] text-[var(--muted)]">
+          Full Stack · Gen AI · Bengaluru
+        </span>
+      </span>
+      <span class="text-base font-semibold tracking-tight text-[var(--fg)] sm:hidden">Awadh</span>
+    </a>
+
+    <div class="flex items-center gap-2 md:gap-2.5">
+      <a
+        href="/contact"
+        class="group hidden items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--surface)]/40 py-1.5 pl-2.5 pr-3.5 transition-colors duration-300 hover:border-[var(--accent)] md:inline-flex"
+      >
+        <span class="relative inline-flex h-2 w-2">
+          <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-[var(--accent)] opacity-60"></span>
+          <span class="relative inline-flex h-2 w-2 rounded-full bg-[var(--accent)]"></span>
+        </span>
+        <span class="font-mono text-[0.65rem] uppercase tracking-[0.16em] text-[var(--muted)] transition-colors duration-300 group-hover:text-[var(--fg)]">
+          Available for work
+        </span>
+      </a>
+
+      <ThemeToggle />
+
+      <button
+        id="navToggle"
+        type="button"
+        aria-label="Toggle navigation"
+        aria-expanded="false"
+        aria-controls="navMenu"
+        class="nav-toggle group relative inline-flex h-10 items-center gap-2 rounded-xl border border-[var(--border)] bg-transparent px-3 text-[var(--fg)] transition-colors duration-300 hover:border-[var(--accent)] hover:text-[var(--accent)]"
+      >
+        <span class="hidden font-mono text-[0.65rem] uppercase tracking-[0.16em] sm:inline toggle-label-closed">Menu</span>
+        <span class="hidden font-mono text-[0.65rem] uppercase tracking-[0.16em] sm:inline toggle-label-open">Close</span>
+        <span class="relative flex h-4 w-5 flex-col items-center justify-center">
+          <span class="bar bar-top absolute h-[2px] w-5 rounded-full bg-current transition-transform duration-300"></span>
+          <span class="bar bar-bot absolute h-[2px] w-5 rounded-full bg-current transition-transform duration-300"></span>
+        </span>
+      </button>
+    </div>
+  </div>
+
+  <div
+    id="navMenu"
+    class="nav-menu invisible absolute left-0 right-0 top-full max-h-[calc(100dvh-5.25rem)] origin-top -translate-y-3 overflow-y-auto border-b border-[var(--border)] bg-[var(--bg)] opacity-0 transition-all duration-300 ease-out md:max-h-[calc(100dvh-5.75rem)]"
+  >
+    <div class="container mx-auto grid gap-10 px-7 py-8 md:grid-cols-[1.6fr_1fr] md:gap-16 md:px-10 md:py-14">
+      <ul class="flex flex-col">
+        {navItems.map((item) => {
+          const isActive = currentItem?.href === item.href;
+          return (
+            <li class="border-t border-[var(--border)] last:border-b">
+              <a
+                href={item.href}
+                class="group/item flex items-center justify-between gap-6 py-3.5 transition-all duration-300 md:py-4"
+                aria-current={isActive ? 'page' : undefined}
+              >
+                <span class={`text-xl font-semibold tracking-tight transition-all duration-300 group-hover/item:translate-x-2 group-hover/item:text-[var(--accent)] md:text-3xl lg:text-4xl ${isActive ? 'text-[var(--accent)]' : 'text-[var(--fg)]'}`}>
+                  {item.label}
+                </span>
+                <span class="flex items-center gap-3 font-mono text-xs text-[var(--muted)]">
+                  <span class="hidden opacity-0 transition-opacity duration-300 group-hover/item:opacity-100 md:inline">
+                    {item.hint}
+                  </span>
+                  <span class={`text-base transition-all duration-300 ${isActive ? 'text-[var(--accent)] opacity-100' : 'opacity-40 group-hover/item:opacity-100 group-hover/item:text-[var(--accent)]'}`}>
+                    →
+                  </span>
+                </span>
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+
+      <aside class="flex flex-col gap-7 md:border-l md:border-[var(--border)] md:pl-12">
+        <div>
+          <span class="eyebrow">Currently</span>
+          <p class="m-0 mt-1 text-sm font-medium text-[var(--fg)]">
+            Full Stack Intern @ <span class="text-[var(--accent)]">IAverse</span>
+          </p>
+          <p class="m-0 text-sm text-[var(--muted)]">Bengaluru, India</p>
+        </div>
+
+        <div>
+          <span class="eyebrow">Get in touch</span>
+          <a
+            href="mailto:awadhkishorsingh241@gmail.com"
+            class="m-0 mt-1 block font-mono text-sm text-[var(--fg)] no-underline transition-colors duration-300 hover:text-[var(--accent)]"
+            style="border: none;"
+          >
+            awadhkishorsingh241@gmail.com
+          </a>
+        </div>
+
+        <div>
+          <span class="eyebrow">Elsewhere</span>
+          <div class="mt-2 flex flex-wrap gap-2">
+            {socials.map((social) => (
+              <a
+                href={social.url}
+                title={social.label}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="rounded-xl border border-[var(--border)] bg-[var(--surface)]/40 px-3 py-1.5 font-mono text-[0.7rem] uppercase tracking-[0.12em] text-[var(--muted)] no-underline transition-colors duration-300 hover:border-[var(--accent)] hover:text-[var(--accent)]"
+                style="border-color: var(--border);"
+              >
+                {social.label}
+              </a>
+            ))}
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</nav>
+
+<style>
+  /* Hamburger morph: two bars cross into an X */
+  .nav-toggle .bar-top { transform: translateY(-4px); }
+  .nav-toggle .bar-bot { transform: translateY(4px); }
+  .nav-toggle[aria-expanded='true'] .bar-top { transform: translateY(0) rotate(45deg); }
+  .nav-toggle[aria-expanded='true'] .bar-bot { transform: translateY(0) rotate(-45deg); }
+
+  /* Swap Menu / Close label based on aria-expanded */
+  .nav-toggle[aria-expanded='true'] .toggle-label-closed { display: none; }
+  .nav-toggle[aria-expanded='false'] .toggle-label-open { display: none; }
+
+  /* Open state for the menu */
+  .nav-menu.is-open {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  const nav = document.getElementById('siteNav');
+  const navToggle = document.getElementById('navToggle');
+  const navMenu = document.getElementById('navMenu');
+
+  const setOpen = (open: boolean) => {
+    if (!navToggle || !navMenu) return;
+    navToggle.setAttribute('aria-expanded', String(open));
+    navMenu.classList.toggle('is-open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  };
+
+  navToggle?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
+    setOpen(!isOpen);
+  });
+
+  navMenu?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => setOpen(false));
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!nav?.contains(e.target as Node)) setOpen(false);
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') setOpen(false);
+  });
+</script>

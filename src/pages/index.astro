@@ -1,0 +1,96 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import { socials } from '../utils/socials';
+
+const stats = [
+  { value: '5', label: 'Projects shipped' },
+  { value: '3', label: 'Freelance clients' },
+  { value: '2+', label: 'Years coding' },
+];
+
+const highlights = [
+  { label: 'Currently', value: 'Full Stack Intern @ IAverse' },
+  { label: 'Studying', value: 'BS Data Science · IIT Madras' },
+  { label: 'Based in', value: 'Bengaluru, India' },
+];
+---
+
+<PageLayout
+  title="Awadh Kishor Singh | Full Stack & Gen AI Developer"
+  description="Awadh Kishor Singh — Full Stack & Gen AI developer in Bengaluru, India. Building production web apps and AI-powered products with Next.js, Node, MongoDB, Claude, and MCP."
+>
+  <section class="relative overflow-hidden">
+    <div class="container mx-auto px-6 py-16 md:px-8 md:py-24">
+      <span class="eyebrow">Welcome to my portfolio</span>
+
+      <h1 class="mb-4 text-4xl font-semibold leading-[1.05] tracking-tight text-[var(--fg)] md:text-6xl">
+        Full Stack & Gen AI developer crafting <span class="text-[var(--accent)]">scalable, considered</span> products.
+      </h1>
+
+      <p class="mb-2 text-base text-[var(--muted)] md:text-lg">
+        Hi, I'm Awadh Kishor Singh — also known online as <span class="font-mono text-sm text-[var(--fg)]">imawadh</span>.
+      </p>
+
+      <p class="mb-8 max-w-[640px] text-base leading-relaxed text-[var(--fg)] md:text-lg">
+        I build full-stack products and AI-powered applications — from Next.js, Node, and MongoDB
+        stacks to Claude- and MCP-driven agentic workflows — turning ideas into polished,
+        performant experiences.
+      </p>
+
+      <div class="mb-10 flex flex-wrap gap-3">
+        <a
+          href="/projects"
+          class="inline-flex items-center gap-2 rounded-xl border border-[var(--accent)] bg-[var(--accent)] px-5 py-2.5 text-sm font-medium text-[var(--bg)] transition-all duration-300 hover:bg-[var(--accent-light)] hover:border-[var(--accent-light)]"
+        >
+          View my work →
+        </a>
+        <a
+          href="/Awadh Full Stack Developer Resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 rounded-xl border border-[var(--border)] bg-transparent px-5 py-2.5 text-sm font-medium text-[var(--fg)] transition-colors duration-300 hover:border-[var(--accent)] hover:text-[var(--accent)]"
+        >
+          Download CV
+        </a>
+        <a
+          href="/contact"
+          class="inline-flex items-center gap-2 rounded-xl border border-[var(--border)] bg-transparent px-5 py-2.5 text-sm font-medium text-[var(--fg)] transition-colors duration-300 hover:border-[var(--accent)] hover:text-[var(--accent)]"
+        >
+          Get in touch
+        </a>
+      </div>
+
+      <div class="mb-10 flex flex-wrap gap-2">
+        {socials.map((social) => (
+          <a
+            href={social.url}
+            title={social.label}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="rounded-xl border border-[var(--border)] bg-[var(--surface)]/40 px-3 py-1.5 text-xs font-medium text-[var(--muted)] transition-colors duration-300 hover:border-[var(--accent)] hover:text-[var(--accent)]"
+          >
+            {social.label}
+          </a>
+        ))}
+      </div>
+
+      <div class="grid gap-3 md:grid-cols-3">
+        {highlights.map((h) => (
+          <div class="rounded-2xl border border-[var(--border)] bg-[rgba(253,246,238,0.55)] p-5 backdrop-blur-[20px] transition-colors duration-300 hover:border-[var(--accent)] dark:bg-[rgba(4,8,15,0.55)]">
+            <span class="font-mono text-[0.7rem] uppercase tracking-[0.14em] text-[var(--muted)]">{h.label}</span>
+            <p class="mt-1.5 mb-0 text-sm font-medium text-[var(--fg)]">{h.value}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-10 grid gap-3 md:grid-cols-3">
+        {stats.map((s) => (
+          <div class="rounded-2xl border border-[var(--border)] bg-[rgba(253,246,238,0.55)] p-6 backdrop-blur-[20px] transition-colors duration-300 hover:border-[var(--accent)] dark:bg-[rgba(4,8,15,0.55)]">
+            <span class="text-3xl font-semibold leading-none text-[var(--fg)] md:text-4xl">{s.value}</span>
+            <p class="mt-2 mb-0 font-mono text-xs uppercase tracking-[0.14em] text-[var(--muted)]">{s.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</PageLayout>

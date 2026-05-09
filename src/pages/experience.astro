@@ -1,0 +1,69 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import TimelineItem from '../components/TimelineItem.astro';
+
+const experiences = [
+  {
+    type: 'work' as const,
+    title: 'Full Stack Developer Intern',
+    company: 'IAverse',
+    date: 'Feb 2026 – Present',
+    description: 'Building a GEO and tracking system for a client — handling everything from data ingestion to map-driven UI.',
+  },
+  {
+    type: 'work' as const,
+    title: 'Full Stack Freelancer',
+    company: 'SRS Classes',
+    date: 'Nov 2024 – Present',
+    description: 'Designing and shipping full-stack web applications for clients across ed-tech and product domains.',
+  },
+  {
+    type: 'education' as const,
+    title: 'BS in Data Science & Applications',
+    company: 'IIT Madras',
+    date: 'May 2024 – March 2028',
+    description: 'Online degree program focused on data science, statistics, and applied machine learning.',
+  },
+  {
+    type: 'education' as const,
+    title: 'Intermediate (Class XII)',
+    company: 'Central Hindu Boys School',
+    date: 'May 2021 – March 2023',
+    description: 'Higher secondary education with a focus on math and science.',
+  },
+  {
+    type: 'education' as const,
+    title: 'High School (Class X)',
+    company: 'PG Senior Secondary School',
+    date: 'April 2019 – March 2021',
+    description: 'Secondary school education.',
+  },
+];
+---
+
+<PageLayout
+  title="Experience & Education — Awadh Kishor Singh"
+  description="Awadh's work experience including internship at IAverse and freelance work, plus his education at IIT Madras."
+>
+  <section class="container mx-auto px-6 py-16 md:px-8 md:py-24">
+    <span class="eyebrow">Timeline</span>
+    <h1 class="mb-3 text-4xl font-semibold tracking-tight text-[var(--fg)] md:text-5xl">
+      Experience & education
+    </h1>
+    <p class="mb-12 max-w-[640px] text-base text-[var(--muted)] md:text-lg">
+      A timeline of professional work and academic background — most recent first.
+    </p>
+
+    <div class="flex flex-col gap-4">
+      {experiences.map((exp) => (
+        <TimelineItem
+          type={exp.type}
+          title={exp.title}
+          company={exp.company}
+          date={exp.date}
+          description={exp.description}
+        />
+      ))}
+    </div>
+  </section>
+</PageLayout>
